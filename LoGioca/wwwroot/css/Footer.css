@@ -1,0 +1,173 @@
+﻿.Versione, .Ambiente {
+    font-weight: 700;
+}
+
+.footer {
+    white-space: nowrap;
+    height: 68px !important;
+    line-height: 60px;
+    background-color: #F5F5F5;
+    position: absolute;
+    margin-top: 25%;
+    width: 100%;
+}
+
+.logologicaFooter {
+    width: 7%;
+}
+
+.FooterdX {
+    float: right;
+    color: #29346F !important;
+    text-decoration: none;
+}
+
+.FootersX {
+    width: 40%;
+    float: left;
+}
+
+.TestoFooter {
+    margin-right: 30px;
+}
+
+.IconeFooter {
+    width: 6%;
+    padding-right: 8px;
+    /*padding-bottom: 2px;*/
+}
+
+.containerfooter {
+    margin-left: 59px;
+}
+@media only screen and (max-width: 375px) {
+
+    .TestoFooder {
+        display: block;
+        font-size: 10px;
+        margin: -17px 0px !important;
+        margin-right: 57px !important;
+        margin-bottom: -26px !important;
+    }
+
+    .FootersX {
+        width: 30% !important;
+        float: left;
+    }
+
+    .logologicaFooter {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .border-top {
+        border-top: 1px solid #dee2e6 !important;
+        text-align: center;
+    }
+    .LoghiLogibox {
+        display: inline-block;
+        width: 81%;
+    }
+
+    .logologicaFooter {
+        width: 26% !important;
+    }
+
+    .footer {
+        width: 100%;
+        white-space: nowrap;
+        height: 138px !important;
+        line-height: 60px;
+        background-color: #F5F5F5;
+    }
+    .containerfooter {
+        margin-left: 13px;
+        margin-bottom: -10px;
+    }
+
+    .FootersX {
+        width: 40%;
+        float: none !important;
+    }
+
+    .logologicaFooter {
+        width: 11%;
+        padding-top: 0px !important;
+    }
+
+    .icone {
+        width: 2em;
+    }
+
+    .FooterdX {
+        color: #29346F !important;
+        text-decoration: none;
+        padding-top: 0px !important;
+    }
+
+    .TestoFooder {
+        display: block;
+        font-size: 10px;
+        margin: -17px 0px !important;
+        margin-right: 57px !important;
+        margin-bottom: -26px !important;
+    }
+
+    .IconeFooter {
+        width: 8% !important;
+        padding-right: 8px;
+        padding-bottom: 0px; 
+        text-align: center; 
+    }
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .logologicaFooter {
+        width: 10%;
+    }
+    .IconeFooter {
+        width: 5%;
+        padding-right: 8px;
+        /* padding-bottom: 2px; */
+    }
+    .FootersX {
+        width: 30%;
+        float: left;
+    }
+    .divagg {
+        position: absolute;
+        left: 29.5%;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .logologicaFooter {
+        width: 10%;
+    }
+    .footer {
+        width: 100%;
+        white-space: nowrap;
+        height: 140px !important;
+        line-height: 60px;
+        background-color: #F5F5F5;
+    }
+    .containerfooter {
+        margin-left: 33px;
+        text-align: left;
+    }
+
+    .FootersX {
+        width: 10%;
+        float: left;
+    }
+
+    .divagg {
+        position: absolute;
+        left: 39.5%;
+        cursor: pointer;
+    }
+}

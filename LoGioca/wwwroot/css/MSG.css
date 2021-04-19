@@ -1,0 +1,37 @@
+﻿/*MODAL*/
+
+.MSG-Body, .MSG-Footer {
+    background-color: white !important;
+    color: #4F4E4E !important;
+    border-top: 0px !important;
+    border-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.MSG-Header {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #F0F0F0;
+    border-bottom: solid;
+    border-bottom-color: #3498DB;
+}
+
+.MSG-close {
+    color: #4F4E4E !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-size: 1.5em !important;
+    position: relative;
+    float: right;
+    outline: none;
+}
+
+    .MSG-close:focus {
+        outline: none;
+    }
+
+.MSG-Body, .MSG-Footer {
+    border-top: 0px !important;
+    padding-left: 4% !important;
+}

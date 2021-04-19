@@ -1,0 +1,30 @@
+﻿@using LoGioca.BLL.DTOs;
+
+
+@model List<GiocatoriDisponibiliDTO>
+
+
+<div id="Giocatori" class="tabcontent">
+
+    <table class="table" align="center" id="tableId">
+        <tr>
+
+            <td>Giocatore</td>
+            <!--<td>Pos.</td>-->
+
+
+        </tr>
+        @if (Model != null)
+        {
+
+            @foreach (GiocatoriDisponibiliDTO Lggiocatore in Model)
+            {
+                <tr class="Styletr" onclick="getProfilo(@Lggiocatore.IdGiocatore)">
+                    <td>
+                        <img src="@Lggiocatore.UrlAvatar" style="width:15%" /> <img src="@Lggiocatore.Nazionalita" style="width:2%; position:absolute" /><div><text id="TestoNome">@Lggiocatore.Cognome @Lggiocatore.Nome</text></div>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
