@@ -266,3 +266,48 @@ h1 {
        
        
       }
+
+/*VOTES CSS -------ENRICO PENTA------------------------------------------------------------------------------------------------------------*/
+.upperDiv{
+    z-index: 999;
+    height: 100%;
+    display:none;
+}
+.gridTableVotes {
+    display: flex;
+    max-width: 100%;
+    /* grid-template-columns: repeat(5, 1fr); */
+    grid-template-columns: minmax(0px, 0.6fr) minmax(0px, 2fr) minmax(0px,1.5fr) minmax(0px,1.5fr) minmax(0px,2fr);
+}
+.colVotesStyleHead {
+    color: white;
+    background: #23B574 !important;
+}
+.colVotesStyle {
+    position: sticky;
+    width: 50%;
+    text-align: center;
+    font-size: 1.1rem;
+    background: white;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.eventsBox {
+    height: 100%;
+}
+.bigBoxGrid {
+    position: relative !important;
+    top: 60% !important;
+}
+.swipeBack {
+    width: 15%;
+    float: left;
+}
+
+.voteSelect{
+    background: white;
+    border: 2px solid;
+    font-size: 190%;
+    padding-left: 4%;
+    border-radius: 10%;
+}
