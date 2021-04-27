@@ -311,3 +311,32 @@ h1 {
     padding-left: 4%;
     border-radius: 10%;
 }
+
+.textAreaVotes {
+    background: white;
+    border: 1.5px solid;
+    border-radius: 2%;
+    font-size: 2em;
+}
+.votesSelectDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+.votesCommentBox {
+    text-align: -webkit-center;
+    margin-top: 10%;
+}
+.labelFont{
+    font-size:1.5em;
+}
+.labelFontPlayer {
+    font-size: 2.5em;
+    font-style: italic;
+}
+
+.mybtnVotes {
+    width: 35% !important;
+    font-size: 130% !important;
+    margin-top: 1.5em !important;
+}

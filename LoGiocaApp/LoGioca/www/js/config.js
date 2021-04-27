@@ -70,6 +70,8 @@ var config = {
     */
     //_\\ non li elimino perche' non so se questo puo' essere dannoso per qualcosa, in caso si vada in produzione e questo commento sia ancora qui... eliminarlo
     //Parametri di connessione ad un server di test MQTT
-    
+
+    minVote: 1,
+    maxVote:10,
 };
 

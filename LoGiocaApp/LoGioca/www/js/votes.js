@@ -30,8 +30,8 @@ app.votes.votesAfterIn = function () {
 app.votes.prepareGrid = function () {
     // COSTRUZIONE SIMULAZIONE DATI
     j = 0;
-    team = ["pippo", "pluto", "paperino", "tronchi"];
-    teamTwo = ["luca", "peppe", "mario", "luigi"];
+    team = ["Enrico Penta", "Marco Merrino", "Francesco Orsini", "Federico Tronchi"];
+    teamTwo = ["Luca Gianforchetti", "Diego Armando Maradona", "Mario Salvatore", "Luigi Zabara"];
     //
     for (i = 0; i < team.length; i++) {
         rec = '<div class="gridTableVotes">';
@@ -48,13 +48,18 @@ app.votes.prepareGrid = function () {
 app.votes.votePage = function (id,playerInfo) {
     $('.upperDiv').show();
     $('.eventsBox').hide();
-    rec =  '<div style="font-size: -webkit-xxx-large;">'+playerInfo+'</div>';
-    rec += '<div style="display:flex; justify-content:center;">';
-    rec += '<h1>VOTO:</h1>';
+    rec =  '<label class="labelFontPlayer">'+playerInfo+'</label>';
+    rec += '<div class="votesSelectDiv">';
+    rec += '<label class="labelFont">VOTO:</label>';
     rec += '<select class="voteSelect">';
-        for(i=1;i<=10;i++)
+        for(i=config.minVote;i<=config.maxVote;i++)
             rec += '<option value='+i+'>'+i+'</option>';
     rec += '</select></div>';
+    rec += '<div class="votesCommentBox">';
+    rec += '<label class="labelFont">Commento:</label>';
+    rec += '<textarea class="textAreaVotes" rows="7" cols="20"></textarea>';
+    rec += '<button class="mybtnVotes mybtn">SALVA</button>';
+    rec += '</div >';
     $('#votePart').html(rec);
 };
  
