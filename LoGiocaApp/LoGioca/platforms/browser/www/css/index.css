@@ -297,7 +297,7 @@ h1 {
 }
 .bigBoxGrid {
     position: relative !important;
-    top: 60% !important;
+    top: 30% !important;
 }
 .swipeBack {
     width: 15%;
@@ -327,10 +327,13 @@ h1 {
     text-align: -webkit-center;
     margin-top: 10%;
 }
-.labelFont{
-    font-size:1.5em;
+.labelFont {
+    font-size: 2em;
+    font-weight: 600;
 }
 .labelFontPlayer {
+    font-weight: 900;
+    text-shadow: 3px 1px #23b574;
     font-size: 2.5em;
     font-style: italic;
 }
