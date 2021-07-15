@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:logioca/models/evento.dart';
+import 'package:logioca/models/notifica.dart';
 import 'package:logioca/models/utente.dart';
 
 import 'models/giocatore.dart';
@@ -248,7 +249,7 @@ Future<UtenteProfilo> getUtente(int idUser) async {
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, Object>{'idUser': idUser, 'soloRelazione': true}),
+    body: jsonEncode(<String, Object>{'idUser': idUser}),
   );
 
   if (response.statusCode == 200) {
@@ -320,6 +321,26 @@ Future<ListaGiocatori> getAmici(int idUser) async {
     // If the server did return a 201 CREATED response,
     // then parse the JSON.
     return ListaGiocatori.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    throw Exception('Failed to create album.');
+  }
+}
+
+Future<ListaNotifiche> getNotifiche(int idUser) async {
+  final response = await http.post(
+    Uri.parse('https://logiocarest.azurewebsites.net/notifica/getNotifica'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, Object>{'idUser': idUser}),
+  );
+
+  if (response.statusCode == 200 || response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    return ListaNotifiche.fromJson(jsonDecode(response.body));
   } else {
     // If the server did not return a 201 CREATED response,
     // then throw an exception.
