@@ -1,0 +1,1553 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/services/text_formatter.dart', 'packages/flutter/src/material/icons.dart', 'packages/flutter/src/material/text_form_field.dart', 'packages/flutter/src/services/text_input.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/sizer/sizer_ext.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/logioca/common.dart', 'packages/date_field/date_field.dart', 'packages/flutter/src/material/date.dart', 'packages/flutter/src/foundation/key.dart', 'packages/flutter/src/material/input_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/widgets/form.dart', 'packages/intl/src/intl/date_format.dart', 'packages/flutter/src/painting/placeholder_span.dart'], (function load__packages__logioca__widgets__fields_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__services__text_formatter$46dart, packages__flutter__src__material__icons$46dart, packages__flutter__src__material__text_form_field$46dart, packages__flutter__src__services__text_input$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__strut_style$46dart, packages__sizer__sizer_ext$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__icon$46dart, packages__logioca__common$46dart, packages__date_field__date_field$46dart, packages__flutter__src__material__date$46dart, packages__flutter__src__foundation__key$46dart, packages__flutter__src__material__input_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__widgets__form$46dart, packages__intl__src__intl__date_format$46dart, packages__flutter__src__painting__placeholder_span$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const editable_text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__editable_text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const text_formatter = packages__flutter__src__services__text_formatter$46dart.src__services__text_formatter;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  const text_form_field = packages__flutter__src__material__text_form_field$46dart.src__material__text_form_field;
+  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const sizer_ext = packages__sizer__sizer_ext$46dart.sizer_ext;
+  const input_decorator = packages__flutter__src__material__icon_button$46dart.src__material__input_decorator;
+  const text_button = packages__flutter__src__material__icon_button$46dart.src__material__text_button;
+  const list_tile = packages__flutter__src__material__icon_button$46dart.src__material__list_tile;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const common = packages__logioca__common$46dart.common;
+  const date_field = packages__date_field__date_field$46dart.date_field;
+  const date = packages__flutter__src__material__date$46dart.src__material__date;
+  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
+  const input_border = packages__flutter__src__material__input_border$46dart.src__material__input_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const form = packages__flutter__src__widgets__form$46dart.src__widgets__form;
+  const date_format = packages__intl__src__intl__date_format$46dart.src__intl__date_format;
+  const text_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_span;
+  var fields = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    ValueKeyOfString: () => (T.ValueKeyOfString = dart.constFn(key.ValueKey$(core.String)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    DateTimeL: () => (T.DateTimeL = dart.constFn(dart.legacy(core.DateTime)))(),
+    DateTimeLToStringL: () => (T.DateTimeLToStringL = dart.constFn(dart.fnType(T.StringL(), [T.DateTimeL()])))(),
+    TextSpanL: () => (T.TextSpanL = dart.constFn(dart.legacy(text_span.TextSpan)))(),
+    JSArrayOfTextSpanL: () => (T.JSArrayOfTextSpanL = dart.constFn(_interceptors.JSArray$(T.TextSpanL())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 29,
+        [_Location_line]: 151,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 23,
+        [_Location_line]: 152,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 28,
+        [_Location_line]: 150,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 21,
+        [_Location_line]: 144,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 150,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 29,
+        [_Location_line]: 143,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 33,
+        [_Location_line]: 173,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 27,
+        [_Location_line]: 174,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 172,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 25,
+        [_Location_line]: 166,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 25,
+        [_Location_line]: 172,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 33,
+        [_Location_line]: 165,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 9,
+        [_Location_line]: 125,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "initialValue",
+        [_Location_column]: 9,
+        [_Location_line]: 126,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enabled",
+        [_Location_column]: 9,
+        [_Location_line]: 127,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textCapitalization",
+        [_Location_column]: 9,
+        [_Location_line]: 128,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "inputFormatters",
+        [_Location_column]: 9,
+        [_Location_line]: 129,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "obscureText",
+        [_Location_column]: 9,
+        [_Location_line]: 130,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "cursorColor",
+        [_Location_column]: 9,
+        [_Location_line]: 131,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 132,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enableSuggestions",
+        [_Location_column]: 9,
+        [_Location_line]: 137,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 9,
+        [_Location_line]: 138,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onSaved",
+        [_Location_column]: 9,
+        [_Location_line]: 178,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onChanged",
+        [_Location_column]: 9,
+        [_Location_line]: 179,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "maxLines",
+        [_Location_column]: 9,
+        [_Location_line]: 182,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "keyboardType",
+        [_Location_column]: 9,
+        [_Location_line]: 183,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30, C[31] || CT.C31], T._LocationL());
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 7,
+        [_Location_line]: 124,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: date_field.DateTimeFieldPickerMode.prototype,
+        [_name]: "DateTimeFieldPickerMode.dateAndTime",
+        index: 2
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: date.DatePickerMode.prototype,
+        [_name$]: "DatePickerMode.day",
+        index: 0
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 25,
+        [_Location_line]: 243,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 19,
+        [_Location_line]: 244,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.constList([C[36] || CT.C36, C[37] || CT.C37], T._LocationL());
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[35] || CT.C35,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 242,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 9,
+        [_Location_line]: 226,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "firstDate",
+        [_Location_column]: 9,
+        [_Location_line]: 227,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "initialDatePickerMode",
+        [_Location_column]: 9,
+        [_Location_line]: 228,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dateFormat",
+        [_Location_column]: 9,
+        [_Location_line]: 229,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mode",
+        [_Location_column]: 9,
+        [_Location_line]: 230,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dateTextStyle",
+        [_Location_column]: 9,
+        [_Location_line]: 231,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "initialValue",
+        [_Location_column]: 9,
+        [_Location_line]: 232,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enabled",
+        [_Location_column]: 9,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 9,
+        [_Location_line]: 234,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autovalidateMode",
+        [_Location_column]: 9,
+        [_Location_line]: 248,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "validator",
+        [_Location_column]: 9,
+        [_Location_line]: 249,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onDateSelected",
+        [_Location_column]: 9,
+        [_Location_line]: 250,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42, C[43] || CT.C43, C[44] || CT.C44, C[45] || CT.C45, C[46] || CT.C46, C[47] || CT.C47, C[48] || CT.C48, C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51], T._LocationL());
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[39] || CT.C39,
+        [_Location_name]: null,
+        [_Location_column]: 7,
+        [_Location_line]: 225,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 29,
+        [_Location_line]: 325,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 23,
+        [_Location_line]: 326,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.constList([C[54] || CT.C54, C[55] || CT.C55], T._LocationL());
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[53] || CT.C53,
+        [_Location_name]: null,
+        [_Location_column]: 28,
+        [_Location_line]: 324,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 21,
+        [_Location_line]: 318,
+        [_Location_file]: null
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 324,
+        [_Location_file]: null
+      });
+    },
+    get C57() {
+      return C[57] = dart.constList([C[58] || CT.C58, C[59] || CT.C59], T._LocationL());
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[57] || CT.C57,
+        [_Location_name]: null,
+        [_Location_column]: 29,
+        [_Location_line]: 317,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 33,
+        [_Location_line]: 347,
+        [_Location_file]: null
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 27,
+        [_Location_line]: 348,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.constList([C[62] || CT.C62, C[63] || CT.C63], T._LocationL());
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[61] || CT.C61,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 346,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 25,
+        [_Location_line]: 340,
+        [_Location_file]: null
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 25,
+        [_Location_line]: 346,
+        [_Location_file]: null
+      });
+    },
+    get C65() {
+      return C[65] = dart.constList([C[66] || CT.C66, C[67] || CT.C67], T._LocationL());
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[65] || CT.C65,
+        [_Location_name]: null,
+        [_Location_column]: 33,
+        [_Location_line]: 339,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 9,
+        [_Location_line]: 299,
+        [_Location_file]: null
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "initialValue",
+        [_Location_column]: 9,
+        [_Location_line]: 300,
+        [_Location_file]: null
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enabled",
+        [_Location_column]: 9,
+        [_Location_line]: 301,
+        [_Location_file]: null
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textCapitalization",
+        [_Location_column]: 9,
+        [_Location_line]: 302,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "inputFormatters",
+        [_Location_column]: 9,
+        [_Location_line]: 303,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "obscureText",
+        [_Location_column]: 9,
+        [_Location_line]: 304,
+        [_Location_file]: null
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "cursorColor",
+        [_Location_column]: 9,
+        [_Location_line]: 305,
+        [_Location_file]: null
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 306,
+        [_Location_file]: null
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enableSuggestions",
+        [_Location_column]: 9,
+        [_Location_line]: 311,
+        [_Location_file]: null
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 9,
+        [_Location_line]: 312,
+        [_Location_file]: null
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onSaved",
+        [_Location_column]: 9,
+        [_Location_line]: 352,
+        [_Location_file]: null
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onChanged",
+        [_Location_column]: 9,
+        [_Location_line]: 353,
+        [_Location_file]: null
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "maxLines",
+        [_Location_column]: 9,
+        [_Location_line]: 356,
+        [_Location_file]: null
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "keyboardType",
+        [_Location_column]: 9,
+        [_Location_line]: 357,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C[69] = dart.constList([C[70] || CT.C70, C[71] || CT.C71, C[72] || CT.C72, C[73] || CT.C73, C[74] || CT.C74, C[75] || CT.C75, C[76] || CT.C76, C[77] || CT.C77, C[78] || CT.C78, C[79] || CT.C79, C[80] || CT.C80, C[81] || CT.C81, C[82] || CT.C82, C[83] || CT.C83], T._LocationL());
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[69] || CT.C69,
+        [_Location_name]: null,
+        [_Location_column]: 7,
+        [_Location_line]: 298,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: date_field.DateTimeFieldPickerMode.prototype,
+        [_name]: "DateTimeFieldPickerMode.date",
+        index: 1
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: date_field.DateTimeFieldPickerMode.prototype,
+        [_name]: "DateTimeFieldPickerMode.time",
+        index: 0
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "softWrap",
+        [_Location_column]: 13,
+        [_Location_line]: 31,
+        [_Location_file]: null
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 13,
+        [_Location_line]: 32,
+        [_Location_file]: null
+      });
+    },
+    get C87() {
+      return C[87] = dart.constList([C[88] || CT.C88, C[89] || CT.C89], T._LocationL());
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[87] || CT.C87,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 30,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "contentPadding",
+        [_Location_column]: 5,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dense",
+        [_Location_column]: 5,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 5,
+        [_Location_line]: 29,
+        [_Location_file]: null
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "subtitle",
+        [_Location_column]: 5,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "isThreeLine",
+        [_Location_column]: 5,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C91() {
+      return C[91] = dart.constList([C[92] || CT.C92, C[93] || CT.C93, C[94] || CT.C94, C[95] || CT.C95, C[96] || CT.C96], T._LocationL());
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[91] || CT.C91,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 26,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "softWrap",
+        [_Location_column]: 13,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 13,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C98() {
+      return C[98] = dart.constList([C[99] || CT.C99, C[100] || CT.C100], T._LocationL());
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[98] || CT.C98,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dense",
+        [_Location_column]: 5,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 5,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "subtitle",
+        [_Location_column]: 5,
+        [_Location_line]: 78,
+        [_Location_file]: null
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "isThreeLine",
+        [_Location_column]: 5,
+        [_Location_line]: 79,
+        [_Location_file]: null
+      });
+    },
+    get C102() {
+      return C[102] = dart.constList([C[103] || CT.C103, C[104] || CT.C104, C[105] || CT.C105, C[106] || CT.C106], T._LocationL());
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[102] || CT.C102,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/widgets/fields.dart"
+      });
+    }
+  }, false);
+  var C = Array(107).fill(void 0);
+  var I = ["package:logioca/widgets/fields.dart"];
+  var labels$ = dart.privateName(fields, "MyTextField.labels");
+  var formatters$ = dart.privateName(fields, "MyTextField.formatters");
+  var hint$ = dart.privateName(fields, "MyTextField.hint");
+  var initialValue$ = dart.privateName(fields, "MyTextField.initialValue");
+  var errText$ = dart.privateName(fields, "MyTextField.errText");
+  var icon$ = dart.privateName(fields, "MyTextField.icon");
+  var obscureText$ = dart.privateName(fields, "MyTextField.obscureText");
+  var richiesto$ = dart.privateName(fields, "MyTextField.richiesto");
+  var isReadOnly$ = dart.privateName(fields, "MyTextField.isReadOnly");
+  var multiline$ = dart.privateName(fields, "MyTextField.multiline");
+  var setField$ = dart.privateName(fields, "MyTextField.setField");
+  var validator$ = dart.privateName(fields, "MyTextField.validator");
+  var controller$ = dart.privateName(fields, "MyTextField.controller");
+  fields.MyTextField = class MyTextField extends framework.StatefulWidget {
+    get labels() {
+      return this[labels$];
+    }
+    set labels(value) {
+      super.labels = value;
+    }
+    get formatters() {
+      return this[formatters$];
+    }
+    set formatters(value) {
+      super.formatters = value;
+    }
+    get hint() {
+      return this[hint$];
+    }
+    set hint(value) {
+      super.hint = value;
+    }
+    get initialValue() {
+      return this[initialValue$];
+    }
+    set initialValue(value) {
+      super.initialValue = value;
+    }
+    get errText() {
+      return this[errText$];
+    }
+    set errText(value) {
+      super.errText = value;
+    }
+    get icon() {
+      return this[icon$];
+    }
+    set icon(value) {
+      super.icon = value;
+    }
+    get obscureText() {
+      return this[obscureText$];
+    }
+    set obscureText(value) {
+      this[obscureText$] = value;
+    }
+    get richiesto() {
+      return this[richiesto$];
+    }
+    set richiesto(value) {
+      super.richiesto = value;
+    }
+    get isReadOnly() {
+      return this[isReadOnly$];
+    }
+    set isReadOnly(value) {
+      super.isReadOnly = value;
+    }
+    get multiline() {
+      return this[multiline$];
+    }
+    set multiline(value) {
+      super.multiline = value;
+    }
+    get setField() {
+      return this[setField$];
+    }
+    set setField(value) {
+      super.setField = value;
+    }
+    get validator() {
+      return this[validator$];
+    }
+    set validator(value) {
+      super.validator = value;
+    }
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    createState() {
+      return new fields._MyTextFieldState.new();
+    }
+  };
+  (fields.MyTextField.new = function(labels, opts) {
+    let formatters = opts && 'formatters' in opts ? opts.formatters : null;
+    let hint = opts && 'hint' in opts ? opts.hint : null;
+    let initialValue = opts && 'initialValue' in opts ? opts.initialValue : null;
+    let errText = opts && 'errText' in opts ? opts.errText : null;
+    let icon = opts && 'icon' in opts ? opts.icon : null;
+    let obscureText = opts && 'obscureText' in opts ? opts.obscureText : false;
+    let richiesto = opts && 'richiesto' in opts ? opts.richiesto : true;
+    let isReadOnly = opts && 'isReadOnly' in opts ? opts.isReadOnly : false;
+    let multiline = opts && 'multiline' in opts ? opts.multiline : false;
+    let setField = opts && 'setField' in opts ? opts.setField : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let validator = opts && 'validator' in opts ? opts.validator : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[labels$] = labels;
+    this[formatters$] = formatters;
+    this[hint$] = hint;
+    this[initialValue$] = initialValue;
+    this[errText$] = errText;
+    this[icon$] = icon;
+    this[obscureText$] = obscureText;
+    this[richiesto$] = richiesto;
+    this[isReadOnly$] = isReadOnly;
+    this[multiline$] = multiline;
+    this[setField$] = setField;
+    this[controller$] = controller;
+    this[validator$] = validator;
+    fields.MyTextField.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = fields.MyTextField.prototype;
+  dart.addTypeTests(fields.MyTextField);
+  dart.addTypeCaches(fields.MyTextField);
+  dart.setMethodSignature(fields.MyTextField, () => ({
+    __proto__: dart.getMethods(fields.MyTextField.__proto__),
+    createState: dart.fnType(dart.legacy(fields._MyTextFieldState), [])
+  }));
+  dart.setLibraryUri(fields.MyTextField, I[0]);
+  dart.setFieldSignature(fields.MyTextField, () => ({
+    __proto__: dart.getFields(fields.MyTextField.__proto__),
+    labels: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
+    formatters: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(text_formatter.TextInputFormatter)))),
+    hint: dart.finalFieldType(dart.legacy(core.String)),
+    initialValue: dart.finalFieldType(dart.legacy(core.String)),
+    errText: dart.finalFieldType(dart.legacy(core.String)),
+    icon: dart.finalFieldType(dart.legacy(icons.Icons)),
+    obscureText: dart.fieldType(dart.legacy(core.bool)),
+    richiesto: dart.finalFieldType(dart.legacy(core.bool)),
+    isReadOnly: dart.finalFieldType(dart.legacy(core.bool)),
+    multiline: dart.finalFieldType(dart.legacy(core.bool)),
+    setField: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    validator: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.String), [dart.legacy(core.String)]))),
+    controller: dart.finalFieldType(dart.legacy(editable_text.TextEditingController))
+  }));
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  fields._MyTextFieldState = class _MyTextFieldState extends framework.State$(dart.legacy(fields.MyTextField)) {
+    build(context) {
+      return fields.myField(this.widget.labels, this.widget.richiesto, new text_form_field.TextFormField.new({controller: this.widget.controller, initialValue: this.widget.initialValue, enabled: !dart.test(this.widget.isReadOnly), textCapitalization: text_input.TextCapitalization.none, inputFormatters: this.widget.formatters, obscureText: this.widget.obscureText, cursorColor: colors.Colors.grey, style: new text_style.TextStyle.new({fontFamily: "ToyotaType Book", fontStyle: dart.test(this.widget.isReadOnly) ? ui.FontStyle.italic : ui.FontStyle.normal, fontSize: sizer_ext['SizerExt|get#sp'](11.7), color: dart.test(this.widget.isReadOnly) ? colors.Colors.black54 : colors.Colors.black}), enableSuggestions: false, decoration: this.widget.obscureText === true ? new input_decorator.InputDecoration.new({contentPadding: new edge_insets.EdgeInsets.only({top: 15.0}), isDense: true, hintText: this.widget.hint, suffixIcon: new text_button.TextButton.new({onPressed: dart.fn(() => {
+              this.setState(dart.fn(() => {
+                this.widget.obscureText = !dart.test(this.widget.obscureText);
+                this.showPassword = true;
+              }, T.VoidToNull()));
+            }, T.VoidToNull()), child: new icon.Icon.new(icons.Icons.remove_red_eye_outlined, {color: common.viola, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4})}) : !dart.test(this.showPassword) ? new input_decorator.InputDecoration.new({contentPadding: new edge_insets.EdgeInsets.only({top: 15.0}), isDense: true, hintText: this.widget.hint}) : new input_decorator.InputDecoration.new({contentPadding: new edge_insets.EdgeInsets.only({top: 15.0}), isDense: true, hintText: this.widget.hint, suffixIcon: new text_button.TextButton.new({onPressed: dart.fn(() => {
+              this.setState(dart.fn(() => {
+                this.widget.obscureText = !dart.test(this.widget.obscureText);
+                this.showPassword = true;
+              }, T.VoidToNull()));
+            }, T.VoidToNull()), child: new icon.Icon.new(icons.Icons.remove_red_eye_outlined, {color: common.viola, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12})}), onSaved: dart.test(this.widget.isReadOnly) ? null : this.widget.setField, onChanged: this.widget.setField, maxLines: dart.test(this.widget.multiline) ? null : 1, keyboardType: dart.test(this.widget.multiline) ? text_input.TextInputType.multiline : text_input.TextInputType.text, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}));
+    }
+  };
+  (fields._MyTextFieldState.new = function() {
+    this.showPassword = false;
+    fields._MyTextFieldState.__proto__.new.call(this);
+    ;
+  }).prototype = fields._MyTextFieldState.prototype;
+  dart.addTypeTests(fields._MyTextFieldState);
+  dart.addTypeCaches(fields._MyTextFieldState);
+  dart.setMethodSignature(fields._MyTextFieldState, () => ({
+    __proto__: dart.getMethods(fields._MyTextFieldState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(fields._MyTextFieldState, I[0]);
+  dart.setFieldSignature(fields._MyTextFieldState, () => ({
+    __proto__: dart.getFields(fields._MyTextFieldState.__proto__),
+    showPassword: dart.fieldType(dart.legacy(core.bool))
+  }));
+  var labels$0 = dart.privateName(fields, "MyDateTimeField.labels");
+  var mode$ = dart.privateName(fields, "MyDateTimeField.mode");
+  var initialMode$ = dart.privateName(fields, "MyDateTimeField.initialMode");
+  var hint$0 = dart.privateName(fields, "MyDateTimeField.hint");
+  var errText$0 = dart.privateName(fields, "MyDateTimeField.errText");
+  var initialValue$0 = dart.privateName(fields, "MyDateTimeField.initialValue");
+  var firstDate$ = dart.privateName(fields, "MyDateTimeField.firstDate");
+  var richiesto$0 = dart.privateName(fields, "MyDateTimeField.richiesto");
+  var isReadOnly$0 = dart.privateName(fields, "MyDateTimeField.isReadOnly");
+  var dense$ = dart.privateName(fields, "MyDateTimeField.dense");
+  var setField$0 = dart.privateName(fields, "MyDateTimeField.setField");
+  var _name = dart.privateName(date_field, "_name");
+  var _name$ = dart.privateName(date, "_name");
+  fields.MyDateTimeField = class MyDateTimeField extends framework.StatelessWidget {
+    get labels() {
+      return this[labels$0];
+    }
+    set labels(value) {
+      super.labels = value;
+    }
+    get mode() {
+      return this[mode$];
+    }
+    set mode(value) {
+      super.mode = value;
+    }
+    get initialMode() {
+      return this[initialMode$];
+    }
+    set initialMode(value) {
+      super.initialMode = value;
+    }
+    get hint() {
+      return this[hint$0];
+    }
+    set hint(value) {
+      super.hint = value;
+    }
+    get errText() {
+      return this[errText$0];
+    }
+    set errText(value) {
+      super.errText = value;
+    }
+    get initialValue() {
+      return this[initialValue$0];
+    }
+    set initialValue(value) {
+      super.initialValue = value;
+    }
+    get firstDate() {
+      return this[firstDate$];
+    }
+    set firstDate(value) {
+      super.firstDate = value;
+    }
+    get richiesto() {
+      return this[richiesto$0];
+    }
+    set richiesto(value) {
+      super.richiesto = value;
+    }
+    get isReadOnly() {
+      return this[isReadOnly$0];
+    }
+    set isReadOnly(value) {
+      super.isReadOnly = value;
+    }
+    get dense() {
+      return this[dense$];
+    }
+    set dense(value) {
+      super.dense = value;
+    }
+    get setField() {
+      return this[setField$0];
+    }
+    set setField(value) {
+      super.setField = value;
+    }
+    build(context) {
+      let t0;
+      let style = new text_style.TextStyle.new({fontFamily: "ToyotaType Book", fontStyle: dart.test(this.isReadOnly) ? ui.FontStyle.italic : ui.FontStyle.normal, fontSize: sizer_ext['SizerExt|get#sp'](11.7), color: dart.test(this.isReadOnly) ? colors.Colors.black54 : colors.Colors.black});
+      return fields.myField(this.labels, this.richiesto, new date_field.DateTimeFormField.new({key: new (T.ValueKeyOfString()).new((t0 = this.initialValue, t0 == null ? null : t0.toIso8601String())), firstDate: this.firstDate, initialDatePickerMode: this.initialMode, dateFormat: fields.formatDateTime(this.mode), mode: this.mode, dateTextStyle: style, initialValue: this.initialValue, enabled: !dart.test(this.isReadOnly), decoration: new input_decorator.InputDecoration.new({hintStyle: new text_style.TextStyle.new({color: colors.Colors.grey.shade700, fontSize: sizer_ext['SizerExt|get#sp'](11.0)}), isDense: true, errorBorder: new input_border.UnderlineInputBorder.new({borderSide: new borders.BorderSide.new({color: common.arancione})}), hintText: this.hint, contentPadding: fields.contentPadding, suffixIcon: dart.test(this.isReadOnly) ? null : new icon.Icon.new(icons.Icons.calendar_today, {size: sizer_ext['SizerExt|get#w'](6.0), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34}), suffixIconConstraints: new box.BoxConstraints.new({maxHeight: sizer_ext['SizerExt|get#h'](10.0)})}), autovalidateMode: form.AutovalidateMode.onUserInteraction, validator: dart.fn(e => dart.test(this.richiesto) && e == null ? this.errText == null ? "Selezionare una data" : this.errText : null, T.DateTimeLToStringL()), onDateSelected: this.setField, $creationLocationd_0dea112b090073317d4: C[38] || CT.C38}), {dense: this.dense});
+    }
+  };
+  (fields.MyDateTimeField.new = function(labels, opts) {
+    let mode = opts && 'mode' in opts ? opts.mode : C[32] || CT.C32;
+    let initialMode = opts && 'initialMode' in opts ? opts.initialMode : C[33] || CT.C33;
+    let hint = opts && 'hint' in opts ? opts.hint : null;
+    let errText = opts && 'errText' in opts ? opts.errText : null;
+    let initialValue = opts && 'initialValue' in opts ? opts.initialValue : null;
+    let firstDate = opts && 'firstDate' in opts ? opts.firstDate : null;
+    let richiesto = opts && 'richiesto' in opts ? opts.richiesto : true;
+    let dense = opts && 'dense' in opts ? opts.dense : false;
+    let isReadOnly = opts && 'isReadOnly' in opts ? opts.isReadOnly : false;
+    let setField = opts && 'setField' in opts ? opts.setField : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[labels$0] = labels;
+    this[mode$] = mode;
+    this[initialMode$] = initialMode;
+    this[hint$0] = hint;
+    this[errText$0] = errText;
+    this[initialValue$0] = initialValue;
+    this[firstDate$] = firstDate;
+    this[richiesto$0] = richiesto;
+    this[dense$] = dense;
+    this[isReadOnly$0] = isReadOnly;
+    this[setField$0] = setField;
+    fields.MyDateTimeField.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = fields.MyDateTimeField.prototype;
+  dart.addTypeTests(fields.MyDateTimeField);
+  dart.addTypeCaches(fields.MyDateTimeField);
+  dart.setMethodSignature(fields.MyDateTimeField, () => ({
+    __proto__: dart.getMethods(fields.MyDateTimeField.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(fields.MyDateTimeField, I[0]);
+  dart.setFieldSignature(fields.MyDateTimeField, () => ({
+    __proto__: dart.getFields(fields.MyDateTimeField.__proto__),
+    labels: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
+    mode: dart.finalFieldType(dart.legacy(date_field.DateTimeFieldPickerMode)),
+    initialMode: dart.finalFieldType(dart.legacy(date.DatePickerMode)),
+    hint: dart.finalFieldType(dart.legacy(core.String)),
+    errText: dart.finalFieldType(dart.legacy(core.String)),
+    initialValue: dart.finalFieldType(dart.legacy(core.DateTime)),
+    firstDate: dart.finalFieldType(dart.legacy(core.DateTime)),
+    richiesto: dart.finalFieldType(dart.legacy(core.bool)),
+    isReadOnly: dart.finalFieldType(dart.legacy(core.bool)),
+    dense: dart.finalFieldType(dart.legacy(core.bool)),
+    setField: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.DateTime)])))
+  }));
+  var labels$1 = dart.privateName(fields, "MyVotoField.labels");
+  var formatters$0 = dart.privateName(fields, "MyVotoField.formatters");
+  var hint$1 = dart.privateName(fields, "MyVotoField.hint");
+  var initialValue$1 = dart.privateName(fields, "MyVotoField.initialValue");
+  var errText$1 = dart.privateName(fields, "MyVotoField.errText");
+  var icon$0 = dart.privateName(fields, "MyVotoField.icon");
+  var obscureText$0 = dart.privateName(fields, "MyVotoField.obscureText");
+  var richiesto$1 = dart.privateName(fields, "MyVotoField.richiesto");
+  var isReadOnly$1 = dart.privateName(fields, "MyVotoField.isReadOnly");
+  var multiline$0 = dart.privateName(fields, "MyVotoField.multiline");
+  var setField$1 = dart.privateName(fields, "MyVotoField.setField");
+  var validator$0 = dart.privateName(fields, "MyVotoField.validator");
+  var controller$0 = dart.privateName(fields, "MyVotoField.controller");
+  fields.MyVotoField = class MyVotoField extends framework.StatefulWidget {
+    get labels() {
+      return this[labels$1];
+    }
+    set labels(value) {
+      super.labels = value;
+    }
+    get formatters() {
+      return this[formatters$0];
+    }
+    set formatters(value) {
+      super.formatters = value;
+    }
+    get hint() {
+      return this[hint$1];
+    }
+    set hint(value) {
+      super.hint = value;
+    }
+    get initialValue() {
+      return this[initialValue$1];
+    }
+    set initialValue(value) {
+      super.initialValue = value;
+    }
+    get errText() {
+      return this[errText$1];
+    }
+    set errText(value) {
+      super.errText = value;
+    }
+    get icon() {
+      return this[icon$0];
+    }
+    set icon(value) {
+      super.icon = value;
+    }
+    get obscureText() {
+      return this[obscureText$0];
+    }
+    set obscureText(value) {
+      this[obscureText$0] = value;
+    }
+    get richiesto() {
+      return this[richiesto$1];
+    }
+    set richiesto(value) {
+      super.richiesto = value;
+    }
+    get isReadOnly() {
+      return this[isReadOnly$1];
+    }
+    set isReadOnly(value) {
+      super.isReadOnly = value;
+    }
+    get multiline() {
+      return this[multiline$0];
+    }
+    set multiline(value) {
+      super.multiline = value;
+    }
+    get setField() {
+      return this[setField$1];
+    }
+    set setField(value) {
+      super.setField = value;
+    }
+    get validator() {
+      return this[validator$0];
+    }
+    set validator(value) {
+      super.validator = value;
+    }
+    get controller() {
+      return this[controller$0];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    createState() {
+      return new fields._MyVotoState.new();
+    }
+  };
+  (fields.MyVotoField.new = function(labels, opts) {
+    let formatters = opts && 'formatters' in opts ? opts.formatters : null;
+    let hint = opts && 'hint' in opts ? opts.hint : null;
+    let initialValue = opts && 'initialValue' in opts ? opts.initialValue : null;
+    let errText = opts && 'errText' in opts ? opts.errText : null;
+    let icon = opts && 'icon' in opts ? opts.icon : null;
+    let obscureText = opts && 'obscureText' in opts ? opts.obscureText : false;
+    let richiesto = opts && 'richiesto' in opts ? opts.richiesto : true;
+    let isReadOnly = opts && 'isReadOnly' in opts ? opts.isReadOnly : false;
+    let multiline = opts && 'multiline' in opts ? opts.multiline : false;
+    let setField = opts && 'setField' in opts ? opts.setField : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let validator = opts && 'validator' in opts ? opts.validator : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[labels$1] = labels;
+    this[formatters$0] = formatters;
+    this[hint$1] = hint;
+    this[initialValue$1] = initialValue;
+    this[errText$1] = errText;
+    this[icon$0] = icon;
+    this[obscureText$0] = obscureText;
+    this[richiesto$1] = richiesto;
+    this[isReadOnly$1] = isReadOnly;
+    this[multiline$0] = multiline;
+    this[setField$1] = setField;
+    this[controller$0] = controller;
+    this[validator$0] = validator;
+    fields.MyVotoField.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = fields.MyVotoField.prototype;
+  dart.addTypeTests(fields.MyVotoField);
+  dart.addTypeCaches(fields.MyVotoField);
+  dart.setMethodSignature(fields.MyVotoField, () => ({
+    __proto__: dart.getMethods(fields.MyVotoField.__proto__),
+    createState: dart.fnType(dart.legacy(fields._MyVotoState), [])
+  }));
+  dart.setLibraryUri(fields.MyVotoField, I[0]);
+  dart.setFieldSignature(fields.MyVotoField, () => ({
+    __proto__: dart.getFields(fields.MyVotoField.__proto__),
+    labels: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
+    formatters: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(text_formatter.TextInputFormatter)))),
+    hint: dart.finalFieldType(dart.legacy(core.String)),
+    initialValue: dart.finalFieldType(dart.legacy(core.String)),
+    errText: dart.finalFieldType(dart.legacy(core.String)),
+    icon: dart.finalFieldType(dart.legacy(icons.Icons)),
+    obscureText: dart.fieldType(dart.legacy(core.bool)),
+    richiesto: dart.finalFieldType(dart.legacy(core.bool)),
+    isReadOnly: dart.finalFieldType(dart.legacy(core.bool)),
+    multiline: dart.finalFieldType(dart.legacy(core.bool)),
+    setField: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    validator: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.String), [dart.legacy(core.String)]))),
+    controller: dart.finalFieldType(dart.legacy(editable_text.TextEditingController))
+  }));
+  fields._MyVotoState = class _MyVotoState extends framework.State$(dart.legacy(fields.MyVotoField)) {
+    build(context) {
+      return fields.myFieldVoto(this.widget.labels, this.widget.richiesto, new text_form_field.TextFormField.new({controller: this.widget.controller, initialValue: this.widget.initialValue, enabled: !dart.test(this.widget.isReadOnly), textCapitalization: text_input.TextCapitalization.characters, inputFormatters: this.widget.formatters, obscureText: this.widget.obscureText, cursorColor: colors.Colors.grey, style: new text_style.TextStyle.new({fontFamily: "ToyotaType Book", fontStyle: dart.test(this.widget.isReadOnly) ? ui.FontStyle.italic : ui.FontStyle.normal, fontSize: sizer_ext['SizerExt|get#sp'](11.7), color: dart.test(this.widget.isReadOnly) ? colors.Colors.black54 : colors.Colors.black}), enableSuggestions: false, decoration: this.widget.obscureText === true ? new input_decorator.InputDecoration.new({contentPadding: new edge_insets.EdgeInsets.only({top: 15.0}), isDense: true, hintText: this.widget.hint, suffixIcon: new text_button.TextButton.new({onPressed: dart.fn(() => {
+              this.setState(dart.fn(() => {
+                this.widget.obscureText = !dart.test(this.widget.obscureText);
+                this.showPassword = true;
+              }, T.VoidToNull()));
+            }, T.VoidToNull()), child: new icon.Icon.new(icons.Icons.remove_red_eye_outlined, {color: common.viola, $creationLocationd_0dea112b090073317d4: C[52] || CT.C52}), $creationLocationd_0dea112b090073317d4: C[56] || CT.C56})}) : !dart.test(this.showPassword) ? new input_decorator.InputDecoration.new({contentPadding: new edge_insets.EdgeInsets.only({top: 15.0}), isDense: true, hintText: this.widget.hint}) : new input_decorator.InputDecoration.new({contentPadding: new edge_insets.EdgeInsets.only({top: 15.0}), isDense: true, hintText: this.widget.hint, suffixIcon: new text_button.TextButton.new({onPressed: dart.fn(() => {
+              this.setState(dart.fn(() => {
+                this.widget.obscureText = !dart.test(this.widget.obscureText);
+                this.showPassword = true;
+              }, T.VoidToNull()));
+            }, T.VoidToNull()), child: new icon.Icon.new(icons.Icons.remove_red_eye_outlined, {color: common.viola, $creationLocationd_0dea112b090073317d4: C[60] || CT.C60}), $creationLocationd_0dea112b090073317d4: C[64] || CT.C64})}), onSaved: dart.test(this.widget.isReadOnly) ? null : this.widget.setField, onChanged: this.widget.setField, maxLines: dart.test(this.widget.multiline) ? null : 1, keyboardType: dart.test(this.widget.multiline) ? text_input.TextInputType.multiline : text_input.TextInputType.text, $creationLocationd_0dea112b090073317d4: C[68] || CT.C68}));
+    }
+  };
+  (fields._MyVotoState.new = function() {
+    this.showPassword = false;
+    fields._MyVotoState.__proto__.new.call(this);
+    ;
+  }).prototype = fields._MyVotoState.prototype;
+  dart.addTypeTests(fields._MyVotoState);
+  dart.addTypeCaches(fields._MyVotoState);
+  dart.setMethodSignature(fields._MyVotoState, () => ({
+    __proto__: dart.getMethods(fields._MyVotoState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(fields._MyVotoState, I[0]);
+  dart.setFieldSignature(fields._MyVotoState, () => ({
+    __proto__: dart.getFields(fields._MyVotoState.__proto__),
+    showPassword: dart.fieldType(dart.legacy(core.bool))
+  }));
+  fields.formatDateTime = function formatDateTime(mode) {
+    switch (mode) {
+      case C[84] || CT.C84:
+      {
+        return fields.itaDateFormatter;
+      }
+      case C[85] || CT.C85:
+      {
+        return new date_format.DateFormat.Hm("it_IT");
+      }
+      default:
+      {
+        return new date_format.DateFormat.new("dd/MM/yyyy HH:mm");
+      }
+    }
+  };
+  fields.myField = function myField(labels, richiesto, child, opts) {
+    let dense = opts && 'dense' in opts ? opts.dense : false;
+    return new list_tile.ListTile.new({contentPadding: new edge_insets.EdgeInsets.symmetric({vertical: dart.test(dense) ? 0.0 : sizer_ext['SizerExt|get#h'](0.8), horizontal: sizer_ext['SizerExt|get#w'](4.0)}), dense: dense, title: dart.notNull(labels[$length]) > 0 ? new basic.RichText.new({softWrap: true, text: new text_span.TextSpan.new({text: labels[$_get](0), style: new text_style.TextStyle.new({color: common.viola, fontFamily: "ToyotaType Semibold", fontSize: sizer_ext['SizerExt|get#sp'](11.8)}), children: (() => {
+            let t0 = T.JSArrayOfTextSpanL().of([]);
+            if (dart.notNull(labels[$length]) > 1) t0[$add](new text_span.TextSpan.new({text: " - " + dart.str(labels[$_get](1)), style: new text_style.TextStyle.new({color: colors.Colors.black, fontFamily: "ToyotaType Book", fontStyle: ui.FontStyle.italic, fontSize: sizer_ext['SizerExt|get#sp'](11.8)})}));
+            if (!dart.test(richiesto)) t0[$add](new text_span.TextSpan.new({text: " (facoltativo)", style: new text_style.TextStyle.new({color: colors.Colors.black, fontFamily: "ToyotaType Book", fontSize: sizer_ext['SizerExt|get#sp'](8.6)})}));
+            return t0;
+          })()}), $creationLocationd_0dea112b090073317d4: C[86] || CT.C86}) : null, subtitle: child, isThreeLine: false, $creationLocationd_0dea112b090073317d4: C[90] || CT.C90});
+  };
+  fields.myFieldVoto = function myFieldVoto(labels, richiesto, child, opts) {
+    let dense = opts && 'dense' in opts ? opts.dense : false;
+    return new list_tile.ListTile.new({dense: dense, title: dart.notNull(labels[$length]) > 0 ? new basic.RichText.new({softWrap: true, text: new text_span.TextSpan.new({text: labels[$_get](0), style: new text_style.TextStyle.new({color: common.viola, fontFamily: "ToyotaType Semibold", fontSize: sizer_ext['SizerExt|get#sp'](11.8)}), children: (() => {
+            let t1 = T.JSArrayOfTextSpanL().of([]);
+            if (dart.notNull(labels[$length]) > 1) t1[$add](new text_span.TextSpan.new({text: " - " + dart.str(labels[$_get](1)), style: new text_style.TextStyle.new({color: colors.Colors.black, fontFamily: "ToyotaType Book", fontStyle: ui.FontStyle.italic, fontSize: sizer_ext['SizerExt|get#sp'](11.8)})}));
+            if (!dart.test(richiesto)) t1[$add](new text_span.TextSpan.new({text: " (facoltativo)", style: new text_style.TextStyle.new({color: colors.Colors.black, fontFamily: "ToyotaType Book", fontSize: sizer_ext['SizerExt|get#sp'](8.6)})}));
+            return t1;
+          })()}), $creationLocationd_0dea112b090073317d4: C[97] || CT.C97}) : null, subtitle: child, isThreeLine: false, $creationLocationd_0dea112b090073317d4: C[101] || CT.C101});
+  };
+  dart.defineLazy(fields, {
+    /*fields.contentPadding*/get contentPadding() {
+      return new edge_insets.EdgeInsets.only({top: sizer_ext['SizerExt|get#h'](0.4), bottom: sizer_ext['SizerExt|get#h'](1.2)});
+    },
+    set contentPadding(_) {},
+    /*fields.itaDateFormatter*/get itaDateFormatter() {
+      return new date_format.DateFormat.new("dd/MM/yyyy");
+    }
+  }, true);
+  dart.trackLibraries("packages/logioca/widgets/fields.dart", {
+    "package:logioca/widgets/fields.dart": fields
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["fields.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/logioca/widgets/fields.dart.lib.js"}');
+  // Exports:
+  return {
+    widgets__fields: fields
+  };
+}));
+
+//# sourceMappingURL=fields.dart.lib.js.map

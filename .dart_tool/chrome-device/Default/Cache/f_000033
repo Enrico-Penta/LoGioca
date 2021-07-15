@@ -1,0 +1,2232 @@
+define(['dart_sdk', 'packages/lazy_data_table/src/lazy_data_table_dimensions.dart', 'packages/lazy_data_table/src/lazy_data_table_theme.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/colors.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/widgets/scroll_view.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/scheduler/ticker.dart'], (function load__packages__lazy_data_table__lazy_data_table_dart(dart_sdk, packages__lazy_data_table__src__lazy_data_table_dimensions$46dart, packages__lazy_data_table__src__lazy_data_table_theme$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__colors$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__widgets__scroll_view$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__scheduler__ticker$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const lazy_data_table_dimensions = packages__lazy_data_table__src__lazy_data_table_dimensions$46dart.src__lazy_data_table_dimensions;
+  const lazy_data_table_theme = packages__lazy_data_table__src__lazy_data_table_theme$46dart.src__lazy_data_table_theme;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const colors$ = packages__flutter__src__painting__colors$46dart.src__painting__colors;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const scroll_position = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_position;
+  const scroll_notification = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_notification;
+  const scroll_controller = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_controller;
+  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const ticker = packages__flutter__src__scheduler__ticker$46dart.src__scheduler__ticker;
+  var lazy_data_table = Object.create(dart.library);
+  var $containsKey = dartx.containsKey;
+  var $_get = dartx._get;
+  var $modulo = dartx['%'];
+  var $add = dartx.add;
+  var $remove = dartx.remove;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))(),
+    PointerSignalEventTovoid: () => (T.PointerSignalEventTovoid = dart.constFn(dart.fnType(dart.void, [events.PointerSignalEvent])))(),
+    DragUpdateDetailsTovoid: () => (T.DragUpdateDetailsTovoid = dart.constFn(dart.fnType(dart.void, [drag_details.DragUpdateDetails])))(),
+    DragEndDetailsTovoid: () => (T.DragEndDetailsTovoid = dart.constFn(dart.fnType(dart.void, [drag_details.DragEndDetails])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    BuildContextAndintToContainer: () => (T.BuildContextAndintToContainer = dart.constFn(dart.fnType(container.Container, [framework.BuildContext, core.int])))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    BuildContextAndintToSizedBox: () => (T.BuildContextAndintToSizedBox = dart.constFn(dart.fnType(basic.SizedBox, [framework.BuildContext, core.int])))(),
+    JSArrayOfScrollPosition: () => (T.JSArrayOfScrollPosition = dart.constFn(_interceptors.JSArray$(scroll_position.ScrollPosition)))(),
+    DurationTovoid: () => (T.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.constMap(T.intL(), T.doubleL(), []);
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: lazy_data_table_dimensions.LazyDataTableDimensions.prototype,
+        [LazyDataTableDimensions_customCellWidth]: C[1] || CT.C1,
+        [LazyDataTableDimensions_customCellHeight]: C[1] || CT.C1,
+        [LazyDataTableDimensions_bottomHeaderHeight]: 50,
+        [LazyDataTableDimensions_rightHeaderWidth]: 50,
+        [LazyDataTableDimensions_leftHeaderWidth]: 50,
+        [LazyDataTableDimensions_topHeaderHeight]: 50,
+        [LazyDataTableDimensions_cellWidth]: 50,
+        [LazyDataTableDimensions_cellHeight]: 50
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293128957.0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290502395.0
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287679225.0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284790262.0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282557941.0
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280391411.0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280191205.0
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279858898.0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279592384.0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279060385.0
+      });
+    },
+    get C4() {
+      return C[4] = dart.constMap(T.intL(), T.ColorL(), [50, C[5] || CT.C5, 100, C[6] || CT.C6, 200, C[7] || CT.C7, 300, C[8] || CT.C8, 400, C[9] || CT.C9, 500, C[10] || CT.C10, 600, C[11] || CT.C11, 700, C[12] || CT.C12, 800, C[13] || CT.C13, 900, C[14] || CT.C14]);
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4280391411.0,
+        [ColorSwatch__swatch]: C[4] || CT.C4
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: borders.BorderStyle.prototype,
+        [_name]: "BorderStyle.solid",
+        index: 1
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: borders.BorderSide.prototype,
+        [BorderSide_style]: C[17] || CT.C17,
+        [BorderSide_width]: 1,
+        [BorderSide_color]: C[18] || CT.C18
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: box_border.Border.prototype,
+        [Border_left]: C[16] || CT.C16,
+        [Border_bottom]: C[16] || CT.C16,
+        [Border_right]: C[16] || CT.C16,
+        [Border_top]: C[16] || CT.C16
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294309365.0
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292998654.0
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289979900.0
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286698746.0
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283417591.0
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280923894.0
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278430196.0
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278426597.0
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278356177.0
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278351805.0
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278278043.0
+      });
+    },
+    get C22() {
+      return C[22] = dart.constMap(T.intL(), T.ColorL(), [50, C[23] || CT.C23, 100, C[24] || CT.C24, 200, C[25] || CT.C25, 300, C[26] || CT.C26, 400, C[27] || CT.C27, 500, C[28] || CT.C28, 600, C[29] || CT.C29, 700, C[30] || CT.C30, 800, C[31] || CT.C31, 900, C[32] || CT.C32]);
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4278430196.0,
+        [ColorSwatch__swatch]: C[22] || CT.C22
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: lazy_data_table_theme.LazyDataTableTheme.prototype,
+        [LazyDataTableTheme_alternateColumn]: false,
+        [LazyDataTableTheme_alternateRow]: true,
+        [LazyDataTableTheme_cornerColor]: C[3] || CT.C3,
+        [LazyDataTableTheme_cornerBorder]: C[15] || CT.C15,
+        [LazyDataTableTheme_alternateCellColor]: C[19] || CT.C19,
+        [LazyDataTableTheme_alternateCellBorder]: C[15] || CT.C15,
+        [LazyDataTableTheme_cellColor]: C[20] || CT.C20,
+        [LazyDataTableTheme_cellBorder]: C[15] || CT.C15,
+        [LazyDataTableTheme_alternateRowHeaderColor]: C[21] || CT.C21,
+        [LazyDataTableTheme_alternateRowHeaderBorder]: C[15] || CT.C15,
+        [LazyDataTableTheme_rowHeaderColor]: C[21] || CT.C21,
+        [LazyDataTableTheme_rowHeaderBorder]: C[15] || CT.C15,
+        [LazyDataTableTheme_alternateColumnHeaderColor]: C[21] || CT.C21,
+        [LazyDataTableTheme_alternateColumnHeaderBorder]: C[15] || CT.C15,
+        [LazyDataTableTheme_columnHeaderColor]: C[21] || CT.C21,
+        [LazyDataTableTheme_columnHeaderBorder]: C[15] || CT.C15
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 35,
+        [_Location_line]: 197,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 35,
+        [_Location_line]: 198,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[34] || CT.C34,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 196,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 33,
+        [_Location_line]: 194,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 33,
+        [_Location_line]: 195,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 33,
+        [_Location_line]: 196,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 193,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C43() {
+      return C[43] = dart.constList([], T._LocationL());
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 201,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 35,
+        [_Location_line]: 211,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 35,
+        [_Location_line]: 217,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 35,
+        [_Location_line]: 218,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 35,
+        [_Location_line]: 222,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.constList([C[46] || CT.C46, C[47] || CT.C47, C[48] || CT.C48, C[49] || CT.C49], T._LocationL());
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[45] || CT.C45,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 210,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 31,
+        [_Location_line]: 205,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 31,
+        [_Location_line]: 206,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 31,
+        [_Location_line]: 207,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 31,
+        [_Location_line]: 208,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 31,
+        [_Location_line]: 209,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.constList([C[52] || CT.C52, C[53] || CT.C53, C[54] || CT.C54, C[55] || CT.C55, C[56] || CT.C56], T._LocationL());
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[51] || CT.C51,
+        [_Location_name]: null,
+        [_Location_column]: 43,
+        [_Location_line]: 204,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 204,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.constList([C[59] || CT.C59], T._LocationL());
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[58] || CT.C58,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 203,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 35,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 35,
+        [_Location_line]: 234,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.constList([C[62] || CT.C62, C[63] || CT.C63], T._LocationL());
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[61] || CT.C61,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 232,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 33,
+        [_Location_line]: 229,
+        [_Location_file]: null
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 33,
+        [_Location_line]: 231,
+        [_Location_file]: null
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 33,
+        [_Location_line]: 232,
+        [_Location_file]: null
+      });
+    },
+    get C65() {
+      return C[65] = dart.constList([C[66] || CT.C66, C[67] || CT.C67, C[68] || CT.C68], T._LocationL());
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[65] || CT.C65,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 228,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 237,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 23,
+        [_Location_line]: 190,
+        [_Location_file]: null
+      });
+    },
+    get C71() {
+      return C[71] = dart.constList([C[72] || CT.C72], T._LocationL());
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[71] || CT.C71,
+        [_Location_name]: null,
+        [_Location_column]: 28,
+        [_Location_line]: 189,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 21,
+        [_Location_line]: 188,
+        [_Location_file]: null
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 189,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C[74] = dart.constList([C[75] || CT.C75, C[76] || CT.C76], T._LocationL());
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[74] || CT.C74,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 187,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 241,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 35,
+        [_Location_line]: 256,
+        [_Location_file]: null
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 35,
+        [_Location_line]: 258,
+        [_Location_file]: null
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 35,
+        [_Location_line]: 263,
+        [_Location_file]: null
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 35,
+        [_Location_line]: 268,
+        [_Location_file]: null
+      });
+    },
+    get C79() {
+      return C[79] = dart.constList([C[80] || CT.C80, C[81] || CT.C81, C[82] || CT.C82, C[83] || CT.C83], T._LocationL());
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[79] || CT.C79,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 255,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 31,
+        [_Location_line]: 250,
+        [_Location_file]: null
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 31,
+        [_Location_line]: 251,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 31,
+        [_Location_line]: 252,
+        [_Location_file]: null
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 31,
+        [_Location_line]: 253,
+        [_Location_file]: null
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 31,
+        [_Location_line]: 254,
+        [_Location_file]: null
+      });
+    },
+    get C85() {
+      return C[85] = dart.constList([C[86] || CT.C86, C[87] || CT.C87, C[88] || CT.C88, C[89] || CT.C89, C[90] || CT.C90], T._LocationL());
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[85] || CT.C85,
+        [_Location_name]: null,
+        [_Location_column]: 43,
+        [_Location_line]: 249,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 27,
+        [_Location_line]: 248,
+        [_Location_file]: null
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 249,
+        [_Location_file]: null
+      });
+    },
+    get C92() {
+      return C[92] = dart.constList([C[93] || CT.C93, C[94] || CT.C94], T._LocationL());
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[92] || CT.C92,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 247,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 272,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 37,
+        [_Location_line]: 297,
+        [_Location_file]: null
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 37,
+        [_Location_line]: 303,
+        [_Location_file]: null
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 37,
+        [_Location_line]: 309,
+        [_Location_file]: null
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 37,
+        [_Location_line]: 317,
+        [_Location_file]: null
+      });
+    },
+    get C97() {
+      return C[97] = dart.constList([C[98] || CT.C98, C[99] || CT.C99, C[100] || CT.C100, C[101] || CT.C101], T._LocationL());
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[97] || CT.C97,
+        [_Location_name]: null,
+        [_Location_column]: 42,
+        [_Location_line]: 296,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 33,
+        [_Location_line]: 290,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkWrap",
+        [_Location_column]: 33,
+        [_Location_line]: 291,
+        [_Location_file]: null
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 33,
+        [_Location_line]: 292,
+        [_Location_file]: null
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 33,
+        [_Location_line]: 293,
+        [_Location_file]: null
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 33,
+        [_Location_line]: 294,
+        [_Location_file]: null
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 33,
+        [_Location_line]: 295,
+        [_Location_file]: null
+      });
+    },
+    get C103() {
+      return C[103] = dart.constList([C[104] || CT.C104, C[105] || CT.C105, C[106] || CT.C106, C[107] || CT.C107, C[108] || CT.C108, C[109] || CT.C109], T._LocationL());
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[103] || CT.C103,
+        [_Location_name]: null,
+        [_Location_column]: 45,
+        [_Location_line]: 289,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 29,
+        [_Location_line]: 285,
+        [_Location_file]: null
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 29,
+        [_Location_line]: 289,
+        [_Location_file]: null
+      });
+    },
+    get C111() {
+      return C[111] = dart.constList([C[112] || CT.C112, C[113] || CT.C113], T._LocationL());
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[111] || CT.C111,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 284,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 25,
+        [_Location_line]: 277,
+        [_Location_file]: null
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkWrap",
+        [_Location_column]: 25,
+        [_Location_line]: 278,
+        [_Location_file]: null
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 25,
+        [_Location_line]: 279,
+        [_Location_file]: null
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 25,
+        [_Location_line]: 280,
+        [_Location_file]: null
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 25,
+        [_Location_line]: 281,
+        [_Location_file]: null
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 25,
+        [_Location_line]: 282,
+        [_Location_file]: null
+      });
+    },
+    get C115() {
+      return C[115] = dart.constList([C[116] || CT.C116, C[117] || CT.C117, C[118] || CT.C118, C[119] || CT.C119, C[120] || CT.C120, C[121] || CT.C121], T._LocationL());
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[115] || CT.C115,
+        [_Location_name]: null,
+        [_Location_column]: 37,
+        [_Location_line]: 276,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 276,
+        [_Location_file]: null
+      });
+    },
+    get C123() {
+      return C[123] = dart.constList([C[124] || CT.C124], T._LocationL());
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[123] || CT.C123,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 274,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 35,
+        [_Location_line]: 334,
+        [_Location_file]: null
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 35,
+        [_Location_line]: 336,
+        [_Location_file]: null
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 35,
+        [_Location_line]: 341,
+        [_Location_file]: null
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 35,
+        [_Location_line]: 346,
+        [_Location_file]: null
+      });
+    },
+    get C126() {
+      return C[126] = dart.constList([C[127] || CT.C127, C[128] || CT.C128, C[129] || CT.C129, C[130] || CT.C130], T._LocationL());
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[126] || CT.C126,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 333,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 31,
+        [_Location_line]: 328,
+        [_Location_file]: null
+      });
+    },
+    get C134() {
+      return C[134] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 31,
+        [_Location_line]: 329,
+        [_Location_file]: null
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 31,
+        [_Location_line]: 330,
+        [_Location_file]: null
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 31,
+        [_Location_line]: 331,
+        [_Location_file]: null
+      });
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 31,
+        [_Location_line]: 332,
+        [_Location_file]: null
+      });
+    },
+    get C132() {
+      return C[132] = dart.constList([C[133] || CT.C133, C[134] || CT.C134, C[135] || CT.C135, C[136] || CT.C136, C[137] || CT.C137], T._LocationL());
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[132] || CT.C132,
+        [_Location_name]: null,
+        [_Location_column]: 43,
+        [_Location_line]: 327,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C140() {
+      return C[140] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 27,
+        [_Location_line]: 326,
+        [_Location_file]: null
+      });
+    },
+    get C141() {
+      return C[141] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 327,
+        [_Location_file]: null
+      });
+    },
+    get C139() {
+      return C[139] = dart.constList([C[140] || CT.C140, C[141] || CT.C141], T._LocationL());
+    },
+    get C138() {
+      return C[138] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[139] || CT.C139,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 325,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C142() {
+      return C[142] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 350,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C145() {
+      return C[145] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 17,
+        [_Location_line]: 244,
+        [_Location_file]: null
+      });
+    },
+    get C144() {
+      return C[144] = dart.constList([C[145] || CT.C145], T._LocationL());
+    },
+    get C143() {
+      return C[143] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[144] || CT.C144,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 243,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C148() {
+      return C[148] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 243,
+        [_Location_file]: null
+      });
+    },
+    get C147() {
+      return C[147] = dart.constList([C[148] || CT.C148], T._LocationL());
+    },
+    get C146() {
+      return C[146] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[147] || CT.C147,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 242,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C151() {
+      return C[151] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 35,
+        [_Location_line]: 366,
+        [_Location_file]: null
+      });
+    },
+    get C152() {
+      return C[152] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 35,
+        [_Location_line]: 367,
+        [_Location_file]: null
+      });
+    },
+    get C150() {
+      return C[150] = dart.constList([C[151] || CT.C151, C[152] || CT.C152], T._LocationL());
+    },
+    get C149() {
+      return C[149] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[150] || CT.C150,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 365,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C155() {
+      return C[155] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 33,
+        [_Location_line]: 363,
+        [_Location_file]: null
+      });
+    },
+    get C156() {
+      return C[156] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 33,
+        [_Location_line]: 364,
+        [_Location_file]: null
+      });
+    },
+    get C157() {
+      return C[157] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 33,
+        [_Location_line]: 365,
+        [_Location_file]: null
+      });
+    },
+    get C154() {
+      return C[154] = dart.constList([C[155] || CT.C155, C[156] || CT.C156, C[157] || CT.C157], T._LocationL());
+    },
+    get C153() {
+      return C[153] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[154] || CT.C154,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 362,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C158() {
+      return C[158] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 370,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C161() {
+      return C[161] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 33,
+        [_Location_line]: 379,
+        [_Location_file]: null
+      });
+    },
+    get C162() {
+      return C[162] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 33,
+        [_Location_line]: 383,
+        [_Location_file]: null
+      });
+    },
+    get C163() {
+      return C[163] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 33,
+        [_Location_line]: 384,
+        [_Location_file]: null
+      });
+    },
+    get C164() {
+      return C[164] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 33,
+        [_Location_line]: 388,
+        [_Location_file]: null
+      });
+    },
+    get C160() {
+      return C[160] = dart.constList([C[161] || CT.C161, C[162] || CT.C162, C[163] || CT.C163, C[164] || CT.C164], T._LocationL());
+    },
+    get C159() {
+      return C[159] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[160] || CT.C160,
+        [_Location_name]: null,
+        [_Location_column]: 38,
+        [_Location_line]: 378,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C167() {
+      return C[167] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 29,
+        [_Location_line]: 373,
+        [_Location_file]: null
+      });
+    },
+    get C168() {
+      return C[168] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 29,
+        [_Location_line]: 374,
+        [_Location_file]: null
+      });
+    },
+    get C169() {
+      return C[169] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 29,
+        [_Location_line]: 375,
+        [_Location_file]: null
+      });
+    },
+    get C170() {
+      return C[170] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 29,
+        [_Location_line]: 376,
+        [_Location_file]: null
+      });
+    },
+    get C171() {
+      return C[171] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 29,
+        [_Location_line]: 377,
+        [_Location_file]: null
+      });
+    },
+    get C166() {
+      return C[166] = dart.constList([C[167] || CT.C167, C[168] || CT.C168, C[169] || CT.C169, C[170] || CT.C170, C[171] || CT.C171], T._LocationL());
+    },
+    get C165() {
+      return C[165] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[166] || CT.C166,
+        [_Location_name]: null,
+        [_Location_column]: 43,
+        [_Location_line]: 372,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C174() {
+      return C[174] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 372,
+        [_Location_file]: null
+      });
+    },
+    get C173() {
+      return C[173] = dart.constList([C[174] || CT.C174], T._LocationL());
+    },
+    get C172() {
+      return C[172] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[173] || CT.C173,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 371,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C177() {
+      return C[177] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 35,
+        [_Location_line]: 400,
+        [_Location_file]: null
+      });
+    },
+    get C178() {
+      return C[178] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 35,
+        [_Location_line]: 401,
+        [_Location_file]: null
+      });
+    },
+    get C176() {
+      return C[176] = dart.constList([C[177] || CT.C177, C[178] || CT.C178], T._LocationL());
+    },
+    get C175() {
+      return C[175] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[176] || CT.C176,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 399,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C181() {
+      return C[181] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 33,
+        [_Location_line]: 396,
+        [_Location_file]: null
+      });
+    },
+    get C182() {
+      return C[182] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 33,
+        [_Location_line]: 398,
+        [_Location_file]: null
+      });
+    },
+    get C183() {
+      return C[183] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 33,
+        [_Location_line]: 399,
+        [_Location_file]: null
+      });
+    },
+    get C180() {
+      return C[180] = dart.constList([C[181] || CT.C181, C[182] || CT.C182, C[183] || CT.C183], T._LocationL());
+    },
+    get C179() {
+      return C[179] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[180] || CT.C180,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 395,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C184() {
+      return C[184] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 404,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C187() {
+      return C[187] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 23,
+        [_Location_line]: 359,
+        [_Location_file]: null
+      });
+    },
+    get C186() {
+      return C[186] = dart.constList([C[187] || CT.C187], T._LocationL());
+    },
+    get C185() {
+      return C[185] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[186] || CT.C186,
+        [_Location_name]: null,
+        [_Location_column]: 28,
+        [_Location_line]: 358,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C190() {
+      return C[190] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 21,
+        [_Location_line]: 357,
+        [_Location_file]: null
+      });
+    },
+    get C191() {
+      return C[191] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 358,
+        [_Location_file]: null
+      });
+    },
+    get C189() {
+      return C[189] = dart.constList([C[190] || CT.C190, C[191] || CT.C191], T._LocationL());
+    },
+    get C188() {
+      return C[188] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[189] || CT.C189,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 356,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C192() {
+      return C[192] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 408,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C195() {
+      return C[195] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 184,
+        [_Location_file]: null
+      });
+    },
+    get C194() {
+      return C[194] = dart.constList([C[195] || CT.C195], T._LocationL());
+    },
+    get C193() {
+      return C[193] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[194] || CT.C194,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 183,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C198() {
+      return C[198] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPanUpdate",
+        [_Location_column]: 9,
+        [_Location_line]: 172,
+        [_Location_file]: null
+      });
+    },
+    get C199() {
+      return C[199] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPanEnd",
+        [_Location_column]: 9,
+        [_Location_line]: 175,
+        [_Location_file]: null
+      });
+    },
+    get C200() {
+      return C[200] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 183,
+        [_Location_file]: null
+      });
+    },
+    get C197() {
+      return C[197] = dart.constList([C[198] || CT.C198, C[199] || CT.C199, C[200] || CT.C200], T._LocationL());
+    },
+    get C196() {
+      return C[196] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[197] || CT.C197,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 171,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    },
+    get C203() {
+      return C[203] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPointerSignal",
+        [_Location_column]: 7,
+        [_Location_line]: 166,
+        [_Location_file]: null
+      });
+    },
+    get C204() {
+      return C[204] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 171,
+        [_Location_file]: null
+      });
+    },
+    get C202() {
+      return C[202] = dart.constList([C[203] || CT.C203, C[204] || CT.C204], T._LocationL());
+    },
+    get C201() {
+      return C[201] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[202] || CT.C202,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 165,
+        [_Location_file]: "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart"
+      });
+    }
+  }, false);
+  var C = Array(205).fill(void 0);
+  var I = [
+    "file:///C:/Users/epenta/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lazy_data_table-0.3.0/lib/lazy_data_table.dart",
+    "package:lazy_data_table/lazy_data_table.dart"
+  ];
+  var table = dart.privateName(lazy_data_table, "LazyDataTable.table");
+  var columns$ = dart.privateName(lazy_data_table, "LazyDataTable.columns");
+  var rows$ = dart.privateName(lazy_data_table, "LazyDataTable.rows");
+  var tableDimensions$ = dart.privateName(lazy_data_table, "LazyDataTable.tableDimensions");
+  var tableTheme$ = dart.privateName(lazy_data_table, "LazyDataTable.tableTheme");
+  var topHeaderBuilder$ = dart.privateName(lazy_data_table, "LazyDataTable.topHeaderBuilder");
+  var leftHeaderBuilder$ = dart.privateName(lazy_data_table, "LazyDataTable.leftHeaderBuilder");
+  var rightHeaderBuilder$ = dart.privateName(lazy_data_table, "LazyDataTable.rightHeaderBuilder");
+  var bottomHeaderBuilder$ = dart.privateName(lazy_data_table, "LazyDataTable.bottomHeaderBuilder");
+  var dataCellBuilder$ = dart.privateName(lazy_data_table, "LazyDataTable.dataCellBuilder");
+  var topLeftCornerWidget$ = dart.privateName(lazy_data_table, "LazyDataTable.topLeftCornerWidget");
+  var topRightCornerWidget$ = dart.privateName(lazy_data_table, "LazyDataTable.topRightCornerWidget");
+  var bottomLeftCornerWidget$ = dart.privateName(lazy_data_table, "LazyDataTable.bottomLeftCornerWidget");
+  var bottomRightCornerWidget$ = dart.privateName(lazy_data_table, "LazyDataTable.bottomRightCornerWidget");
+  var LazyDataTableDimensions_customCellWidth = dart.privateName(lazy_data_table_dimensions, "LazyDataTableDimensions.customCellWidth");
+  var LazyDataTableDimensions_customCellHeight = dart.privateName(lazy_data_table_dimensions, "LazyDataTableDimensions.customCellHeight");
+  var LazyDataTableDimensions_bottomHeaderHeight = dart.privateName(lazy_data_table_dimensions, "LazyDataTableDimensions.bottomHeaderHeight");
+  var LazyDataTableDimensions_rightHeaderWidth = dart.privateName(lazy_data_table_dimensions, "LazyDataTableDimensions.rightHeaderWidth");
+  var LazyDataTableDimensions_leftHeaderWidth = dart.privateName(lazy_data_table_dimensions, "LazyDataTableDimensions.leftHeaderWidth");
+  var LazyDataTableDimensions_topHeaderHeight = dart.privateName(lazy_data_table_dimensions, "LazyDataTableDimensions.topHeaderHeight");
+  var LazyDataTableDimensions_cellWidth = dart.privateName(lazy_data_table_dimensions, "LazyDataTableDimensions.cellWidth");
+  var LazyDataTableDimensions_cellHeight = dart.privateName(lazy_data_table_dimensions, "LazyDataTableDimensions.cellHeight");
+  var LazyDataTableTheme_alternateColumn = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.alternateColumn");
+  var LazyDataTableTheme_alternateRow = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.alternateRow");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var ColorSwatch__swatch = dart.privateName(colors$, "ColorSwatch._swatch");
+  var LazyDataTableTheme_cornerColor = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.cornerColor");
+  var _name = dart.privateName(borders, "_name");
+  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
+  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
+  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
+  var Border_left = dart.privateName(box_border, "Border.left");
+  var Border_bottom = dart.privateName(box_border, "Border.bottom");
+  var Border_right = dart.privateName(box_border, "Border.right");
+  var Border_top = dart.privateName(box_border, "Border.top");
+  var LazyDataTableTheme_cornerBorder = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.cornerBorder");
+  var LazyDataTableTheme_alternateCellColor = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.alternateCellColor");
+  var LazyDataTableTheme_alternateCellBorder = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.alternateCellBorder");
+  var LazyDataTableTheme_cellColor = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.cellColor");
+  var LazyDataTableTheme_cellBorder = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.cellBorder");
+  var LazyDataTableTheme_alternateRowHeaderColor = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.alternateRowHeaderColor");
+  var LazyDataTableTheme_alternateRowHeaderBorder = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.alternateRowHeaderBorder");
+  var LazyDataTableTheme_rowHeaderColor = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.rowHeaderColor");
+  var LazyDataTableTheme_rowHeaderBorder = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.rowHeaderBorder");
+  var LazyDataTableTheme_alternateColumnHeaderColor = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.alternateColumnHeaderColor");
+  var LazyDataTableTheme_alternateColumnHeaderBorder = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.alternateColumnHeaderBorder");
+  var LazyDataTableTheme_columnHeaderColor = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.columnHeaderColor");
+  var LazyDataTableTheme_columnHeaderBorder = dart.privateName(lazy_data_table_theme, "LazyDataTableTheme.columnHeaderBorder");
+  lazy_data_table.LazyDataTable = class LazyDataTable extends framework.StatefulWidget {
+    get table() {
+      return this[table];
+    }
+    set table(value) {
+      super.table = value;
+    }
+    get columns() {
+      return this[columns$];
+    }
+    set columns(value) {
+      super.columns = value;
+    }
+    get rows() {
+      return this[rows$];
+    }
+    set rows(value) {
+      super.rows = value;
+    }
+    get tableDimensions() {
+      return this[tableDimensions$];
+    }
+    set tableDimensions(value) {
+      super.tableDimensions = value;
+    }
+    get tableTheme() {
+      return this[tableTheme$];
+    }
+    set tableTheme(value) {
+      super.tableTheme = value;
+    }
+    get topHeaderBuilder() {
+      return this[topHeaderBuilder$];
+    }
+    set topHeaderBuilder(value) {
+      super.topHeaderBuilder = value;
+    }
+    get leftHeaderBuilder() {
+      return this[leftHeaderBuilder$];
+    }
+    set leftHeaderBuilder(value) {
+      super.leftHeaderBuilder = value;
+    }
+    get rightHeaderBuilder() {
+      return this[rightHeaderBuilder$];
+    }
+    set rightHeaderBuilder(value) {
+      super.rightHeaderBuilder = value;
+    }
+    get bottomHeaderBuilder() {
+      return this[bottomHeaderBuilder$];
+    }
+    set bottomHeaderBuilder(value) {
+      super.bottomHeaderBuilder = value;
+    }
+    get dataCellBuilder() {
+      return this[dataCellBuilder$];
+    }
+    set dataCellBuilder(value) {
+      super.dataCellBuilder = value;
+    }
+    get topLeftCornerWidget() {
+      return this[topLeftCornerWidget$];
+    }
+    set topLeftCornerWidget(value) {
+      super.topLeftCornerWidget = value;
+    }
+    get topRightCornerWidget() {
+      return this[topRightCornerWidget$];
+    }
+    set topRightCornerWidget(value) {
+      super.topRightCornerWidget = value;
+    }
+    get bottomLeftCornerWidget() {
+      return this[bottomLeftCornerWidget$];
+    }
+    set bottomLeftCornerWidget(value) {
+      super.bottomLeftCornerWidget = value;
+    }
+    get bottomRightCornerWidget() {
+      return this[bottomRightCornerWidget$];
+    }
+    set bottomRightCornerWidget(value) {
+      super.bottomRightCornerWidget = value;
+    }
+    createState() {
+      return this.table;
+    }
+    jumpToCell(column, row) {
+      if (column == null) dart.nullFailed(I[0], 133, 23, "column");
+      if (row == null) dart.nullFailed(I[0], 133, 35, "row");
+      this.table.jumpToCell(column, row);
+    }
+    jumpTo(x, y) {
+      if (x == null) dart.nullFailed(I[0], 138, 22, "x");
+      if (y == null) dart.nullFailed(I[0], 138, 32, "y");
+      this.table.jumpTo(x, y);
+    }
+  };
+  (lazy_data_table.LazyDataTable.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let columns = opts && 'columns' in opts ? opts.columns : null;
+    if (columns == null) dart.nullFailed(I[0], 23, 19, "columns");
+    let rows = opts && 'rows' in opts ? opts.rows : null;
+    if (rows == null) dart.nullFailed(I[0], 26, 19, "rows");
+    let tableDimensions = opts && 'tableDimensions' in opts ? opts.tableDimensions : C[0] || CT.C0;
+    if (tableDimensions == null) dart.nullFailed(I[0], 29, 10, "tableDimensions");
+    let tableTheme = opts && 'tableTheme' in opts ? opts.tableTheme : C[2] || CT.C2;
+    if (tableTheme == null) dart.nullFailed(I[0], 32, 10, "tableTheme");
+    let topHeaderBuilder = opts && 'topHeaderBuilder' in opts ? opts.topHeaderBuilder : null;
+    let leftHeaderBuilder = opts && 'leftHeaderBuilder' in opts ? opts.leftHeaderBuilder : null;
+    let rightHeaderBuilder = opts && 'rightHeaderBuilder' in opts ? opts.rightHeaderBuilder : null;
+    let bottomHeaderBuilder = opts && 'bottomHeaderBuilder' in opts ? opts.bottomHeaderBuilder : null;
+    let dataCellBuilder = opts && 'dataCellBuilder' in opts ? opts.dataCellBuilder : null;
+    if (dataCellBuilder == null) dart.nullFailed(I[0], 47, 19, "dataCellBuilder");
+    let topLeftCornerWidget = opts && 'topLeftCornerWidget' in opts ? opts.topLeftCornerWidget : null;
+    let topRightCornerWidget = opts && 'topRightCornerWidget' in opts ? opts.topRightCornerWidget : null;
+    let bottomLeftCornerWidget = opts && 'bottomLeftCornerWidget' in opts ? opts.bottomLeftCornerWidget : null;
+    let bottomRightCornerWidget = opts && 'bottomRightCornerWidget' in opts ? opts.bottomRightCornerWidget : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[table] = new lazy_data_table._LazyDataTableState.new();
+    this[columns$] = columns;
+    this[rows$] = rows;
+    this[tableDimensions$] = tableDimensions;
+    this[tableTheme$] = tableTheme;
+    this[topHeaderBuilder$] = topHeaderBuilder;
+    this[leftHeaderBuilder$] = leftHeaderBuilder;
+    this[rightHeaderBuilder$] = rightHeaderBuilder;
+    this[bottomHeaderBuilder$] = bottomHeaderBuilder;
+    this[dataCellBuilder$] = dataCellBuilder;
+    this[topLeftCornerWidget$] = topLeftCornerWidget;
+    this[topRightCornerWidget$] = topRightCornerWidget;
+    this[bottomLeftCornerWidget$] = bottomLeftCornerWidget;
+    this[bottomRightCornerWidget$] = bottomRightCornerWidget;
+    lazy_data_table.LazyDataTable.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    if (this.topHeaderBuilder == null || this.leftHeaderBuilder == null) {
+      if (!(this.topLeftCornerWidget == null)) dart.assertFailed("The top left corner widget is only allowed when you have both the top header and the left header.", I[0], 63, 14, "topLeftCornerWidget == null");
+    }
+    if (this.topHeaderBuilder == null || this.rightHeaderBuilder == null) {
+      if (!(this.topRightCornerWidget == null)) dart.assertFailed("The top right corner widget is only allowed when you have both the top header and the right header.", I[0], 68, 14, "topRightCornerWidget == null");
+    }
+    if (this.bottomHeaderBuilder == null || this.leftHeaderBuilder == null) {
+      if (!(this.bottomLeftCornerWidget == null)) dart.assertFailed("The bottom left corner widget is only allowed when you have both the bottom header and the left header.", I[0], 73, 14, "bottomLeftCornerWidget == null");
+    }
+    if (this.bottomHeaderBuilder == null || this.rightHeaderBuilder == null) {
+      if (!(this.bottomRightCornerWidget == null)) dart.assertFailed("The bottom right corner widget is only allowed when you have both the bottom header and the right header.", I[0], 78, 14, "bottomRightCornerWidget == null");
+    }
+  }).prototype = lazy_data_table.LazyDataTable.prototype;
+  dart.addTypeTests(lazy_data_table.LazyDataTable);
+  dart.addTypeCaches(lazy_data_table.LazyDataTable);
+  dart.setMethodSignature(lazy_data_table.LazyDataTable, () => ({
+    __proto__: dart.getMethods(lazy_data_table.LazyDataTable.__proto__),
+    createState: dart.fnType(lazy_data_table._LazyDataTableState, []),
+    jumpToCell: dart.fnType(dart.void, [core.int, core.int]),
+    jumpTo: dart.fnType(dart.void, [core.double, core.double])
+  }));
+  dart.setLibraryUri(lazy_data_table.LazyDataTable, I[1]);
+  dart.setFieldSignature(lazy_data_table.LazyDataTable, () => ({
+    __proto__: dart.getFields(lazy_data_table.LazyDataTable.__proto__),
+    table: dart.finalFieldType(lazy_data_table._LazyDataTableState),
+    columns: dart.finalFieldType(core.int),
+    rows: dart.finalFieldType(core.int),
+    tableDimensions: dart.finalFieldType(lazy_data_table_dimensions.LazyDataTableDimensions),
+    tableTheme: dart.finalFieldType(lazy_data_table_theme.LazyDataTableTheme),
+    topHeaderBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [core.int]))),
+    leftHeaderBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [core.int]))),
+    rightHeaderBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [core.int]))),
+    bottomHeaderBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [core.int]))),
+    dataCellBuilder: dart.finalFieldType(dart.fnType(framework.Widget, [core.int, core.int])),
+    topLeftCornerWidget: dart.finalFieldType(dart.nullable(framework.Widget)),
+    topRightCornerWidget: dart.finalFieldType(dart.nullable(framework.Widget)),
+    bottomLeftCornerWidget: dart.finalFieldType(dart.nullable(framework.Widget)),
+    bottomRightCornerWidget: dart.finalFieldType(dart.nullable(framework.Widget))
+  }));
+  var _horizontalControllers = dart.privateName(lazy_data_table, "_horizontalControllers");
+  var _verticalControllers = dart.privateName(lazy_data_table, "_verticalControllers");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(lazy_data_table.LazyDataTable) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(lazy_data_table.LazyDataTable)[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(lazy_data_table.LazyDataTable));
+  lazy_data_table._LazyDataTableState = class _LazyDataTableState extends State_TickerProviderStateMixin$36 {
+    initState() {
+      super.initState();
+      this[_horizontalControllers] = new lazy_data_table._CustomScrollController.new(this);
+      this[_verticalControllers] = new lazy_data_table._CustomScrollController.new(this);
+    }
+    dispose() {
+      dart.nullCheck(this[_horizontalControllers]).dispose();
+      dart.nullCheck(this[_verticalControllers]).dispose();
+      super.dispose();
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 164, 29, "context");
+      return new basic.Listener.new({onPointerSignal: dart.fn(pointerSignal => {
+          if (pointerSignal == null) dart.nullFailed(I[0], 166, 25, "pointerSignal");
+          if (events.PointerScrollEvent.is(pointerSignal)) {
+            this.jump(pointerSignal.scrollDelta.dx, pointerSignal.scrollDelta.dy);
+          }
+        }, T.PointerSignalEventTovoid()), child: new gesture_detector.GestureDetector.new({onPanUpdate: dart.fn(details => {
+            if (details == null) dart.nullFailed(I[0], 172, 41, "details");
+            this.jump(-dart.notNull(details.delta.dx), -dart.notNull(details.delta.dy));
+          }, T.DragUpdateDetailsTovoid()), onPanEnd: dart.fn(details => {
+            if (details == null) dart.nullFailed(I[0], 175, 35, "details");
+            dart.nullCheck(this[_verticalControllers]).setVelocity(-dart.notNull(details.velocity.pixelsPerSecond.dy) / 100);
+            dart.nullCheck(this[_horizontalControllers]).setVelocity(-dart.notNull(details.velocity.pixelsPerSecond.dx) / 100);
+          }, T.DragEndDetailsTovoid()), child: new basic.Row.new({children: T.JSArrayOfWidget().of([this.widget.leftHeaderBuilder != null ? new basic.SizedBox.new({width: this.widget.tableDimensions.leftHeaderWidth, child: new basic.Column.new({children: T.JSArrayOfWidget().of([this.widget.topLeftCornerWidget != null ? new basic.SizedBox.new({height: this.widget.tableDimensions.topHeaderHeight, width: this.widget.tableDimensions.leftHeaderWidth, child: new container.Container.new({decoration: this.widget.tableTheme.corner, child: this.widget.topLeftCornerWidget, $creationLocationd_0dea112b090073317d4: C[33] || CT.C33}), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[42] || CT.C42}), new basic.Expanded.new({child: new scroll_view.ListView.builder({scrollDirection: basic_types.Axis.vertical, controller: this[_verticalControllers], physics: new scroll_physics.NeverScrollableScrollPhysics.new(), itemCount: this.widget.rows, itemBuilder: dart.fn((__, i) => {
+                          if (__ == null) dart.nullFailed(I[0], 209, 45, "__");
+                          if (i == null) dart.nullFailed(I[0], 209, 49, "i");
+                          return new container.Container.new({height: dart.test(this.widget.tableDimensions.customCellHeight[$containsKey](i)) ? this.widget.tableDimensions.customCellHeight[$_get](i) : this.widget.tableDimensions.cellHeight, width: this.widget.tableDimensions.leftHeaderWidth, decoration: dart.test(this.widget.tableTheme.alternateRow) && i[$modulo](2) !== 0 ? this.widget.tableTheme.alternateRowHeader : this.widget.tableTheme.rowHeader, child: dart.nullCheck(this.widget.leftHeaderBuilder)(i), $creationLocationd_0dea112b090073317d4: C[44] || CT.C44});
+                        }, T.BuildContextAndintToContainer()), $creationLocationd_0dea112b090073317d4: C[50] || CT.C50}), $creationLocationd_0dea112b090073317d4: C[57] || CT.C57}), this.widget.bottomLeftCornerWidget != null ? new basic.SizedBox.new({height: this.widget.tableDimensions.bottomHeaderHeight, width: this.widget.tableDimensions.leftHeaderWidth, child: new container.Container.new({decoration: this.widget.tableTheme.corner, child: this.widget.bottomLeftCornerWidget, $creationLocationd_0dea112b090073317d4: C[60] || CT.C60}), $creationLocationd_0dea112b090073317d4: C[64] || CT.C64}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[69] || CT.C69})]), $creationLocationd_0dea112b090073317d4: C[70] || CT.C70}), $creationLocationd_0dea112b090073317d4: C[73] || CT.C73}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[77] || CT.C77}), new basic.Expanded.new({child: new basic.Column.new({children: T.JSArrayOfWidget().of([this.widget.topHeaderBuilder != null ? new basic.SizedBox.new({height: this.widget.tableDimensions.topHeaderHeight, child: new scroll_view.ListView.builder({scrollDirection: basic_types.Axis.horizontal, controller: this[_horizontalControllers], physics: new scroll_physics.NeverScrollableScrollPhysics.new(), itemCount: this.widget.columns, itemBuilder: dart.fn((__, i) => {
+                          if (__ == null) dart.nullFailed(I[0], 254, 45, "__");
+                          if (i == null) dart.nullFailed(I[0], 254, 49, "i");
+                          return new container.Container.new({height: this.widget.tableDimensions.topHeaderHeight, width: dart.test(this.widget.tableDimensions.customCellWidth[$containsKey](i)) ? this.widget.tableDimensions.customCellWidth[$_get](i) : this.widget.tableDimensions.cellWidth, decoration: dart.test(this.widget.tableTheme.alternateColumn) && i[$modulo](2) !== 0 ? this.widget.tableTheme.alternateColumnHeader : this.widget.tableTheme.columnHeader, child: dart.nullCheck(this.widget.topHeaderBuilder)(i), $creationLocationd_0dea112b090073317d4: C[78] || CT.C78});
+                        }, T.BuildContextAndintToContainer()), $creationLocationd_0dea112b090073317d4: C[84] || CT.C84}), $creationLocationd_0dea112b090073317d4: C[91] || CT.C91}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[95] || CT.C95}), new basic.Expanded.new({child: new scroll_view.ListView.builder({scrollDirection: basic_types.Axis.vertical, shrinkWrap: true, controller: this[_verticalControllers], physics: new scroll_physics.NeverScrollableScrollPhysics.new(), itemCount: this.widget.rows, itemBuilder: dart.fn((_, i) => {
+                          if (_ == null) dart.nullFailed(I[0], 282, 39, "_");
+                          if (i == null) dart.nullFailed(I[0], 282, 42, "i");
+                          return new basic.SizedBox.new({height: dart.test(this.widget.tableDimensions.customCellHeight[$containsKey](i)) ? this.widget.tableDimensions.customCellHeight[$_get](i) : this.widget.tableDimensions.cellHeight, child: new scroll_view.ListView.builder({scrollDirection: basic_types.Axis.horizontal, shrinkWrap: true, controller: this[_horizontalControllers], physics: new scroll_physics.NeverScrollableScrollPhysics.new(), itemCount: this.widget.columns, itemBuilder: dart.fn((__, j) => {
+                                let t2, t1, t0;
+                                if (__ == null) dart.nullFailed(I[0], 295, 47, "__");
+                                if (j == null) dart.nullFailed(I[0], 295, 51, "j");
+                                return new container.Container.new({height: dart.test(this.widget.tableDimensions.customCellHeight[$containsKey](i)) ? this.widget.tableDimensions.customCellHeight[$_get](i) : this.widget.tableDimensions.cellHeight, width: dart.test(this.widget.tableDimensions.customCellWidth[$containsKey](j)) ? this.widget.tableDimensions.customCellWidth[$_get](j) : this.widget.tableDimensions.cellWidth, decoration: dart.test(this.widget.tableTheme.alternateRow) && i[$modulo](2) !== 0 || dart.test(this.widget.tableTheme.alternateColumn) && j[$modulo](2) !== 0 ? this.widget.tableTheme.alternateCell : this.widget.tableTheme.cell, child: (t0 = this.widget, t1 = i, t2 = j, t0.dataCellBuilder(t1, t2)), $creationLocationd_0dea112b090073317d4: C[96] || CT.C96});
+                              }, T.BuildContextAndintToContainer()), $creationLocationd_0dea112b090073317d4: C[102] || CT.C102}), $creationLocationd_0dea112b090073317d4: C[110] || CT.C110});
+                        }, T.BuildContextAndintToSizedBox()), $creationLocationd_0dea112b090073317d4: C[114] || CT.C114}), $creationLocationd_0dea112b090073317d4: C[122] || CT.C122}), this.widget.bottomHeaderBuilder != null ? new basic.SizedBox.new({height: this.widget.tableDimensions.bottomHeaderHeight, child: new scroll_view.ListView.builder({scrollDirection: basic_types.Axis.horizontal, controller: this[_horizontalControllers], physics: new scroll_physics.NeverScrollableScrollPhysics.new(), itemCount: this.widget.columns, itemBuilder: dart.fn((__, i) => {
+                          if (__ == null) dart.nullFailed(I[0], 332, 45, "__");
+                          if (i == null) dart.nullFailed(I[0], 332, 49, "i");
+                          return new container.Container.new({height: this.widget.tableDimensions.bottomHeaderHeight, width: dart.test(this.widget.tableDimensions.customCellWidth[$containsKey](i)) ? this.widget.tableDimensions.customCellWidth[$_get](i) : this.widget.tableDimensions.cellWidth, decoration: dart.test(this.widget.tableTheme.alternateColumn) && i[$modulo](2) !== 0 ? this.widget.tableTheme.alternateColumnHeader : this.widget.tableTheme.columnHeader, child: dart.nullCheck(this.widget.bottomHeaderBuilder)(i), $creationLocationd_0dea112b090073317d4: C[125] || CT.C125});
+                        }, T.BuildContextAndintToContainer()), $creationLocationd_0dea112b090073317d4: C[131] || CT.C131}), $creationLocationd_0dea112b090073317d4: C[138] || CT.C138}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[142] || CT.C142})]), $creationLocationd_0dea112b090073317d4: C[143] || CT.C143}), $creationLocationd_0dea112b090073317d4: C[146] || CT.C146}), this.widget.rightHeaderBuilder != null ? new basic.SizedBox.new({width: this.widget.tableDimensions.rightHeaderWidth, child: new basic.Column.new({children: T.JSArrayOfWidget().of([this.widget.topRightCornerWidget != null ? new basic.SizedBox.new({height: this.widget.tableDimensions.topHeaderHeight, width: this.widget.tableDimensions.rightHeaderWidth, child: new container.Container.new({decoration: this.widget.tableTheme.corner, child: this.widget.topRightCornerWidget, $creationLocationd_0dea112b090073317d4: C[149] || CT.C149}), $creationLocationd_0dea112b090073317d4: C[153] || CT.C153}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[158] || CT.C158}), new basic.Expanded.new({child: new scroll_view.ListView.builder({scrollDirection: basic_types.Axis.vertical, controller: this[_verticalControllers], physics: new scroll_physics.NeverScrollableScrollPhysics.new(), itemCount: this.widget.rows, itemBuilder: dart.fn((__, i) => {
+                          if (__ == null) dart.nullFailed(I[0], 377, 43, "__");
+                          if (i == null) dart.nullFailed(I[0], 377, 47, "i");
+                          return new container.Container.new({height: dart.test(this.widget.tableDimensions.customCellHeight[$containsKey](i)) ? this.widget.tableDimensions.customCellHeight[$_get](i) : this.widget.tableDimensions.cellHeight, width: this.widget.tableDimensions.rightHeaderWidth, decoration: dart.test(this.widget.tableTheme.alternateRow) && i[$modulo](2) !== 0 ? this.widget.tableTheme.alternateRowHeader : this.widget.tableTheme.rowHeader, child: dart.nullCheck(this.widget.rightHeaderBuilder)(i), $creationLocationd_0dea112b090073317d4: C[159] || CT.C159});
+                        }, T.BuildContextAndintToContainer()), $creationLocationd_0dea112b090073317d4: C[165] || CT.C165}), $creationLocationd_0dea112b090073317d4: C[172] || CT.C172}), this.widget.bottomRightCornerWidget != null ? new basic.SizedBox.new({height: this.widget.tableDimensions.bottomHeaderHeight, width: this.widget.tableDimensions.rightHeaderWidth, child: new container.Container.new({decoration: this.widget.tableTheme.corner, child: this.widget.bottomRightCornerWidget, $creationLocationd_0dea112b090073317d4: C[175] || CT.C175}), $creationLocationd_0dea112b090073317d4: C[179] || CT.C179}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[184] || CT.C184})]), $creationLocationd_0dea112b090073317d4: C[185] || CT.C185}), $creationLocationd_0dea112b090073317d4: C[188] || CT.C188}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[192] || CT.C192})]), $creationLocationd_0dea112b090073317d4: C[193] || CT.C193}), $creationLocationd_0dea112b090073317d4: C[196] || CT.C196}), $creationLocationd_0dea112b090073317d4: C[201] || CT.C201});
+    }
+    jumpToCell(column, row) {
+      if (column == null) dart.nullFailed(I[0], 416, 23, "column");
+      if (row == null) dart.nullFailed(I[0], 416, 35, "row");
+      let customWidth = 0.0;
+      let customWidthCells = 0;
+      for (let i = 0; i < dart.notNull(column); i = i + 1) {
+        if (dart.test(this.widget.tableDimensions.customCellWidth[$containsKey](i))) {
+          customWidth = customWidth + dart.nullCheck(this.widget.tableDimensions.customCellWidth[$_get](i));
+          customWidthCells = customWidthCells + 1;
+        }
+      }
+      dart.nullCheck(this[_horizontalControllers]).jumpTo((dart.notNull(column) - customWidthCells) * dart.notNull(this.widget.tableDimensions.cellWidth) + customWidth);
+      let customHeight = 0.0;
+      let customHeightCells = 0;
+      for (let i = 0; i < dart.notNull(column); i = i + 1) {
+        if (dart.test(this.widget.tableDimensions.customCellHeight[$containsKey](i))) {
+          customHeight = customHeight + dart.nullCheck(this.widget.tableDimensions.customCellHeight[$_get](i));
+          customHeightCells = customHeightCells + 1;
+        }
+      }
+      dart.nullCheck(this[_verticalControllers]).jumpTo((dart.notNull(row) - customHeightCells) * dart.notNull(this.widget.tableDimensions.cellHeight) + customHeight);
+    }
+    jumpTo(x, y) {
+      if (x == null) dart.nullFailed(I[0], 443, 22, "x");
+      if (y == null) dart.nullFailed(I[0], 443, 32, "y");
+      dart.nullCheck(this[_horizontalControllers]).jumpTo(x);
+      dart.nullCheck(this[_verticalControllers]).jumpTo(y);
+    }
+    jump(x, y) {
+      if (x == null) dart.nullFailed(I[0], 449, 20, "x");
+      if (y == null) dart.nullFailed(I[0], 449, 30, "y");
+      dart.nullCheck(this[_horizontalControllers]).jump(x);
+      dart.nullCheck(this[_verticalControllers]).jump(y);
+    }
+  };
+  (lazy_data_table._LazyDataTableState.new = function() {
+    this[_horizontalControllers] = null;
+    this[_verticalControllers] = null;
+    lazy_data_table._LazyDataTableState.__proto__.new.call(this);
+    ;
+  }).prototype = lazy_data_table._LazyDataTableState.prototype;
+  dart.addTypeTests(lazy_data_table._LazyDataTableState);
+  dart.addTypeCaches(lazy_data_table._LazyDataTableState);
+  dart.setMethodSignature(lazy_data_table._LazyDataTableState, () => ({
+    __proto__: dart.getMethods(lazy_data_table._LazyDataTableState.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    jumpToCell: dart.fnType(dart.void, [core.int, core.int]),
+    jumpTo: dart.fnType(dart.void, [core.double, core.double]),
+    jump: dart.fnType(dart.void, [core.double, core.double])
+  }));
+  dart.setLibraryUri(lazy_data_table._LazyDataTableState, I[1]);
+  dart.setFieldSignature(lazy_data_table._LazyDataTableState, () => ({
+    __proto__: dart.getFields(lazy_data_table._LazyDataTableState.__proto__),
+    [_horizontalControllers]: dart.fieldType(dart.nullable(lazy_data_table._CustomScrollController)),
+    [_verticalControllers]: dart.fieldType(dart.nullable(lazy_data_table._CustomScrollController))
+  }));
+  var offset = dart.privateName(lazy_data_table, "_CustomScrollController.offset");
+  var _positions = dart.privateName(lazy_data_table, "_positions");
+  var ___CustomScrollController__ticker = dart.privateName(lazy_data_table, "_#_CustomScrollController#_ticker");
+  var ___CustomScrollController__ticker_isSet = dart.privateName(lazy_data_table, "_#_CustomScrollController#_ticker#isSet");
+  var ___CustomScrollController__velocity = dart.privateName(lazy_data_table, "_#_CustomScrollController#_velocity");
+  var ___CustomScrollController__velocity_isSet = dart.privateName(lazy_data_table, "_#_CustomScrollController#_velocity#isSet");
+  var _ticker = dart.privateName(lazy_data_table, "_ticker");
+  var _velocity = dart.privateName(lazy_data_table, "_velocity");
+  lazy_data_table._CustomScrollController = class _CustomScrollController extends scroll_controller.ScrollController {
+    get offset() {
+      return this[offset];
+    }
+    set offset(value) {
+      this[offset] = value;
+    }
+    get [_ticker]() {
+      let t0;
+      return dart.test(this[___CustomScrollController__ticker_isSet]) ? (t0 = this[___CustomScrollController__ticker], t0) : dart.throw(new _internal.LateError.fieldNI("_ticker"));
+    }
+    set [_ticker](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 478, 15, "null");
+      this[___CustomScrollController__ticker_isSet] = true;
+      this[___CustomScrollController__ticker] = t0;
+    }
+    get [_velocity]() {
+      let t1;
+      return dart.test(this[___CustomScrollController__velocity_isSet]) ? (t1 = this[___CustomScrollController__velocity], t1) : dart.throw(new _internal.LateError.fieldNI("_velocity"));
+    }
+    set [_velocity](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 483, 15, "null");
+      this[___CustomScrollController__velocity_isSet] = true;
+      this[___CustomScrollController__velocity] = t1;
+    }
+    attach(position) {
+      if (position == null) dart.nullFailed(I[0], 488, 30, "position");
+      position.correctPixels(this.offset);
+      this[_positions][$add](position);
+    }
+    detach(position) {
+      if (position == null) dart.nullFailed(I[0], 495, 30, "position");
+      this[_positions][$remove](position);
+    }
+    processNotification(notification) {
+      if (notification == null) dart.nullFailed(I[0], 500, 47, "notification");
+      if (scroll_notification.ScrollUpdateNotification.is(notification)) {
+        this.jumpTo(notification.metrics.pixels);
+      }
+    }
+    jumpTo(value) {
+      if (value == null) dart.nullFailed(I[0], 509, 22, "value");
+      if (dart.notNull(value) > dart.notNull(this[_positions][$_get](0).maxScrollExtent)) {
+        this.offset = this[_positions][$_get](0).maxScrollExtent;
+      } else if (dart.notNull(value) < 0) {
+        this.offset = 0.0;
+      } else {
+        this.offset = value;
+      }
+      for (let position of this[_positions]) {
+        if (position.pixels != this.offset) {
+          position.jumpTo(this.offset);
+        }
+      }
+    }
+    jump(value) {
+      if (value == null) dart.nullFailed(I[0], 525, 20, "value");
+      this.jumpTo(dart.notNull(this.offset) + dart.notNull(value));
+    }
+    setVelocity(velocity) {
+      if (velocity == null) dart.nullFailed(I[0], 530, 27, "velocity");
+      if (dart.test(this[_ticker].isActive)) this[_ticker].stop();
+      this[_velocity] = velocity;
+      this[_ticker].start();
+    }
+    dispose() {
+      this[_ticker].dispose();
+      super.dispose();
+    }
+  };
+  (lazy_data_table._CustomScrollController.new = function(provider) {
+    if (provider == null) dart.nullFailed(I[0], 461, 42, "provider");
+    this[_positions] = T.JSArrayOfScrollPosition().of([]);
+    this[offset] = 0.0;
+    this[___CustomScrollController__ticker] = null;
+    this[___CustomScrollController__ticker_isSet] = false;
+    this[___CustomScrollController__velocity] = null;
+    this[___CustomScrollController__velocity_isSet] = false;
+    lazy_data_table._CustomScrollController.__proto__.new.call(this);
+    this[_ticker] = provider.createTicker(dart.fn(_ => {
+      if (_ == null) dart.nullFailed(I[0], 462, 38, "_");
+      this.jumpTo(dart.notNull(this.offset) + dart.notNull(this[_velocity]));
+      this[_velocity] = dart.notNull(this[_velocity]) * 0.9;
+      if (dart.notNull(this[_velocity]) < 0.1 && dart.notNull(this[_velocity]) > -0.1) {
+        this[_ticker].stop();
+      }
+    }, T.DurationTovoid()));
+  }).prototype = lazy_data_table._CustomScrollController.prototype;
+  dart.addTypeTests(lazy_data_table._CustomScrollController);
+  dart.addTypeCaches(lazy_data_table._CustomScrollController);
+  dart.setMethodSignature(lazy_data_table._CustomScrollController, () => ({
+    __proto__: dart.getMethods(lazy_data_table._CustomScrollController.__proto__),
+    processNotification: dart.fnType(dart.void, [scroll_notification.ScrollNotification]),
+    jump: dart.fnType(dart.void, [core.double]),
+    setVelocity: dart.fnType(dart.void, [core.double])
+  }));
+  dart.setGetterSignature(lazy_data_table._CustomScrollController, () => ({
+    __proto__: dart.getGetters(lazy_data_table._CustomScrollController.__proto__),
+    [_ticker]: ticker.Ticker,
+    [_velocity]: core.double
+  }));
+  dart.setSetterSignature(lazy_data_table._CustomScrollController, () => ({
+    __proto__: dart.getSetters(lazy_data_table._CustomScrollController.__proto__),
+    [_ticker]: ticker.Ticker,
+    [_velocity]: core.double
+  }));
+  dart.setLibraryUri(lazy_data_table._CustomScrollController, I[1]);
+  dart.setFieldSignature(lazy_data_table._CustomScrollController, () => ({
+    __proto__: dart.getFields(lazy_data_table._CustomScrollController.__proto__),
+    [_positions]: dart.fieldType(core.List$(scroll_position.ScrollPosition)),
+    offset: dart.fieldType(core.double),
+    [___CustomScrollController__ticker]: dart.fieldType(dart.nullable(ticker.Ticker)),
+    [___CustomScrollController__ticker_isSet]: dart.fieldType(core.bool),
+    [___CustomScrollController__velocity]: dart.fieldType(dart.nullable(core.double)),
+    [___CustomScrollController__velocity_isSet]: dart.fieldType(core.bool)
+  }));
+  dart.trackLibraries("packages/lazy_data_table/lazy_data_table.dart", {
+    "package:lazy_data_table/lazy_data_table.dart": lazy_data_table
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["lazy_data_table.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;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","file":"../../../../../../../../../packages/lazy_data_table/lazy_data_table.dart.lib.js"}');
+  // Exports:
+  return {
+    lazy_data_table: lazy_data_table
+  };
+}));
+
+//# sourceMappingURL=lazy_data_table.dart.lib.js.map

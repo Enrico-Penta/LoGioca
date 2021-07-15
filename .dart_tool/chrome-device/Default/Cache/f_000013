@@ -1,0 +1,526 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/widgets/safe_area.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/logioca/common.dart', 'packages/flutter/src/widgets/scroll_view.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/sizer/sizer_ext.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/logioca/widgets/fields.dart', 'packages/flutter/src/material/colors.dart'], (function load__packages__logioca__pageRecuperoPsw_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__widgets__safe_area$46dart, packages__flutter__src__material__icon_button$46dart, packages__logioca__common$46dart, packages__flutter__src__widgets__scroll_view$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__sizer__sizer_ext$46dart, packages__flutter__src__painting__strut_style$46dart, packages__logioca__widgets__fields$46dart, packages__flutter__src__material__colors$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const safe_area = packages__flutter__src__widgets__safe_area$46dart.src__widgets__safe_area;
+  const scaffold = packages__flutter__src__material__icon_button$46dart.src__material__scaffold;
+  const text_button = packages__flutter__src__material__icon_button$46dart.src__material__text_button;
+  const common = packages__logioca__common$46dart.common;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const sizer_ext = packages__sizer__sizer_ext$46dart.sizer_ext;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const fields = packages__logioca__widgets__fields$46dart.widgets__fields;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  var pageRecuperoPsw = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    JSArrayOfStringL: () => (T.JSArrayOfStringL = dart.constFn(_interceptors.JSArray$(T.StringL())))(),
+    StringLToNull: () => (T.StringLToNull = dart.constFn(dart.fnType(core.Null, [T.StringL()])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 24,
+        [_Location_line]: 33,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 58,
+        [_Location_line]: 33,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 93,
+        [_Location_line]: 33,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 33,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 24,
+        [_Location_line]: 35,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 82,
+        [_Location_line]: 35,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 35,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "labels",
+        [_Location_column]: 31,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "initialValue",
+        [_Location_column]: 42,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "setField",
+        [_Location_column]: 68,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 36,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 31,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 31,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[16] || CT.C16, C[17] || CT.C17], T._LocationL());
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[15] || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 36,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 29,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 29,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 29,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 43,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 27,
+        [_Location_line]: 41,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 27,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 43,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.constList([C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27], T._LocationL());
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[24] || CT.C24,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 40,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.constList([], T._LocationL());
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[29] || CT.C29,
+        [_Location_name]: null,
+        [_Location_column]: 25,
+        [_Location_line]: 61,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 31,
+        [_Location_line]: 32,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 32,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 17,
+        [_Location_line]: 30,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 17,
+        [_Location_line]: 31,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 32,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37], T._LocationL());
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[34] || CT.C34,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 29,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([C[40] || CT.C40], T._LocationL());
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[39] || CT.C39,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 27,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "appBar",
+        [_Location_column]: 11,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "body",
+        [_Location_column]: 11,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.constList([C[43] || CT.C43, C[44] || CT.C44], T._LocationL());
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[42] || CT.C42,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 25,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.constList([C[47] || CT.C47], T._LocationL());
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[46] || CT.C46,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 24,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.constList([C[50] || CT.C50], T._LocationL());
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[49] || CT.C49,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 23,
+        [_Location_file]: "file:///C:/progetti/GIT/LoGiocaApp/LoGiocaFlutter/logioca/lib/pageRecuperoPsw.dart"
+      });
+    }
+  }, false);
+  var C = Array(51).fill(void 0);
+  var I = ["package:logioca/pageRecuperoPsw.dart"];
+  pageRecuperoPsw.PageRecuperoPsw = class PageRecuperoPsw extends framework.StatefulWidget {
+    createState() {
+      return new pageRecuperoPsw._PageRecuperoPswState.new();
+    }
+  };
+  (pageRecuperoPsw.PageRecuperoPsw.new = function(opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    pageRecuperoPsw.PageRecuperoPsw.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = pageRecuperoPsw.PageRecuperoPsw.prototype;
+  dart.addTypeTests(pageRecuperoPsw.PageRecuperoPsw);
+  dart.addTypeCaches(pageRecuperoPsw.PageRecuperoPsw);
+  dart.setMethodSignature(pageRecuperoPsw.PageRecuperoPsw, () => ({
+    __proto__: dart.getMethods(pageRecuperoPsw.PageRecuperoPsw.__proto__),
+    createState: dart.fnType(dart.legacy(pageRecuperoPsw._PageRecuperoPswState), [])
+  }));
+  dart.setLibraryUri(pageRecuperoPsw.PageRecuperoPsw, I[0]);
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  pageRecuperoPsw._PageRecuperoPswState = class _PageRecuperoPswState extends framework.State$(dart.legacy(pageRecuperoPsw.PageRecuperoPsw)) {
+    initState() {
+      this.email = "";
+      this.caricamento = false;
+      super.initState();
+    }
+    build(context) {
+      return new container.Container.new({child: new safe_area.SafeArea.new({child: new scaffold.Scaffold.new({appBar: common.myAppBar(), body: new scroll_view.ListView.new({children: T.JSArrayOfWidgetL().of([new container.Container.new({width: 1 / 0, padding: new edge_insets.EdgeInsets.all(sizer_ext['SizerExt|get#h'](5.0)), child: new basic.Column.new({children: T.JSArrayOfWidgetL().of([new text.Text.new("Hai dimenticato la password?\n", {style: new text_style.TextStyle.new({fontSize: sizer_ext['SizerExt|get#w'](4.5)}), textAlign: ui.TextAlign.left, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), new text.Text.new("Scrivi la tua email per ricevere il link per il reset.", {style: new text_style.TextStyle.new({fontSize: sizer_ext['SizerExt|get#w'](4.0)}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), new fields.MyTextField.new(T.JSArrayOfStringL().of(["Email"]), {initialValue: this.email, setField: dart.fn(value => {
+                          this.email = value;
+                        }, T.StringLToNull()), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), !dart.test(this.caricamento) ? new container.Container.new({width: 1 / 0, padding: new edge_insets.EdgeInsets.symmetric({vertical: sizer_ext['SizerExt|get#h'](3.5), horizontal: sizer_ext['SizerExt|get#w'](4.0)}), child: new text_button.TextButton.new({style: text_button.TextButton.styleFrom({padding: new edge_insets.EdgeInsets.all(sizer_ext['SizerExt|get#h'](1.0)), backgroundColor: new ui.Color.new(4281280122)}), onPressed: dart.fn(() => {
+                            this.setState(dart.fn(() => {
+                              this.caricamento = true;
+                            }, T.VoidToNull()));
+                          }, T.VoidToNull()), child: new text.Text.new("INVIA", {style: new text_style.TextStyle.new({color: colors.Colors.white, fontSize: sizer_ext['SizerExt|get#w'](5.0)}), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23}) : new common.Loader.new({$creationLocationd_0dea112b090073317d4: C[28] || CT.C28})]), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30}), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33})]), $creationLocationd_0dea112b090073317d4: C[38] || CT.C38}), $creationLocationd_0dea112b090073317d4: C[41] || CT.C41}), $creationLocationd_0dea112b090073317d4: C[45] || CT.C45}), $creationLocationd_0dea112b090073317d4: C[48] || CT.C48});
+    }
+  };
+  (pageRecuperoPsw._PageRecuperoPswState.new = function() {
+    this.email = null;
+    this.caricamento = null;
+    pageRecuperoPsw._PageRecuperoPswState.__proto__.new.call(this);
+    ;
+  }).prototype = pageRecuperoPsw._PageRecuperoPswState.prototype;
+  dart.addTypeTests(pageRecuperoPsw._PageRecuperoPswState);
+  dart.addTypeCaches(pageRecuperoPsw._PageRecuperoPswState);
+  dart.setMethodSignature(pageRecuperoPsw._PageRecuperoPswState, () => ({
+    __proto__: dart.getMethods(pageRecuperoPsw._PageRecuperoPswState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(pageRecuperoPsw._PageRecuperoPswState, I[0]);
+  dart.setFieldSignature(pageRecuperoPsw._PageRecuperoPswState, () => ({
+    __proto__: dart.getFields(pageRecuperoPsw._PageRecuperoPswState.__proto__),
+    email: dart.fieldType(dart.legacy(core.String)),
+    caricamento: dart.fieldType(dart.legacy(core.bool))
+  }));
+  dart.trackLibraries("packages/logioca/pageRecuperoPsw.dart", {
+    "package:logioca/pageRecuperoPsw.dart": pageRecuperoPsw
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["pageRecuperoPsw.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAQyC;IAAuB;;;;;;EAChE;;;;;;;;;;;;;;;AAOc,MAAV,aAAQ;AACW,MAAnB,mBAAc;AACG,MAAX;IACR;UAE0B;AACxB,YAAO,qCACE,mCACE,mCACG,AAAQ,yBACV,wCACM,yBACR,oDAEsB,+BAAQ,4BAAJ,cACjB,gCAAiB,yBACtB,kBAAK,0CAAyC,wCAAwB,4BAAJ,mBAA6B,4EAE/F,kBAAK,kEAAiE,wCAAwB,4BAAJ,iEAC1F,2BAAY,yBAAC,0BAA6B,sBAAiB,QAAC;AACxC,0BAAb,aAAQ,KAAK;wGAEpB,WAAC,oBACK,oDAEsB,gDAAwB,4BAAJ,kBAAuB,4BAAJ,eACpD,uCACa,2CACI,+BAAQ,4BAAJ,wBACP,iBAAM,0BAEd;AAGP,4BAFF,cAAS;AACW,8BAAlB,mBAAc;;qDAKX,kBACL,iBACO,qCAAwB,+BAAqB,4BAAJ,0LAItD;IAQtB;;;IAxDO;IACF;;;EAwDP","file":"../../../../../../packages/logioca/pageRecuperoPsw.dart.lib.js"}');
+  // Exports:
+  return {
+    pageRecuperoPsw: pageRecuperoPsw
+  };
+}));
+
+//# sourceMappingURL=pageRecuperoPsw.dart.lib.js.map
