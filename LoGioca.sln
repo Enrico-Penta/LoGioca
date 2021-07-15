@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoGioca", "LoGioca\LoGioca.csproj", "{28F42ACA-9CA4-4B55-84E9-0E63CCC168D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoGioca.BLL", "LoGioca.BLL\LoGioca.BLL.csproj", "{8A778E0C-AA73-4499-BA28-22F60BC1D43F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoGioca.BLL", "LoGioca.BLL\LoGioca.BLL.csproj", "{8A778E0C-AA73-4499-BA28-22F60BC1D43F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoGioca.DAL", "LoGioca.DAL\LoGioca.DAL.csproj", "{55FD4F1C-C3BA-4FA8-B1A0-2AB008E9EE31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoGioca.DAL", "LoGioca.DAL\LoGioca.DAL.csproj", "{55FD4F1C-C3BA-4FA8-B1A0-2AB008E9EE31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
