@@ -310,149 +310,147 @@ class _CardEventState extends State<CardEvent> {
     String data = dataEora.split(" ")[0].toString();
     String ora = dataEora.split(" ")[1].toString();
     String oraFormattata = ora.split(":")[0] + ":" + ora.split(":")[1];
-
-    //int endTime = /*int.parse(evento.data.toString());*/ DateTime.now().millisecondsSinceEpoch + 1000 * 30;
-    int endTime = evento.data.millisecondsSinceEpoch;
+    int endTime = /*evento.data.millisecondsSinceEpoch;*/ DateTime.now().millisecondsSinceEpoch + 1000 * 10;
     CountdownTimerController controller = CountdownTimerController(endTime: endTime, onEnd: onEnd);
 
-    return Positioned(
-      top: 2.0.h,
-      left: 2.0.w,
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //CREATORE EVENTO
-            Row(
-              children: [
-                Icon(
-                  Icons.person_outline,
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //CREATORE EVENTO
+          Row(
+            children: [
+              Icon(
+                Icons.person_outline,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 2.0.w,
+              ),
+              Text(evento.creatore,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 4.0.w,
+                  )),
+            ],
+          ),
+          SizedBox(
+            height: 1.2.h,
+          ),
+          //DATA EVENTO
+          Row(
+            children: [
+              Icon(
+                Icons.calendar_today_rounded,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 2.0.w,
+              ),
+              Text(data,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 4.0.w,
+                  )),
+            ],
+          ),
+          SizedBox(
+            height: 1.2.h,
+          ),
+          //ORA EVENTO
+          Row(
+            children: [
+              Icon(
+                Icons.watch_later_outlined,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 2.0.w,
+              ),
+              Text(
+                oraFormattata,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
                   color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 4.0.w,
                 ),
-                SizedBox(
-                  width: 2.0.w,
-                ),
-                Text(evento.creatore,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 4.0.w,
-                    )),
-              ],
-            ),
-            SizedBox(
-              height: 1.2.h,
-            ),
-            //DATA EVENTO
-            Row(
-              children: [
-                Icon(
-                  Icons.calendar_today_rounded,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 2.0.w,
-                ),
-                Text(data,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 4.0.w,
-                    )),
-              ],
-            ),
-            SizedBox(
-              height: 1.2.h,
-            ),
-            //ORA EVENTO
-            Row(
-              children: [
-                Icon(
-                  Icons.timer_rounded,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 2.0.w,
-                ),
-                Text(oraFormattata,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 4.0.w,
-                    )),
-              ],
-            ),
-            //LUOGO EVENTO
-            Row(
-              children: [
-                Icon(
-                  Icons.location_on,
-                  color: Colors.white,
-                ),
-                /*SizedBox(
+              ),
+            ],
+          ),
+          //LUOGO EVENTO
+          Row(
+            children: [
+              Icon(
+                Icons.location_on,
+                color: Colors.white,
+              ),
+              /*SizedBox(
                 height: 2.0.w,
               ),*/
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          new MaterialPageRoute(builder: (BuildContext context) => new PageMappa(evento.Latitudine, evento.Longitudine)));
-                    },
-                    child: Container(
-                      width: 35.0.w,
-                      child: Text(evento.luogo.split(",")[0],
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 4.0.w,
-                          )),
-                    ))
-              ],
-            ),
-            SizedBox(
-                //height: 1.0.h,
-                ),
-            Row(
-              children: [
-                SizedBox(width: 2.0.w),
-                Text("evento aperto".toUpperCase(),
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 4.0.w,
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(width: 2.0.w),
-                CountdownTimer(
-                  controller: controller,
-                  textStyle: TextStyle(fontSize: 4.0, color: Colors.white),
-                  endTime: endTime,
-                  widgetBuilder: (_, CurrentRemainingTime time) {
-                    if (time == null) {
-                      return Text('Game over');
-                    }
-                    return time.days > 0 ? Text('Giorni:${time.days}') : Text('Ore:${time.hours}, minuti:${time.min}');
+              TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (BuildContext context) => new PageMappa(evento.Latitudine, evento.Longitudine)));
                   },
-                ),
+                  child: Container(
+                    width: 35.0.w,
+                    child: Text(evento.luogo.split(",")[0],
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 4.0.w,
+                        )),
+                  ))
+            ],
+          ),
+          SizedBox(
+              //height: 1.0.h,
+              ),
 
-                /*Text("",
-                    overflow: TextOverflow.ellipsis,
+          //COUNTDOWN
+          Row(
+            children: [
+              Icon(
+                Icons.hourglass_empty_rounded,
+                color: Colors.white,
+              ),
+              SizedBox(width: 2.0.w),
+              CountdownTimer(
+                controller: controller,
+                endTime: endTime,
+                widgetBuilder: (_, CurrentRemainingTime time) {
+                  if (time == null) {
+                    return //STATO EVENTO
+
+                        Text(
+                      "evento chiuso".toUpperCase(),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 4.0.w,
+                      ),
+                    );
+                  }
+                  return Text(
+                    '${time.days ?? 0}g ${time.hours ?? 0}h ${time.min ?? 0}m ${time.sec ?? 0}s',
                     style: TextStyle(
+                      fontSize: 16.0,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 3.0.w,
-                    )),*/
-              ],
-            ),
-          ],
-        ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
