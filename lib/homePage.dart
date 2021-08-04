@@ -316,7 +316,7 @@ class _CardEventState extends State<CardEvent> {
     return Container(
       child: Column(
         //crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           //CREATORE EVENTO
           Row(
