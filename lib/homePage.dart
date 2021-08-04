@@ -1,4 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/countdown.dart';
+import 'package:flutter_countdown_timer/countdown_controller.dart';
+import 'package:flutter_countdown_timer/countdown_timer_controller.dart';
+import 'package:flutter_countdown_timer/current_remaining_time.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:logioca/main.dart';
 import 'package:logioca/models/evento.dart';
 import 'package:logioca/pageContainer.dart';
@@ -97,7 +104,7 @@ class _CardEventState extends State<CardEvent> {
               width: double.infinity,
               margin: EdgeInsets.zero,
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage("assets/images/Img_sport_calcio.png"), fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage("assets/images/sport_calcio.png"), fit: BoxFit.cover),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),
                   topRight: Radius.circular(10),
@@ -109,7 +116,20 @@ class _CardEventState extends State<CardEvent> {
                     ? creaSquadre(widget.evento)
                     : statistiche(widget.evento)
                 : dettagli(widget.evento),
-            infoEvento(widget.evento),
+            Container(
+              width: 50.0.w,
+              height: 25.0.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(10)),
+                color: Colors.blue[50].withOpacity(0.5),
+              ),
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                  child: Padding(padding: EdgeInsets.all(2.0.w), child: infoEvento(widget.evento)),
+                ),
+              ),
+            )
           ]),
           SizedBox(
             width: double.infinity,
@@ -286,59 +306,158 @@ class _CardEventState extends State<CardEvent> {
   }
 
   infoEvento(Evento evento) {
+    String dataEora = evento.data.toString();
+    String data = dataEora.split(" ")[0].toString();
+    String ora = dataEora.split(" ")[1].toString();
+    String oraFormattata = ora.split(":")[0] + ":" + ora.split(":")[1];
+
+    //int endTime = /*int.parse(evento.data.toString());*/ DateTime.now().millisecondsSinceEpoch + 1000 * 30;
+    int endTime = evento.data.millisecondsSinceEpoch;
+    CountdownTimerController controller = CountdownTimerController(endTime: endTime, onEnd: onEnd);
+
     return Positioned(
       top: 2.0.h,
       left: 2.0.w,
       child: Container(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(
-                Icons.create,
-                color: Colors.white,
-              ),
-              SizedBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //CREATORE EVENTO
+            Row(
+              children: [
+                Icon(
+                  Icons.person_outline,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 2.0.w,
+                ),
+                Text(evento.creatore,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 4.0.w,
+                    )),
+              ],
+            ),
+            SizedBox(
+              height: 1.2.h,
+            ),
+            //DATA EVENTO
+            Row(
+              children: [
+                Icon(
+                  Icons.calendar_today_rounded,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 2.0.w,
+                ),
+                Text(data,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 4.0.w,
+                    )),
+              ],
+            ),
+            SizedBox(
+              height: 1.2.h,
+            ),
+            //ORA EVENTO
+            Row(
+              children: [
+                Icon(
+                  Icons.timer_rounded,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 2.0.w,
+                ),
+                Text(oraFormattata,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 4.0.w,
+                    )),
+              ],
+            ),
+            //LUOGO EVENTO
+            Row(
+              children: [
+                Icon(
+                  Icons.location_on,
+                  color: Colors.white,
+                ),
+                /*SizedBox(
                 height: 2.0.w,
-              ),
-              Text(evento.creatore, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 4.0.w))
-            ],
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.location_on,
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 2.0.w,
-              ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        new MaterialPageRoute(builder: (BuildContext context) => new PageMappa(evento.Latitudine, evento.Longitudine)));
+              ),*/
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          new MaterialPageRoute(builder: (BuildContext context) => new PageMappa(evento.Latitudine, evento.Longitudine)));
+                    },
+                    child: Container(
+                      width: 35.0.w,
+                      child: Text(evento.luogo.split(",")[0],
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 4.0.w,
+                          )),
+                    ))
+              ],
+            ),
+            SizedBox(
+                //height: 1.0.h,
+                ),
+            Row(
+              children: [
+                SizedBox(width: 2.0.w),
+                Text("evento aperto".toUpperCase(),
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 4.0.w,
+                    )),
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(width: 2.0.w),
+                CountdownTimer(
+                  controller: controller,
+                  textStyle: TextStyle(fontSize: 4.0, color: Colors.white),
+                  endTime: endTime,
+                  widgetBuilder: (_, CurrentRemainingTime time) {
+                    if (time == null) {
+                      return Text('Game over');
+                    }
+                    return time.days > 0 ? Text('Giorni:${time.days}') : Text('Ore:${time.hours}, minuti:${time.min}');
                   },
-                  child: Text(evento.luogo, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 4.0.w)))
-            ],
-          ),
-          SizedBox(
-            height: 11.0.h,
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.calendar_today,
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 2.0.w,
-              ),
-              Text(evento?.titolo, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 4.0.w))
-            ],
-          )
-        ],
-      )),
+                ),
+
+                /*Text("",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 3.0.w,
+                    )),*/
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
+}
+
+void onEnd() {
+  print('onEnd');
 }
