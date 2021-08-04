@@ -26,12 +26,14 @@ class _PageEventoState extends State<PageEvento> {
   go.GooglePlace googlePlace;
 
   void autoCompletePosition(String value) async {
-    googlePlace = go.GooglePlace(geocodingApiKey);
-    var result = await googlePlace.autocomplete.get(value, language: 'it' /*, types: 'food'*/);
-    if (result != null && result.predictions != null && mounted) {
-      //setState(() {
-      predictions = result.predictions;
-      //});
+    if (value.contains(",")) {
+      googlePlace = go.GooglePlace(geocodingApiKey);
+      var result = await googlePlace.autocomplete.get(value, language: 'it' /*, types: 'food'*/);
+      if (result != null && result.predictions != null && mounted) {
+        //setState(() {
+        predictions = result.predictions;
+        //});
+      }
     }
   }
 
