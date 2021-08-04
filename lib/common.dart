@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 const Color viola = Color(0xFF102d77);
 const Color arancione = Color(0xFF2274D4);
@@ -12,6 +13,7 @@ PreferredSizeWidget makeMyAppBar({bool automaticallyImplyLeading = true, void Fu
     leading: automaticallyImplyLeading ? null : IconButton(icon: Icon(Icons.arrow_back), onPressed: onBack),
     centerTitle: true,
     backgroundColor: viola,
+    systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.white),
     title: Text("LoGioca"),
   );
 }
