@@ -310,12 +310,13 @@ class _CardEventState extends State<CardEvent> {
     String data = dataEora.split(" ")[0].toString();
     String ora = dataEora.split(" ")[1].toString();
     String oraFormattata = ora.split(":")[0] + ":" + ora.split(":")[1];
-    int endTime = /*evento.data.millisecondsSinceEpoch;*/ DateTime.now().millisecondsSinceEpoch + 1000 * 10;
+    int endTime = evento.data.millisecondsSinceEpoch;
     CountdownTimerController controller = CountdownTimerController(endTime: endTime, onEnd: onEnd);
 
     return Container(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        //crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           //CREATORE EVENTO
           Row(
