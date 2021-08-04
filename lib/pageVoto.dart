@@ -25,10 +25,7 @@ class _PageVotoState extends State<PageVoto> {
   bool caricamento = false;
   Future<Partecipanti> getGiocatori() async {
     await getPartecipanti(utente.id, widget.evento.id).then((value) {
-      if (value != null) {
-        listaPartecipanti = value;
-      }
-
+      listaPartecipanti = value;
       caricamento = true;
     });
   }
@@ -139,6 +136,11 @@ class _PageVotoState extends State<PageVoto> {
                   ? Expanded(
                       child: ListView(
                       children: [
+                        Container(
+                          padding: EdgeInsets.all(16),
+                          color: Colors.grey[200],
+                          child: Text("assegna a ciascun giocatore la tua valutazione e vedrai la media, non potrai votare te stesso."),
+                        ),
                         Row(
                           children: [
                             //squadra sinistra
@@ -185,7 +187,7 @@ class _PageVotoState extends State<PageVoto> {
                                                   },
                                                   child: listaPartecipanti?.listaPartecipanti[i].mioVoto != null ||
                                                           listaPartecipanti?.listaPartecipanti[i].idUser == utente.id
-                                                      ? Text(listaPartecipanti?.listaPartecipanti[i].mediaVoti)
+                                                      ? Text(listaPartecipanti?.listaPartecipanti[i].mediaVoti ?? "")
                                                       : Icon(
                                                           Icons.edit,
                                                         ))),
@@ -218,7 +220,7 @@ class _PageVotoState extends State<PageVoto> {
                                                   },
                                                   child: listaPartecipanti?.listaPartecipanti[i].mioVoto != null ||
                                                           listaPartecipanti?.listaPartecipanti[i].idUser == utente.id
-                                                      ? Text(listaPartecipanti?.listaPartecipanti[i].mediaVoti)
+                                                      ? Text(listaPartecipanti?.listaPartecipanti[i].mediaVoti ?? "")
                                                       : Icon(
                                                           Icons.edit,
                                                         ))),

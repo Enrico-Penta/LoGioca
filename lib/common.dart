@@ -32,3 +32,7 @@ _showMaterialDialog(BuildContext context, String titolo, String message) {
             content: new Text(message),
           ));
 }
+
+String trimNull(String v) {
+  return (v ?? "").trim();
+}

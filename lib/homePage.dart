@@ -4,6 +4,7 @@ import 'package:logioca/models/evento.dart';
 import 'package:logioca/pageContainer.dart';
 import 'package:logioca/pageCreaSquadre.dart';
 import 'package:logioca/pageDettagli.dart';
+import 'package:logioca/pageMappa.dart';
 import 'package:logioca/pageVoto.dart';
 import 'package:sizer/sizer.dart';
 import 'api.dart';
@@ -50,17 +51,22 @@ class _HomePageState extends State<HomePage> {
                         child: ListBody(
                           children: [
                             if (listaEventi != null)
-                              for (var i = 0; i < listaEventi.listaEventi.length; i++)
-                                Container(
-                                    child: CardEvent(Evento(
-                                        id: listaEventi.listaEventi[i].id,
-                                        data: listaEventi.listaEventi[i].data,
-                                        idCreatore: listaEventi.listaEventi[i].idCreatore,
-                                        creatore: listaEventi.listaEventi[i].creatore,
-                                        luogo: listaEventi.listaEventi[i].luogo,
-                                        pathImage: listaEventi.listaEventi[i].pathImage,
-                                        dataPartecipa: listaEventi.listaEventi[i].dataPartecipa,
-                                        titolo: listaEventi.listaEventi[i].titolo))),
+                              if (listaEventi.listaEventi.length > 0)
+                                for (var i = 0; i < listaEventi.listaEventi.length; i++)
+                                  Container(
+                                      child: CardEvent(Evento(
+                                          id: listaEventi.listaEventi[i].id,
+                                          data: listaEventi.listaEventi[i].data,
+                                          idCreatore: listaEventi.listaEventi[i].idCreatore,
+                                          creatore: listaEventi.listaEventi[i].creatore,
+                                          luogo: listaEventi.listaEventi[i].luogo,
+                                          pathImage: listaEventi.listaEventi[i].pathImage,
+                                          dataPartecipa: listaEventi.listaEventi[i].dataPartecipa,
+                                          titolo: listaEventi.listaEventi[i].titolo,
+                                          Latitudine: listaEventi.listaEventi[i].Latitudine,
+                                          Longitudine: listaEventi.listaEventi[i].Longitudine)))
+                              else
+                                Container(padding: EdgeInsets.all(32), child: Text("nessun evento disponibile!"))
                           ],
                         ),
                       )))
@@ -98,7 +104,11 @@ class _CardEventState extends State<CardEvent> {
                 ),
               ),
             ),
-            widget.evento.idCreatore == utente.id ? creaSquadre(widget.evento) : dettagli(widget.evento),
+            widget.evento.idCreatore == utente.id
+                ? DateTime.now().isBefore(widget.evento.data)
+                    ? creaSquadre(widget.evento)
+                    : statistiche(widget.evento)
+                : dettagli(widget.evento),
             infoEvento(widget.evento),
           ]),
           SizedBox(
@@ -239,6 +249,42 @@ class _CardEventState extends State<CardEvent> {
     );
   }
 
+  statistiche(Evento evento) {
+    return Positioned(
+      top: 1.0.h,
+      right: 0,
+      child: TextButton(
+          onPressed: () {
+            /*getPartecipanti(8, 1).then((value) {
+              print(value);
+            });
+            getEvento(8, 1).then((value) {
+              print(value);
+            });*/
+            Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageCreaSquadre(evento, context)));
+          },
+          style: TextButton.styleFrom(
+            alignment: Alignment.topRight,
+            backgroundColor: arancione,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  topRight: Radius.circular(0),
+                  bottomRight: Radius.circular(0)),
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(top: 3, bottom: 3, left: 10, right: 10),
+            child: Text("inserisci statistiche",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.white,
+                )),
+          )),
+    );
+  }
+
   infoEvento(Evento evento) {
     return Positioned(
       top: 2.0.h,
@@ -268,7 +314,12 @@ class _CardEventState extends State<CardEvent> {
               SizedBox(
                 height: 2.0.w,
               ),
-              Text(evento.luogo, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 4.0.w))
+              TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (BuildContext context) => new PageMappa(evento.Latitudine, evento.Longitudine)));
+                  },
+                  child: Text(evento.luogo, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 4.0.w)))
             ],
           ),
           SizedBox(

@@ -109,7 +109,7 @@ class _TendinaSportState extends State<TendinaSport> {
                                     textAlign: TextAlign.center,
                                   )),
                               Text(
-                                widget.giocatore.presenze.toString(),
+                                widget.giocatore?.presenze?.toString(),
                                 style: TextStyle(fontSize: 28, color: arancione),
                               ),
                             ]),

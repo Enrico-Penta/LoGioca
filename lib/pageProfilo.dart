@@ -241,7 +241,7 @@ class _PageProfiloState extends State<PageProfilo> {
                           ],
                         ) /*SliderAmici(),*/
                         ),
-                    if (listaAmici.listaGiocatori != null)
+                    if (listaAmici?.listaGiocatori != null)
                       if (listaAmici.listaGiocatori.length > 0)
                         NoonLoopingDemo(listaAmici)
                       else
@@ -261,7 +261,7 @@ class _PageProfiloState extends State<PageProfilo> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 4.0.w),
-                      child: TendinaSport(new Sport(), controller, statisticheGiocatore),
+                      child: statisticheGiocatore != null ? TendinaSport(new Sport(), controller, statisticheGiocatore) : SizedBox(),
                     ),
                     SizedBox(
                       height: 5.0.h,

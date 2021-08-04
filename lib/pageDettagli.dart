@@ -138,6 +138,14 @@ class _PageDettagliState extends State<PageDettagli> {
                   ? Expanded(
                       child: ListView(
                       children: [
+                        Container(
+                          padding: EdgeInsets.all(16),
+                          color: Colors.grey[200],
+                          child: Text("Qui sono disponibili le squadre quando l'organizzatore le inserirà."),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
                         Row(
                           children: [
                             Container(
@@ -187,7 +195,7 @@ class _PageDettagliState extends State<PageDettagli> {
                               child: Column(
                                 children: [
                                   for (var i = 0; i < listaPartecipanti.listaPartecipanti.length; i++)
-                                    if (listaPartecipanti.listaPartecipanti[i].idSquadra == 1)
+                                    if (listaPartecipanti.listaPartecipanti[i].idSquadra == 2)
                                       GestureDetector(
                                         onTap: () {
                                           listaPartecipanti.listaPartecipanti[i].idUser != utente.id

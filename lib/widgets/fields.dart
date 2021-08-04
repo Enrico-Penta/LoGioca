@@ -1,11 +1,17 @@
+import 'dart:async';
+
 import 'package:date_field/date_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:sizer/sizer.dart';
-
+import 'package:google_geocoding/google_geocoding.dart' as geo;
+import '../api.dart';
 import '../common.dart';
+import '../main.dart';
 
 EdgeInsets contentPadding = EdgeInsets.only(top: 0.4.h, bottom: 1.2.h);
 
@@ -356,6 +362,239 @@ class _MyVotoState extends State<MyVotoField> {
         maxLines: widget.multiline ? null : 1,
         keyboardType: widget.multiline ? TextInputType.multiline : TextInputType.text,
       ),
+    );
+  }
+}
+
+//campo posizione
+class MyTypeAheadPositionField extends StatefulWidget {
+  final List<String> labels;
+  final String hint;
+  final String errText;
+  final String txtNonRichiesto;
+  final bool richiesto;
+  final bool isReadOnly;
+  final bool onlySelected;
+  final bool showBtnPos;
+  final LatLng initialPos;
+  final String initialValue;
+  final void Function(LatLng, String) setField;
+  final String Function(String) editSelected;
+  final FutureOr<Iterable<String>> Function(String) suggestionsCallback;
+  final void Function(LatLng, String) onGeoCodingEnd;
+
+  MyTypeAheadPositionField(this.labels,
+      {this.hint,
+      this.errText,
+      this.txtNonRichiesto,
+      this.richiesto = true,
+      this.onlySelected = false,
+      this.isReadOnly = false,
+      this.showBtnPos = true,
+      this.initialPos,
+      this.initialValue,
+      this.editSelected,
+      this.setField,
+      this.suggestionsCallback,
+      this.onGeoCodingEnd});
+
+  @override
+  _MyTypeAheadFieldPositionState createState() => _MyTypeAheadFieldPositionState();
+}
+
+class _MyTypeAheadFieldPositionState extends State<MyTypeAheadPositionField> {
+  final TextEditingController _controller = TextEditingController();
+  String valSelected = "";
+  geo.LatLon pos;
+  bool isGeocoding = false;
+  bool isInError = false;
+
+  void takePosition() {
+    setState(() {
+      isGeocoding = true;
+    });
+
+    getLoc().then((locData) {
+      pos = geo.LatLon(locData.latitude, locData.longitude);
+      reversePosition();
+      if (widget.onGeoCodingEnd != null) {
+        widget.onGeoCodingEnd(LatLng(pos.latitude, pos.longitude), _controller.text);
+      }
+    }).onError((e, s) {
+      print("$e");
+      setState(() {
+        isGeocoding = false;
+      });
+    });
+  }
+
+  void reversePosition() {
+    if (!isGeocoding) {
+      setState(() {
+        isGeocoding = true;
+      });
+    }
+
+    var googleGeocoding = geo.GoogleGeocoding(geocodingApiKey);
+    googleGeocoding.geocoding.getReverse(pos).then((value) {
+      if (value.status == "OK") {
+        _controller.text = value.results.first.formattedAddress;
+        print(value.results.first.formattedAddress);
+        isInError = false;
+      } else {
+        isInError = true;
+        //showMessage(context, "Errore GoogleMaps");
+      }
+      setState(() {
+        isGeocoding = false;
+      });
+    }).onError((error, stackTrace) {
+      print("$error");
+      setState(() {
+        isGeocoding = false;
+      });
+    });
+  }
+
+  void forwardPosition() {
+    if (!isGeocoding) {
+      setState(() {
+        isGeocoding = true;
+      });
+    }
+
+    var googleGeocoding = geo.GoogleGeocoding(geocodingApiKey);
+    googleGeocoding.geocoding.get(_controller.text, []).then((value) {
+      if (value.status == "OK") {
+        geo.Location loc = value.results.first.geometry.location;
+        pos = geo.LatLon(loc.lat, loc.lng);
+
+        if (widget.onGeoCodingEnd != null) {
+          widget.onGeoCodingEnd(LatLng(pos.latitude, pos.longitude), _controller.text);
+        }
+
+        print("lat: ${pos.latitude}, lat: ${pos.longitude}");
+
+        isInError = false;
+      } else {
+        isInError = true;
+        //showMessage(context, "Errore GoogleMaps");
+      }
+      setState(() {
+        isGeocoding = false;
+      });
+    }).onError((error, stackTrace) {
+      print("$error");
+      setState(() {
+        isGeocoding = false;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    pos = widget.initialPos == null ? null : geo.LatLon(widget.initialPos.latitude, widget.initialPos.longitude);
+    _controller.text = widget.initialValue;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    TextStyle style = TextStyle(fontFamily: 'ToyotaType Book', fontSize: 11.7.sp, color: Colors.black);
+
+    if ((pos == null && widget.initialPos != null) || (trimNull(_controller.text).isEmpty && trimNull(widget.initialValue).isNotEmpty)) {
+      pos = widget.initialPos == null ? null : geo.LatLon(widget.initialPos.latitude, widget.initialPos.longitude);
+      _controller.text = widget.initialValue;
+    }
+
+    if (pos == null && trimNull(_controller.text).isNotEmpty && !isInError) {
+      forwardPosition();
+    } else if (pos != null && trimNull(_controller.text).isEmpty && !isInError) {
+      reversePosition();
+    }
+
+    return myField(
+      widget.labels,
+      widget.richiesto,
+      isGeocoding
+          ? Container(height: 6.58.h, child: Loader())
+          : Column(
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: TypeAheadFormField(
+                        textFieldConfiguration: TextFieldConfiguration(
+                          style: style,
+                          decoration: InputDecoration(
+                            isDense: true,
+                            hintText: widget.hint,
+                            contentPadding: contentPadding,
+                            border: InputBorder.none,
+                          ),
+                          controller: _controller,
+                        ),
+                        hideOnEmpty: true,
+                        hideOnError: true,
+                        keepSuggestionsOnLoading: false,
+                        suggestionsCallback: widget.suggestionsCallback,
+                        suggestionsBoxDecoration: SuggestionsBoxDecoration(constraints: BoxConstraints(minHeight: 300)),
+                        itemBuilder: (context, String suggestion) {
+                          return ListTile(
+                            title: Text(suggestion),
+                          );
+                        },
+                        transitionBuilder: (context, suggestionsBox, controller) {
+                          return suggestionsBox;
+                        },
+                        onSuggestionSelected: (String suggestion) {
+                          _controller.text = (widget.editSelected == null) ? suggestion : widget.editSelected(suggestion);
+                          forwardPosition();
+                          setState(() {
+                            valSelected = _controller.text;
+                          });
+                        },
+                        validator: (value) {
+                          String ret;
+                          if (trimNull(value).isEmpty) {
+                            if (widget.richiesto) return (widget.errText == null ? 'Selezionare un valore' : widget.errText);
+                          } else {
+                            if (widget.onlySelected && value != valSelected) {
+                              ret = 'Il valore deve essere selezionato dalla lista';
+                              Scrollable.ensureVisible(context);
+                              return ret;
+                            }
+                          }
+
+                          return null;
+                        },
+                        onSaved: (value) {
+                          if (pos != null) {
+                            LatLng gps = LatLng(pos.latitude, pos.longitude);
+                            widget.setField(gps, value);
+                          }
+                        },
+                      ),
+                    ),
+                    if (widget.showBtnPos)
+                      IconButton(
+                        alignment: Alignment.centerRight,
+                        padding: EdgeInsets.all(0),
+                        icon: Image.asset("assets/images/center_icon.png", color: viola, height: 21),
+                        onPressed: takePosition,
+                      ),
+                  ],
+                ),
+                Divider(
+                  color: Colors.grey,
+                  thickness: 1,
+                  height: 1,
+                )
+              ],
+            ),
     );
   }
 }

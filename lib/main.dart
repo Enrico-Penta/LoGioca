@@ -6,6 +6,7 @@ import 'package:sizer/sizer_util.dart';
 import 'login.dart';
 
 Utente utente = new Utente();
+const String geocodingApiKey = "AIzaSyBT2WSx-HE_JXiu5rc-AqB6Z-cDwmd0tfw";
 
 void main() {
   runApp(MyApp());
