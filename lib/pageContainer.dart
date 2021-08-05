@@ -63,6 +63,7 @@ class _PageContainerState extends State<PageContainer> {
             padding: EdgeInsets.only(left: 5.0.w),
             icon: !checkNotifiche ? Image.asset("assets/images/icon_notificaOff.png") : Image.asset("assets/images/Icon_notificaOn.png"),
             onPressed: () {
+              getchecklastNotificheAll();
               Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageNotifiche()));
             },
           ),
