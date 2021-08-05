@@ -25,10 +25,22 @@ class _PageNotificheState extends State<PageNotifiche> {
     });
   }
 
+  Future<void> setchecklastNotificheAll() async {
+    int esito;
+    try {
+      await setNotifiche(utente.id).then((value) {
+        esito = value;
+      });
+    } catch (e) {
+      esito = 0;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     controller = new ScrollController();
+    setchecklastNotificheAll();
   }
 
   Future<void> accettaAmicizia(String data) async {

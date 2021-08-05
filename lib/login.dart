@@ -37,7 +37,7 @@ class _LoginState extends State<Login> {
   @override
   void initState() {
     caricamento = false;
-    tutorial = true;
+    tutorial = false;
 
     getEmailUser();
     super.initState();
