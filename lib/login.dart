@@ -6,6 +6,7 @@ import 'package:logioca/main.dart';
 import 'package:logioca/pageContainer.dart';
 import 'package:logioca/pageRecuperoPsw.dart';
 import 'package:logioca/pageRegistrazione.dart';
+import 'package:logioca/pageTutorial.dart';
 import 'package:logioca/widgets/fields.dart';
 import 'package:sizer/sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,6 +18,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool caricamento;
+  bool tutorial;
 
   Future<void> setLocalStorage(String email, String password) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -35,6 +37,7 @@ class _LoginState extends State<Login> {
   @override
   void initState() {
     caricamento = false;
+    tutorial = true;
 
     getEmailUser();
     super.initState();
@@ -106,7 +109,9 @@ class _LoginState extends State<Login> {
                           if (value.id != null) {
                             setLocalStorage(utente.email, utente.password);
                             utente.id = value.id;
-                            Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageContainer()));
+                            tutorial
+                                ? Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageTutorial()))
+                                : Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageContainer()));
                           } else {
                             setState(() {
                               caricamento = false;
