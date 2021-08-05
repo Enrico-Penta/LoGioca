@@ -2,27 +2,34 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logioca/widgets/sliderTutorial.dart';
 import 'package:sizer/sizer.dart';
-import 'common.dart';
-
-final keyTutorial = GlobalKey<PageTutorialState>();
 
 class PageTutorial extends StatefulWidget {
-  int index;
-  PageTutorial({this.index});
+  PageTutorial({Key key}) : super(key: key);
   @override
   PageTutorialState createState() => PageTutorialState();
 }
 
 class PageTutorialState extends State<PageTutorial> {
-  @override
   PageController _myPage;
   int indiceSlider = 0;
-
-  void setIndiceSlider(int i) {
-    setState(() {
-      indiceSlider = i;
-    });
-  }
+  final List<Widget> listaImmagini = [
+    Image(
+      image: AssetImage("assets/images/schedaEventoTutorial1.png"),
+      fit: BoxFit.contain,
+    ),
+    Image(
+      image: AssetImage("assets/images/schedaEventoTutorial2.png"),
+      fit: BoxFit.contain,
+    ),
+    Image(
+      image: AssetImage("assets/images/schedaEventoTutorial3.png"),
+      fit: BoxFit.contain,
+    ),
+    Image(
+      image: AssetImage("assets/images/schedaEventoTutorial4.png"),
+      fit: BoxFit.contain,
+    ),
+  ];
 
   @override
   void initState() {
@@ -52,13 +59,19 @@ class PageTutorialState extends State<PageTutorial> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Come funziona (1/3)",
+                              "Come funziona (${indiceSlider + 1}/${listaImmagini.length})",
                               style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold),
                             )
                           ],
                         ),
                       ),
-                      TutorialSlider()
+                      TutorialSlider(
+                          setField: (val) {
+                            setState(() {
+                              indiceSlider = val;
+                            });
+                          },
+                          itemList: listaImmagini)
                     ],
                   ),
                 ),

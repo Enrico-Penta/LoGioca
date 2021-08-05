@@ -1,32 +1,12 @@
-import 'package:logioca/pageTutorial.dart';
-import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'dart:io';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import '../login.dart';
-
-final List<Widget> itemList = [
-  Image(
-    image: AssetImage("assets/images/schedaEventoTutorial1.png"),
-    fit: BoxFit.contain,
-  ),
-  Image(
-    image: AssetImage("assets/images/schedaEventoTutorial2.png"),
-    fit: BoxFit.contain,
-  ),
-  Image(
-    image: AssetImage("assets/images/schedaEventoTutorial3.png"),
-    fit: BoxFit.contain,
-  ),
-  Image(
-    image: AssetImage("assets/images/schedaEventoTutorial4.png"),
-    fit: BoxFit.contain,
-  ),
-];
-
 class TutorialSlider extends StatefulWidget {
+  final void Function(int) setField;
+  List<Widget> itemList;
+  TutorialSlider({this.setField, this.itemList});
+
   @override
   TutorialSliderState createState() => TutorialSliderState();
 }
@@ -59,16 +39,16 @@ class TutorialSliderState extends State<TutorialSlider> {
                   setState(() {
                     _current = index;
                   });
-                  keyTutorial.currentState.setIndiceSlider(_current);
+                  widget.setField(_current);
                 }),
-            items: itemList,
+            items: widget.itemList,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 50.0),
+          padding: const EdgeInsets.only(top: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: itemList.asMap().entries.map((entry) {
+            children: widget.itemList.asMap().entries.map((entry) {
               return GestureDetector(
                 onTap: () => controller.animateToPage(entry.key),
                 child: Container(
