@@ -35,7 +35,11 @@ class _PageProfiloState extends State<PageProfilo> {
     });
 
     await getClassifica(1).then((value) {
-      statisticheGiocatore = value.listaGiocatori.where((element) => element.idUser == widget.id).first;
+      try {
+        statisticheGiocatore = value.listaGiocatori.where((element) => element.idUser == widget.id).first;
+      } catch (e) {
+        statisticheGiocatore = null;
+      }
       caricamentoStatistiche = true;
     });
 
