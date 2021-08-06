@@ -31,13 +31,14 @@ class _LoginState extends State<Login> {
     setState(() {
       utente.email = prefs.getString('email') ?? '';
       utente.password = prefs.getString('password') ?? '';
+      tutorial = prefs.getBool('LookTutorial') ?? true;
     });
   }
 
   @override
   void initState() {
     caricamento = false;
-    tutorial = false;
+    tutorial = true;
 
     getEmailUser();
     super.initState();

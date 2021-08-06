@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logioca/homePage.dart';
 import 'package:logioca/widgets/sliderTutorial.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
 import '../pageContainer.dart';
@@ -33,6 +34,11 @@ class PageTutorial3State extends State<PageTutorial3> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Future<void> setLocalStorageTutorial() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('LookTutorial', false);
   }
 
   Widget build(BuildContext context) {
@@ -115,6 +121,7 @@ class PageTutorial3State extends State<PageTutorial3> {
                       height: 10.0.h,
                       child: TextButton(
                         onPressed: () {
+                          //setLocalStorageTutorial();
                           Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageContainer()));
                         },
                         child: Container(
