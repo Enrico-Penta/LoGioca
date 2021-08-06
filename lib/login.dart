@@ -6,7 +6,7 @@ import 'package:logioca/main.dart';
 import 'package:logioca/pageContainer.dart';
 import 'package:logioca/pageRecuperoPsw.dart';
 import 'package:logioca/pageRegistrazione.dart';
-import 'package:logioca/pageTutorial.dart';
+import 'package:logioca/tutorial/pageTutorial.dart';
 import 'package:logioca/widgets/fields.dart';
 import 'package:sizer/sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
