@@ -8,7 +8,10 @@ import 'package:logioca/pageEvento.dart';
 import 'package:logioca/pageNotifiche.dart';
 import 'package:logioca/pageProfilo.dart';
 import 'package:sizer/sizer.dart';
+import 'api.dart';
 import 'common.dart';
+
+bool globalCheckNotifiche = false;
 
 class PageContainer extends StatefulWidget {
   int index;
@@ -21,6 +24,7 @@ class _PageContainerState extends State<PageContainer> {
   @override
   PageController _myPage;
   var selectedPage;
+  bool checkNotifiche = false;
 
   @override
   void initState() {
@@ -34,7 +38,22 @@ class _PageContainerState extends State<PageContainer> {
     }
   }
 
+  Future<void> getchecklastNotificheAll() async {
+    try {
+      await getlastNotifica(utente.id).then((value) {
+        if (value != checkNotifiche) {
+          setState(() {
+            checkNotifiche = value;
+          });
+        }
+      });
+    } catch (e) {
+      checkNotifiche = false;
+    }
+  }
+
   Widget build(BuildContext context) {
+    getchecklastNotificheAll();
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -42,8 +61,9 @@ class _PageContainerState extends State<PageContainer> {
           centerTitle: true,
           leading: IconButton(
             padding: EdgeInsets.only(left: 5.0.w),
-            icon: Image.asset("assets/images/icon_notificaOff.png"),
+            icon: !checkNotifiche ? Image.asset("assets/images/icon_notificaOff.png") : Image.asset("assets/images/Icon_notificaOn.png"),
             onPressed: () {
+              getchecklastNotificheAll();
               Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageNotifiche()));
             },
           ),

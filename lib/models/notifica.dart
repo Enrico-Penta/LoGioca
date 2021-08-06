@@ -4,14 +4,16 @@ class Notifica {
   int id;
   String corpo;
   String data;
+  String dataLettura;
 
-  Notifica({this.id, this.corpo, this.data});
+  Notifica({this.id, this.corpo, this.data, this.dataLettura});
 
   factory Notifica.fromJson(Map<String, dynamic> json) {
     return Notifica(
       id: json['IdUser'],
       corpo: json['Corpo'],
       data: json['ContentAccetta'],
+      dataLettura: json['DataLettura'],
     );
   }
 }

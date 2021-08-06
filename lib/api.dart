@@ -378,6 +378,46 @@ Future<ListaNotifiche> getNotifiche(int idUser) async {
   }
 }
 
+Future<bool> getlastNotifica(int idUser) async {
+  final response = await http.post(
+    Uri.parse('https://logiocarest.azurewebsites.net/notifica/getNotifica'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, Object>{'idUser': idUser}),
+  );
+
+  if (response.statusCode == 200 || response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    return ListaNotifiche.fromJson(jsonDecode(response.body)).listaNotifiche.first.dataLettura != null ? false : true;
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    return false;
+  }
+}
+
+Future<int> setNotifiche(int idUser) async {
+  final response = await http.post(
+    Uri.parse('https://logiocarest.azurewebsites.net/notifica/setNotifica'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, Object>{'idUser': idUser}),
+  );
+
+  if (response.statusCode == 200 || response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    return 1;
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    return 0;
+  }
+}
+
 Future<int> setAmicizia(String data) async {
   final response = await http.post(
     Uri.parse('https://logiocarest.azurewebsites.net/user/amicizia/'),
