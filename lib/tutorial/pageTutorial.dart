@@ -15,21 +15,258 @@ class PageTutorialState extends State<PageTutorial> {
   PageController _myPage;
   int indiceSlider = 0;
   final List<Widget> listaImmagini = [
-    Image(
-      image: AssetImage("assets/images/schedaEventoTutorial1.png"),
-      fit: BoxFit.contain,
+    Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 50),
+              width: 100.0.w,
+              height: 55.0.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: -20,
+                    blurRadius: 30,
+                    offset: Offset(0, 5),
+                  )
+                ],
+                image: DecorationImage(
+                  image: AssetImage("assets/images/schedaEventoTutorial1.png"),
+                  fit: BoxFit.fitWidth,
+                  alignment: AlignmentDirectional.center,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Container(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+                child: Row(
+                  children: [
+                    Text(
+                      getTutorial(0)[0],
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        color: Color(0xFF5C5C5C),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    width: 100.0.w,
+                    child: Text(
+                      getTutorial(0)[1],
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 20,
+                        color: Color(0xFF7C7C7C),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     ),
-    Image(
-      image: AssetImage("assets/images/schedaEventoTutorial2.png"),
-      fit: BoxFit.contain,
+    Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 100.0.w,
+              height: 55.0.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: -20,
+                    blurRadius: 30,
+                    offset: Offset(0, 5),
+                  )
+                ],
+                image: DecorationImage(
+                  image: AssetImage("assets/images/schedaEventoTutorial2.png"),
+                  fit: BoxFit.fitWidth,
+                  alignment: AlignmentDirectional.center,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+          child: Row(
+            children: [
+              Text(
+                getTutorial(1)[0],
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Color(0xFF5C5C5C),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              width: 100.0.w,
+              child: Text(
+                getTutorial(1)[1],
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 20,
+                  color: Color(0xFF7C7C7C),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     ),
-    Image(
-      image: AssetImage("assets/images/schedaEventoTutorial3.png"),
-      fit: BoxFit.contain,
+    Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 100.0.w,
+              height: 50.0.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: -20,
+                    blurRadius: 30,
+                    offset: Offset(0, 5),
+                  )
+                ],
+                image: DecorationImage(
+                  image: AssetImage("assets/images/schedaEventoTutorial3.png"),
+                  fit: BoxFit.fitWidth,
+                  alignment: AlignmentDirectional.center,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+          child: Row(
+            children: [
+              Text(
+                getTutorial(2)[0],
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Color(0xFF5C5C5C),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              width: 100.0.w,
+              child: Text(
+                getTutorial(2)[1],
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 20,
+                  color: Color(0xFF7C7C7C),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     ),
-    Image(
-      image: AssetImage("assets/images/schedaEventoTutorial4.png"),
-      fit: BoxFit.contain,
+    Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 100.0.w,
+              height: 50.0.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: -20,
+                    blurRadius: 30,
+                    offset: Offset(0, 5),
+                  )
+                ],
+                image: DecorationImage(
+                  image: AssetImage("assets/images/schedaEventoTutorial4.png"),
+                  fit: BoxFit.fitWidth,
+                  alignment: AlignmentDirectional.center,
+                  scale: 0.8,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+          child: Row(
+            children: [
+              Text(
+                getTutorial(3)[0],
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Color(0xFF5C5C5C),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              width: 100.0.w,
+              child: Text(
+                getTutorial(3)[1],
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 20,
+                  color: Color(0xFF7C7C7C),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     ),
   ];
 
@@ -44,77 +281,37 @@ class PageTutorialState extends State<PageTutorial> {
         physics: NeverScrollableScrollPhysics(),
         controller: _myPage,
         children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Stack(
+            alignment: AlignmentDirectional.bottomCenter,
             children: [
-              Container(
-                width: 100.0.w,
-                height: 55.0.h,
-                color: Color(0xFFC9CFD6),
-                child: Padding(
-                  padding: const EdgeInsets.all(25.0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15, bottom: 50),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              /*"Come funziona (${indiceSlider + 1}/${listaImmagini.length})",*/
-                              "Come funziona (1/3)",
-                              style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      ),
-                      TutorialSlider(
-                          setField: (val) {
-                            setState(() {
-                              indiceSlider = val;
-                            });
-                          },
-                          itemList: listaImmagini)
-                    ],
-                  ),
-                ),
-              ),
-              Column(
+              Stack(
+                alignment: AlignmentDirectional.topCenter,
                 children: [
+                  TutorialSlider(
+                    setField: (val) {
+                      setState(() {
+                        indiceSlider = val;
+                      });
+                    },
+                    itemList: listaImmagini,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+                    padding: const EdgeInsets.only(top: 40, bottom: 0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          getTutorial(this.indiceSlider)[0],
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                          ),
-                        ),
+                          "Homepage (${indiceSlider + 1}/${listaImmagini.length})",
+                          style: TextStyle(color: Color(0xFF5C5C5C), fontSize: 24, fontWeight: FontWeight.bold),
+                        )
                       ],
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        width: 100.0.w,
-                        child: Text(
-                          getTutorial(this.indiceSlider)[1],
-                          style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               ),
               indiceSlider == 3
                   ? Container(
-                      margin: EdgeInsets.only(top: 5.0.h),
+                      margin: EdgeInsets.only(bottom: 8.0.h),
                       height: 10.0.h,
                       child: TextButton(
                         onPressed: () {
@@ -135,7 +332,7 @@ class PageTutorialState extends State<PageTutorial> {
                     )
                   : SizedBox()
             ],
-          )
+          ),
         ],
       ),
     );

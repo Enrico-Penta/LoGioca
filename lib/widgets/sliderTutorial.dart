@@ -25,13 +25,14 @@ class TutorialSliderState extends State<TutorialSlider> {
 
     return Column(
       key: Key(DateTime.now().toString()),
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
       children: [
         Container(
           child: CarouselSlider(
             carouselController: controller,
             options: CarouselOptions(
+                height: 90.0.h,
                 initialPage: _current,
                 autoPlay: false,
                 viewportFraction: 1,
