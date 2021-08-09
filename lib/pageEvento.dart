@@ -26,7 +26,7 @@ class _PageEventoState extends State<PageEvento> {
   go.GooglePlace googlePlace;
 
   void autoCompletePosition(String value) async {
-    if (value.contains(",")) {
+    if (value.length > 4) {
       googlePlace = go.GooglePlace(geocodingApiKey);
       var result = await googlePlace.autocomplete.get(value, language: 'it' /*, types: 'food'*/);
       if (result != null && result.predictions != null && mounted) {

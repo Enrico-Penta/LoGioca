@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:logioca/models/evento.dart';
 import 'package:logioca/pageContainer.dart';
 import 'package:logioca/pageProfiloUtente.dart';
+import 'package:logioca/widgets/fields.dart';
 
 import 'api.dart';
 import 'common.dart';
@@ -11,15 +12,15 @@ import 'package:sizer/sizer.dart';
 import 'main.dart';
 import 'models/partecipanti.dart';
 
-class PageDettagli extends StatefulWidget {
-  PageDettagli(this.evento, {Key key}) : super(key: key);
+class PageStatistiche extends StatefulWidget {
+  PageStatistiche(this.evento, {Key key}) : super(key: key);
 
   Evento evento;
   @override
-  _PageDettagliState createState() => _PageDettagliState();
+  _PageStatisticheState createState() => _PageStatisticheState();
 }
 
-class _PageDettagliState extends State<PageDettagli> {
+class _PageStatisticheState extends State<PageStatistiche> {
   Partecipanti listaPartecipanti;
   bool caricamento = false;
   Future<Partecipanti> getGiocatori() async {
@@ -30,6 +31,7 @@ class _PageDettagliState extends State<PageDettagli> {
 
       caricamento = true;
     });
+    return listaPartecipanti;
   }
 
   @override
@@ -141,7 +143,7 @@ class _PageDettagliState extends State<PageDettagli> {
                         Container(
                           padding: EdgeInsets.all(16),
                           color: Colors.grey[200],
-                          child: Text("Qui sono disponibili le squadre quando l'organizzatore le inserirà."),
+                          child: Text("Clicca i giocatori che hanno segnato per registrare i gol."),
                         ),
                         SizedBox(
                           height: 16,
@@ -158,7 +160,9 @@ class _PageDettagliState extends State<PageDettagli> {
                                     if (listaPartecipanti.listaPartecipanti[i].idSquadra == 1)
                                       GestureDetector(
                                         onTap: () {
-                                          listaPartecipanti.listaPartecipanti[i].idUser != utente.id
+                                          popupGol(context, listaPartecipanti.listaPartecipanti[i].idUser,
+                                              listaPartecipanti.listaPartecipanti[i].nome);
+                                          /*listaPartecipanti.listaPartecipanti[i].idUser != utente.id
                                               ? Navigator.push(
                                                   context,
                                                   new MaterialPageRoute(
@@ -169,7 +173,7 @@ class _PageDettagliState extends State<PageDettagli> {
                                                   new MaterialPageRoute(
                                                       builder: (BuildContext context) => new PageContainer(
                                                             index: 2,
-                                                          )));
+                                                          )));*/
                                         },
                                         child: Column(
                                           children: [
@@ -199,7 +203,9 @@ class _PageDettagliState extends State<PageDettagli> {
                                     if (listaPartecipanti.listaPartecipanti[i].idSquadra == 2)
                                       GestureDetector(
                                         onTap: () {
-                                          listaPartecipanti.listaPartecipanti[i].idUser != utente.id
+                                          popupGol(context, listaPartecipanti.listaPartecipanti[i].idUser,
+                                              listaPartecipanti.listaPartecipanti[i].nome);
+                                          /*listaPartecipanti.listaPartecipanti[i].idUser != utente.id
                                               ? Navigator.push(
                                                   context,
                                                   new MaterialPageRoute(
@@ -210,7 +216,7 @@ class _PageDettagliState extends State<PageDettagli> {
                                                   new MaterialPageRoute(
                                                       builder: (BuildContext context) => new PageContainer(
                                                             index: 2,
-                                                          )));
+                                                          )));*/
                                         },
                                         child: Column(
                                           children: [
@@ -239,5 +245,45 @@ class _PageDettagliState extends State<PageDettagli> {
             ]),
           )));
         });
+  }
+
+  popupGol(BuildContext context, int idGiocatore, String nomeGiocatore, {bool errore: false}) {
+    final keyform = GlobalKey<FormState>();
+    String nGol;
+    return showDialog(
+        context: context,
+        builder: (_) => new AlertDialog(
+              title: new Text("Quanti gol ha fatto $nomeGiocatore ?"),
+              content: Container(
+                  height: 30.0.h,
+                  child: Column(
+                    children: [
+                      Form(
+                        key: keyform,
+                        child: MyTextField(["Gol"], initialValue: "", setField: (value) {
+                          nGol = value;
+                        }),
+                      ),
+                      SizedBox(height: 5.0.h),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.all(1.0.h),
+                            backgroundColor: Color(0xFF2F267A),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0))),
+                        onPressed: () {},
+                        child: Text(
+                          "Salva",
+                          style: TextStyle(color: Colors.white, fontSize: 5.0.w, fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                      !errore
+                          ? SizedBox()
+                          : Text("Valore non valido!",
+                              style: TextStyle(
+                                color: Colors.red,
+                              ))
+                    ],
+                  )),
+            ));
   }
 }

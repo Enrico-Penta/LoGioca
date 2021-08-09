@@ -12,6 +12,7 @@ import 'package:logioca/pageContainer.dart';
 import 'package:logioca/pageCreaSquadre.dart';
 import 'package:logioca/pageDettagli.dart';
 import 'package:logioca/pageMappa.dart';
+import 'package:logioca/pageStatistiche.dart';
 import 'package:logioca/pageVoto.dart';
 import 'package:sizer/sizer.dart';
 import 'api.dart';
@@ -271,6 +272,7 @@ class _CardEventState extends State<CardEvent> {
 
   statistiche(Evento evento) {
     return Positioned(
+      width: 35.0.w,
       top: 1.0.h,
       right: 0,
       child: TextButton(
@@ -281,7 +283,7 @@ class _CardEventState extends State<CardEvent> {
             getEvento(8, 1).then((value) {
               print(value);
             });*/
-            Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageCreaSquadre(evento, context)));
+            Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageStatistiche(evento)));
           },
           style: TextButton.styleFrom(
             alignment: Alignment.topRight,
