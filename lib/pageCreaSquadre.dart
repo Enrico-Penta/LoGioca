@@ -162,6 +162,12 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                   caricamento
                       ? Expanded(
                           child: ListView(children: [
+                          Container(
+                            padding: EdgeInsets.all(16),
+                            color: Colors.grey[200],
+                            child: Text(
+                                "Per creare le squadre trascina i giocatori disponibili a sinistra o destra per assegnarli alla squadra bianca o nera."),
+                          ),
                           if (listaPartecipanti != null)
                             Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                               DragTarget<Partecipante>(
@@ -180,12 +186,17 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                                         for (var j = 0; j < listaSquadraA?.length; j++)
                                           Column(children: [
                                             SizedBox(height: 5.0.h),
-                                            CircleAvatar(
-                                              backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
-                                            ),
-                                            Text(listaSquadraA[j]?.nome),
-                                            Text(listaSquadraA[j]?.cognome),
-                                            TextButton(
+                                            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                                              CircleAvatar(
+                                                backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
+                                              ),
+                                              IconButton(
+                                                padding: EdgeInsets.zero,
+                                                alignment: Alignment.topCenter,
+                                                icon: Icon(
+                                                  Icons.cancel,
+                                                  color: Colors.red,
+                                                ),
                                                 onPressed: () {
                                                   deleteFromSquadra(listaSquadraA[j]?.idUser, widget.evento.id, 0).then((value) {
                                                     setState(() {
@@ -195,7 +206,10 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                                                     });
                                                   });
                                                 },
-                                                child: Icon(Icons.delete))
+                                              ),
+                                            ]),
+                                            Text(listaSquadraA[j]?.nome),
+                                            Text(listaSquadraA[j]?.cognome),
                                           ]),
                                       ],
                                     ),
@@ -224,6 +238,15 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                                 //colonna centrale
                                 !spostamentoGiocatore
                                     ? Column(children: [
+                                        Container(
+                                          width: 32.0.w,
+                                          padding: EdgeInsets.all(4),
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "Disponibili",
+                                            style: TextStyle(color: viola, fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
                                         for (var i = 0; i < listaPartecipanti.listaPartecipanti.length; i++)
                                           Draggable<Partecipante>(
                                             key: Key(DateTime.now().toIso8601String()),
@@ -231,18 +254,21 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                                             child: Container(
                                                 alignment: Alignment.topCenter,
                                                 width: 32.0.w,
-                                                padding: EdgeInsets.only(top: 5.0.h),
+                                                padding: EdgeInsets.only(top: 2.0.h),
                                                 child: Column(children: [
                                                   CircleAvatar(
                                                     backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
                                                   ),
+                                                  SizedBox(
+                                                    height: 0.5.h,
+                                                  ),
                                                   Text(
                                                     listaPartecipanti?.listaPartecipanti[i].nome,
-                                                    style: TextStyle(fontSize: 3.0.w),
+                                                    style: TextStyle(fontSize: 3.5.w),
                                                   ),
                                                   Text(
                                                     listaPartecipanti?.listaPartecipanti[i].cognome,
-                                                    style: TextStyle(fontSize: 3.0.w),
+                                                    style: TextStyle(fontSize: 3.5.w),
                                                   )
                                                 ])),
                                             feedback: Material(
@@ -282,22 +308,33 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                                         for (var j = 0; j < listaSquadraB.length; j++)
                                           Column(children: [
                                             SizedBox(height: 5.0.h),
-                                            CircleAvatar(
-                                              backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                CircleAvatar(
+                                                  backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
+                                                ),
+                                                IconButton(
+                                                  padding: EdgeInsets.zero,
+                                                  alignment: Alignment.topCenter,
+                                                  icon: Icon(
+                                                    Icons.cancel,
+                                                    color: Colors.red,
+                                                  ),
+                                                  onPressed: () {
+                                                    deleteFromSquadra(listaSquadraB[j]?.idUser, widget.evento.id, 0).then((value) {
+                                                      setState(() {
+                                                        listaPanchina.clear();
+                                                        listaSquadraA.clear();
+                                                        listaSquadraB.clear();
+                                                      });
+                                                    });
+                                                  },
+                                                )
+                                              ],
                                             ),
                                             Text(listaSquadraB[j].nome),
                                             Text(listaSquadraB[j].cognome),
-                                            TextButton(
-                                                onPressed: () {
-                                                  deleteFromSquadra(listaSquadraB[j]?.idUser, widget.evento.id, 0).then((value) {
-                                                    setState(() {
-                                                      listaPanchina.clear();
-                                                      listaSquadraA.clear();
-                                                      listaSquadraB.clear();
-                                                    });
-                                                  });
-                                                },
-                                                child: Icon(Icons.delete))
                                           ]),
                                       ],
                                     ),
