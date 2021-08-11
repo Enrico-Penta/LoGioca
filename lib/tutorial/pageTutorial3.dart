@@ -39,7 +39,7 @@ class PageTutorial3State extends State<PageTutorial3> {
                     )
                   ],
                   image: DecorationImage(
-                    image: AssetImage("assets/images/creatoreTutorial1.png"),
+                    image: AssetImage("assets/images/votaGiocatore1.png"),
                     fit: BoxFit.fitWidth,
                     alignment: AlignmentDirectional.center,
                   ),
@@ -103,7 +103,7 @@ class PageTutorial3State extends State<PageTutorial3> {
                     )
                   ],
                   image: DecorationImage(
-                    image: AssetImage("assets/images/creatoreTutorial2.png"),
+                    image: AssetImage("assets/images/votaGiocatore2.png"),
                     fit: BoxFit.fitWidth,
                     alignment: AlignmentDirectional.center,
                   ),
@@ -167,7 +167,7 @@ class PageTutorial3State extends State<PageTutorial3> {
                     )
                   ],
                   image: DecorationImage(
-                    image: AssetImage("assets/images/creatoreTutorial3.png"),
+                    image: AssetImage("assets/images/votaGiocatore3.png"),
                     fit: BoxFit.fitWidth,
                     alignment: AlignmentDirectional.center,
                   ),
