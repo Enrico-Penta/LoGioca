@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:intl/intl.Dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/countdown.dart';
 import 'package:flutter_countdown_timer/countdown_controller.dart';
@@ -14,6 +14,7 @@ import 'package:logioca/pageDettagli.dart';
 import 'package:logioca/pageMappa.dart';
 import 'package:logioca/pageStatistiche.dart';
 import 'package:logioca/pageVoto.dart';
+import 'package:logioca/widgets/fields.dart';
 import 'package:sizer/sizer.dart';
 import 'api.dart';
 import 'common.dart';
@@ -87,6 +88,7 @@ class CardEvent extends StatefulWidget {
   CardEvent(this.evento, {Key key}) : super(key: key);
 
   final Evento evento;
+
   @override
   _CardEventState createState() => _CardEventState();
 }
@@ -99,39 +101,66 @@ class _CardEventState extends State<CardEvent> {
       width: double.infinity,
       child: Column(
         children: [
-          Stack(children: [
-            Container(
-              height: 25.0.h,
-              width: double.infinity,
-              margin: EdgeInsets.zero,
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage("assets/images/sport_calcio.png"), fit: BoxFit.cover),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
+          GestureDetector(
+            onTap: () {
+              widget.evento.idCreatore == utente.id
+                  ? DateTime.now().isBefore(widget.evento.data)
+                      ? Navigator.push(
+                          context, new MaterialPageRoute(builder: (BuildContext context) => new PageCreaSquadre(widget.evento, context)))
+                      : Navigator.push(
+                          context, new MaterialPageRoute(builder: (BuildContext context) => new PageStatistiche(widget.evento)))
+                  : Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageDettagli(widget.evento)));
+              print("ciao");
+            },
+            child: Stack(children: [
+              Container(
+                height: 25.0.h,
+                width: double.infinity,
+                margin: EdgeInsets.zero,
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage("assets/images/sport_calcio.png"), fit: BoxFit.cover),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
                 ),
               ),
-            ),
-            widget.evento.idCreatore == utente.id
-                ? DateTime.now().isBefore(widget.evento.data)
-                    ? creaSquadre(widget.evento)
-                    : statistiche(widget.evento)
-                : dettagli(widget.evento),
-            Container(
-              width: 50.0.w,
-              height: 25.0.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(10)),
-                color: Colors.blue[50].withOpacity(0.5),
-              ),
-              child: ClipRect(
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
-                  child: Padding(padding: EdgeInsets.all(2.0.w), child: infoEvento(widget.evento)),
+              /*widget.evento.idCreatore == utente.id
+                  ? DateTime.now().isBefore(widget.evento.data)
+                      ? creaSquadre(widget.evento)
+                      : statistiche(widget.evento)
+                  : dettagli(widget.evento),*/
+              widget.evento.dataPartecipa != null
+                  ? Positioned(
+                      right: 10,
+                      top: 10,
+                      child: Container(
+                        child: Icon(
+                          Icons.person,
+                          size: 12.0.w,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  : SizedBox(),
+              Container(
+                width: 50.0.w,
+                height: 25.0.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10)),
+                  color: Colors.blue[50].withOpacity(0.5),
+                ),
+                child: ClipRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                    child: Padding(
+                        padding: EdgeInsets.all(2.0.w),
+                        child: DateTime.now().isBefore(widget.evento.data) ? infoEvento(widget.evento) : infoEventoFinito(widget.evento)),
+                  ),
                 ),
               ),
-            )
-          ]),
+            ]),
+          ),
           SizedBox(
             width: double.infinity,
             height: 7.0.h,
@@ -152,7 +181,7 @@ class _CardEventState extends State<CardEvent> {
           padding: EdgeInsets.all(0),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
-              side: BorderSide(color: Colors.black))),
+              side: BorderSide(color: Colors.black26))),
       onPressed: () {
         setPartecipa(utente.id, evento.id).then((value) {
           setState(() {
@@ -167,7 +196,7 @@ class _CardEventState extends State<CardEvent> {
   bottoneElimina(Evento evento) {
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: arancione,
+        backgroundColor: Color(0xFFD7422A),
         padding: EdgeInsets.all(0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
@@ -188,7 +217,7 @@ class _CardEventState extends State<CardEvent> {
   bottoneVota(Evento evento) {
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: Color(0xFF8FC1FA),
+        backgroundColor: Color(0xFF2274D4),
         padding: EdgeInsets.all(0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
@@ -308,11 +337,13 @@ class _CardEventState extends State<CardEvent> {
   }
 
   infoEvento(Evento evento) {
-    String dataEora = evento.data.toString();
-    String data = dataEora.split(" ")[0].toString();
-    String ora = dataEora.split(" ")[1].toString();
-    String oraFormattata = ora.split(":")[0] + ":" + ora.split(":")[1];
+    DateTime dataEora = evento.data;
+    DateFormat formatoData = DateFormat("dd-MM-yyyy");
+    String data = formatoData.format(dataEora);
+    DateFormat formatoOrario = DateFormat("HH:mm");
+    String orario = formatoOrario.format(dataEora);
     int endTime = evento.data.millisecondsSinceEpoch;
+
     CountdownTimerController controller = CountdownTimerController(endTime: endTime, onEnd: onEnd);
 
     return Container(
@@ -352,7 +383,7 @@ class _CardEventState extends State<CardEvent> {
               SizedBox(
                 width: 2.0.w,
               ),
-              Text(data,
+              Text(data.toString(),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,
@@ -375,7 +406,7 @@ class _CardEventState extends State<CardEvent> {
                 width: 2.0.w,
               ),
               Text(
-                oraFormattata,
+                orario,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: Colors.white,
@@ -455,6 +486,95 @@ class _CardEventState extends State<CardEvent> {
           ),
         ],
       ),
+    );
+  }
+
+  infoEventoFinito(Evento evento) {
+    DateTime dataEora = evento.data;
+    DateFormat formatoData = DateFormat("dd-MM-yyyy");
+    String data = formatoData.format(dataEora);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.calendar_today_rounded,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 2.0.w,
+            ),
+            Text(
+              data,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 4.0.w,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Image(
+                    image: AssetImage("assets/images/SquadraBianca.png"),
+                    width: 12.0.w,
+                  ),
+                ),
+                Text(
+                  "2",
+                  style: TextStyle(color: Colors.white, fontSize: 32),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Image(
+                    image: AssetImage("assets/images/SquadraNera.png"),
+                    width: 12.0.w,
+                  ),
+                ),
+                Text(
+                  "2",
+                  style: TextStyle(color: Colors.white, fontSize: 32),
+                ),
+              ],
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.location_on,
+              color: Colors.white,
+            ),
+            Container(
+              width: 30.0.w,
+              child: Text(widget.evento.luogo,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 4.0.w,
+                  )),
+            )
+          ],
+        ),
+      ],
     );
   }
 }
