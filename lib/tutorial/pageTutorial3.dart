@@ -258,7 +258,7 @@ class PageTutorial3State extends State<PageTutorial3> {
               ),
               indiceSlider == 2
                   ? Container(
-                      margin: EdgeInsets.only(bottom: 5.0.h),
+                      margin: EdgeInsets.only(bottom: 8.0.h),
                       height: 10.0.h,
                       child: TextButton(
                         onPressed: () {
@@ -277,7 +277,15 @@ class PageTutorial3State extends State<PageTutorial3> {
                         ),
                       ),
                     )
-                  : SizedBox()
+                  : Container(
+                      margin: EdgeInsets.only(bottom: 8.0.h),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageContainer()));
+                        },
+                        child: Text("Salta il tutorial"),
+                      ),
+                    )
             ],
           )
         ],

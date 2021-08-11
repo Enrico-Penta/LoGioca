@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logioca/homePage.dart';
+import 'package:logioca/pageContainer.dart';
 import 'package:logioca/tutorial/pageTutorial2.dart';
 import 'package:logioca/widgets/sliderTutorial.dart';
 import 'package:sizer/sizer.dart';
@@ -151,7 +152,7 @@ class PageTutorialState extends State<PageTutorial> {
           children: [
             Container(
               width: 100.0.w,
-              height: 50.0.h,
+              height: 55.0.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
                 color: Colors.white,
@@ -213,7 +214,7 @@ class PageTutorialState extends State<PageTutorial> {
           children: [
             Container(
               width: 100.0.w,
-              height: 50.0.h,
+              height: 55.0.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
                 color: Colors.white,
@@ -330,7 +331,15 @@ class PageTutorialState extends State<PageTutorial> {
                         ),
                       ),
                     )
-                  : SizedBox()
+                  : Container(
+                      margin: EdgeInsets.only(bottom: 8.0.h),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageContainer()));
+                        },
+                        child: Text("Salta il tutorial"),
+                      ),
+                    )
             ],
           ),
         ],

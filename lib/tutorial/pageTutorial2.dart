@@ -5,6 +5,8 @@ import 'package:logioca/tutorial/pageTutorial3.dart';
 import 'package:logioca/widgets/sliderTutorial.dart';
 import 'package:sizer/sizer.dart';
 
+import '../pageContainer.dart';
+
 class PageTutorial2 extends StatefulWidget {
   PageTutorial2({Key key}) : super(key: key);
   @override
@@ -251,7 +253,7 @@ class PageTutorial2State extends State<PageTutorial2> {
             ),
             indiceSlider == 2
                 ? Container(
-                    margin: EdgeInsets.only(bottom: 5.0.h),
+                    margin: EdgeInsets.only(bottom: 8.0.h),
                     height: 10.0.h,
                     child: TextButton(
                       onPressed: () {
@@ -270,7 +272,15 @@ class PageTutorial2State extends State<PageTutorial2> {
                       ),
                     ),
                   )
-                : SizedBox()
+                : Container(
+                    margin: EdgeInsets.only(bottom: 8.0.h),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageContainer()));
+                      },
+                      child: Text("Salta il tutorial"),
+                    ),
+                  )
           ],
         ),
       ],
