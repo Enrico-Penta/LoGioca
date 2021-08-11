@@ -58,7 +58,7 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
         future: getGiocatori(),
         builder: (context, AsyncSnapshot<Partecipanti> snapshot) {
           return MaterialApp(
-            key: Key(DateTime.now().toIso8601String()),
+            //key: Key(DateTime.now().toIso8601String()),
             debugShowCheckedModeBanner: false,
             home: Scaffold(
                 appBar: myAppBar(
@@ -171,7 +171,7 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                           if (listaPartecipanti != null)
                             Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                               DragTarget<Partecipante>(
-                                key: Key(DateTime.now().toIso8601String()),
+                                //key: Key(DateTime.now().toIso8601String()),
                                 builder: (
                                   BuildContext context,
                                   List<dynamic> accepted,
@@ -186,26 +186,33 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                                         for (var j = 0; j < listaSquadraA?.length; j++)
                                           Column(children: [
                                             SizedBox(height: 5.0.h),
-                                            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                                              CircleAvatar(
-                                                backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
-                                              ),
-                                              IconButton(
-                                                padding: EdgeInsets.zero,
-                                                alignment: Alignment.topCenter,
-                                                icon: Icon(
-                                                  Icons.cancel,
-                                                  color: Colors.red,
+                                            Stack(children: [
+                                              Padding(
+                                                padding: EdgeInsets.only(left: 2.0.w),
+                                                child: CircleAvatar(
+                                                  backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
                                                 ),
-                                                onPressed: () {
-                                                  deleteFromSquadra(listaSquadraA[j]?.idUser, widget.evento.id, 0).then((value) {
-                                                    setState(() {
-                                                      listaPanchina.clear();
-                                                      listaSquadraA.clear();
-                                                      listaSquadraB.clear();
+                                              ),
+                                              Container(
+                                                //color: Colors.blue,
+                                                width: 14.0.w,
+                                                child: IconButton(
+                                                  padding: EdgeInsets.zero,
+                                                  alignment: Alignment.topRight,
+                                                  icon: Icon(
+                                                    Icons.cancel,
+                                                    color: Colors.red,
+                                                  ),
+                                                  onPressed: () {
+                                                    deleteFromSquadra(listaSquadraA[j]?.idUser, widget.evento.id, 0).then((value) {
+                                                      setState(() {
+                                                        listaPanchina.clear();
+                                                        listaSquadraA.clear();
+                                                        listaSquadraB.clear();
+                                                      });
                                                     });
-                                                  });
-                                                },
+                                                  },
+                                                ),
                                               ),
                                             ]),
                                             Text(listaSquadraA[j]?.nome),
@@ -249,7 +256,7 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                                         ),
                                         for (var i = 0; i < listaPartecipanti.listaPartecipanti.length; i++)
                                           Draggable<Partecipante>(
-                                            key: Key(DateTime.now().toIso8601String()),
+                                            //key: Key(DateTime.now().toIso8601String()),
                                             data: listaPartecipanti?.listaPartecipanti[i],
                                             child: Container(
                                                 alignment: Alignment.topCenter,
@@ -308,28 +315,33 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
                                         for (var j = 0; j < listaSquadraB.length; j++)
                                           Column(children: [
                                             SizedBox(height: 5.0.h),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.end,
+                                            Stack(
                                               children: [
-                                                CircleAvatar(
-                                                  backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
-                                                ),
-                                                IconButton(
-                                                  padding: EdgeInsets.zero,
-                                                  alignment: Alignment.topCenter,
-                                                  icon: Icon(
-                                                    Icons.cancel,
-                                                    color: Colors.red,
+                                                Padding(
+                                                  padding: EdgeInsets.only(left: 2.0.w),
+                                                  child: CircleAvatar(
+                                                    backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
                                                   ),
-                                                  onPressed: () {
-                                                    deleteFromSquadra(listaSquadraB[j]?.idUser, widget.evento.id, 0).then((value) {
-                                                      setState(() {
-                                                        listaPanchina.clear();
-                                                        listaSquadraA.clear();
-                                                        listaSquadraB.clear();
+                                                ),
+                                                Container(
+                                                  width: 14.0.w,
+                                                  child: IconButton(
+                                                    padding: EdgeInsets.zero,
+                                                    alignment: Alignment.topRight,
+                                                    icon: Icon(
+                                                      Icons.cancel,
+                                                      color: Colors.red,
+                                                    ),
+                                                    onPressed: () {
+                                                      deleteFromSquadra(listaSquadraB[j]?.idUser, widget.evento.id, 0).then((value) {
+                                                        setState(() {
+                                                          listaPanchina.clear();
+                                                          listaSquadraA.clear();
+                                                          listaSquadraB.clear();
+                                                        });
                                                       });
-                                                    });
-                                                  },
+                                                    },
+                                                  ),
                                                 )
                                               ],
                                             ),
