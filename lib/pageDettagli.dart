@@ -168,7 +168,7 @@ class _PageDettagliState extends State<PageDettagli> {
                                                   context,
                                                   new MaterialPageRoute(
                                                       builder: (BuildContext context) => new PageContainer(
-                                                            index: 2,
+                                                            index: 4,
                                                           )));
                                         },
                                         child: Column(
@@ -209,7 +209,7 @@ class _PageDettagliState extends State<PageDettagli> {
                                                   context,
                                                   new MaterialPageRoute(
                                                       builder: (BuildContext context) => new PageContainer(
-                                                            index: 2,
+                                                            index: 4,
                                                           )));
                                         },
                                         child: Column(

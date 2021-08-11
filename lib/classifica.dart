@@ -113,7 +113,7 @@ class _PageClassificaState extends State<PageClassifica> {
                                     context,
                                     new MaterialPageRoute(
                                         builder: (BuildContext context) => new PageContainer(
-                                              index: 2,
+                                              index: 4,
                                             )));
                           },
                           child: Text(

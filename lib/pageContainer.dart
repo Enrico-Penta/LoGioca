@@ -83,7 +83,7 @@ class _PageContainerState extends State<PageContainer> {
                   new HomePage(),
               //],
             ), //),
-            Center(child: new PageProfilo(utente.id)),
+
             //Center(child: Text("Page 3")),
             Center(child: new PageClassifica()),
             Center(
@@ -93,6 +93,7 @@ class _PageContainerState extends State<PageContainer> {
                 new PageCerca(),
               ],
             )),
+            Center(child: new PageProfilo(utente.id)),
           ],
         ),
         floatingActionButton: selectedPage == 1
@@ -128,7 +129,7 @@ class _PageContainerState extends State<PageContainer> {
               ),
               IconButton(
                 icon: Image.asset(
-                  "assets/images/profilo.png",
+                  "assets/images/classifica.png",
                   color: selectedPage == 2 ? arancione : viola,
                 ),
                 onPressed: () {
@@ -140,7 +141,7 @@ class _PageContainerState extends State<PageContainer> {
               ),
               IconButton(
                 icon: Image.asset(
-                  "assets/images/classifica.png",
+                  "assets/images/icona_cerca.png",
                   color: selectedPage == 3 ? arancione : viola,
                 ),
                 onPressed: () {
@@ -152,7 +153,7 @@ class _PageContainerState extends State<PageContainer> {
               ),
               IconButton(
                 icon: Image.asset(
-                  "assets/images/icona_cerca.png",
+                  "assets/images/profilo.png",
                   color: selectedPage == 4 ? arancione : viola,
                 ),
                 onPressed: () {

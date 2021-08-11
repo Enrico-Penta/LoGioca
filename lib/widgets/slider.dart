@@ -43,7 +43,7 @@ class NoonLoopingDemo extends StatelessWidget {
                             context,
                             new MaterialPageRoute(
                                 builder: (BuildContext context) => new PageContainer(
-                                      index: 2,
+                                      index: 4,
                                     )));
                     ;
                   },
