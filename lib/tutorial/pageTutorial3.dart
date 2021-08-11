@@ -262,6 +262,7 @@ class PageTutorial3State extends State<PageTutorial3> {
                       height: 10.0.h,
                       child: TextButton(
                         onPressed: () {
+                          setLocalStorageTutorial();
                           Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageContainer()));
                         },
                         child: Container(
