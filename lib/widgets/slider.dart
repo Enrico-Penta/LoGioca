@@ -59,6 +59,7 @@ class NoonLoopingDemo extends StatelessWidget {
                       Text(
                         "${listaAmici.listaGiocatori[i].nome}",
                         textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 16,
                         ),
@@ -66,6 +67,7 @@ class NoonLoopingDemo extends StatelessWidget {
                       Text(
                         "${listaAmici.listaGiocatori[i].cognome}",
                         textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 16,
                         ),

@@ -38,7 +38,15 @@ class _PageProfiloState extends State<PageProfilo> {
       try {
         statisticheGiocatore = value.listaGiocatori.where((element) => element.idUser == widget.id).first;
       } catch (e) {
-        statisticheGiocatore = null;
+        //statisticheGiocatore = null;
+        statisticheGiocatore = new Giocatore();
+        statisticheGiocatore.idUser = widget.id;
+        statisticheGiocatore.presenze = 0;
+        statisticheGiocatore.vittorie = 0;
+        statisticheGiocatore.golFatti = 0;
+        statisticheGiocatore.magicNumber = 0;
+        statisticheGiocatore.mediaVoti = 0;
+        statisticheGiocatore.mvp = 0;
       }
       caricamentoStatistiche = true;
     });
@@ -72,33 +80,72 @@ class _PageProfiloState extends State<PageProfilo> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 24.0, bottom: 24.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              SizedBox(
-                                width: 10.0.w,
-                              )
-                            ],
-                          ),
-                          Column(children: [
-                            Container(
-                              child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
-                                radius: 80.0,
-                              ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFF57A1F9),
+                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(45.0), bottomRight: Radius.circular(45.0)),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 24.0, bottom: 24.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                SizedBox(
+                                  width: 10.0.w,
+                                )
+                              ],
                             ),
-                          ]),
-                          Container(
-                            child: Column(
+                            Column(children: [
+                              Container(
+                                child: Stack(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      backgroundImage: AssetImage("assets/images/utenteIncognito.png"),
+                                      radius: 80.0,
+                                    ),
+                                    Positioned(
+                                      bottom: 1.0.h,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: viola,
+                                        ),
+                                        child: IconButton(
+                                          icon: Icon(Icons.camera_alt),
+                                          iconSize: 30.0,
+                                          color: Colors.white,
+                                          onPressed: () {
+                                            print("foto");
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                                child: Text(
+                                  '${profiloUtente.nome} ${profiloUtente.cognome}',
+                                  style: TextStyle(color: Colors.white, fontSize: 22.0, fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 1.0.h),
+                                child: Text(
+                                  profiloUtente.email,
+                                  style: TextStyle(fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            ]),
+                            Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 20.0.w),
+                                  padding: EdgeInsets.only(bottom: 25.0.h),
                                   child: GestureDetector(
                                     onTap: () {
                                       print("CIAONE");
@@ -109,7 +156,7 @@ class _PageProfiloState extends State<PageProfilo> {
                                         onTap: toggleIcon,
                                         child: Image(
                                           width: 35,
-                                          color: viola,
+                                          color: Colors.white,
                                           image: AssetImage(
                                             "assets/images/icon_settings.png",
                                           ),
@@ -120,23 +167,45 @@ class _PageProfiloState extends State<PageProfilo> {
                                 )
                               ],
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        '${profiloUtente.nome} ${profiloUtente.cognome}',
-                        style: TextStyle(color: viola, fontSize: 22.0, fontWeight: FontWeight.w600),
-                      ),
+                    SizedBox(
+                      height: 4.0.h,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 24.0),
-                      child: Text(
-                        profiloUtente.email,
-                        style: TextStyle(fontSize: 18.0, color: arancione, fontWeight: FontWeight.w400),
+                        padding: EdgeInsets.only(bottom: 2.0.h, left: 12.0.w, right: 12.0.w),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Amici",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ) /*SliderAmici(),*/
+                        ),
+                    if (listaAmici?.listaGiocatori != null)
+                      if (listaAmici.listaGiocatori.length > 0)
+                        NoonLoopingDemo(listaAmici)
+                      else
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.all(2.0.w),
+                          child: Text("Nessun amico aggiunto!"),
+                        )
+                    else
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.all(2.0.w),
+                        child: Text("Nessun amico aggiunto!"),
                       ),
+                    SizedBox(
+                      height: 5.0.h,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0.w),
@@ -230,41 +299,11 @@ class _PageProfiloState extends State<PageProfilo> {
                         ),
                       ),
                     ),
-                    Padding(
-                        padding: EdgeInsets.only(bottom: 2.0.h, top: 4.0.h, left: 12.0.w, right: 12.0.w),
-                        child: Row(
-                          children: [
-                            Text(
-                              "Amici",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ) /*SliderAmici(),*/
-                        ),
-                    if (listaAmici?.listaGiocatori != null)
-                      if (listaAmici.listaGiocatori.length > 0)
-                        NoonLoopingDemo(listaAmici)
-                      else
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.all(2.0.w),
-                          child: Text("Nessun amico aggiunto!"),
-                        )
-                    else
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        padding: EdgeInsets.all(2.0.w),
-                        child: Text("Nessun amico aggiunto!"),
-                      ),
                     SizedBox(
-                      height: 0.1.h,
+                      height: 5.0.h,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 4.0.w),
+                      padding: EdgeInsets.symmetric(horizontal: 3.0.w),
                       child: statisticheGiocatore != null ? TendinaSport(new Sport(), controller, statisticheGiocatore) : SizedBox(),
                     ),
                     SizedBox(
