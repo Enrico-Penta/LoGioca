@@ -13,7 +13,6 @@ PreferredSizeWidget makeMyAppBar({bool automaticallyImplyLeading = true, void Fu
     leading: automaticallyImplyLeading ? null : IconButton(icon: Icon(Icons.arrow_back), onPressed: onBack),
     centerTitle: true,
     backgroundColor: viola,
-    systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.white),
     title: Text("LoGioca"),
   );
 }

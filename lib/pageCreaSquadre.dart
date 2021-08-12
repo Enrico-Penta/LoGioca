@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:logioca/main.dart';
 import 'package:logioca/models/evento.dart';
 
@@ -59,6 +60,12 @@ class _PagePageCreaSquadre extends State<PageCreaSquadre> {
         builder: (context, AsyncSnapshot<Partecipanti> snapshot) {
           return MaterialApp(
             //key: Key(DateTime.now().toIso8601String()),
+            theme: ThemeData(
+              appBarTheme: AppBarTheme(
+                backwardsCompatibility: false, // 1
+                systemOverlayStyle: SystemUiOverlayStyle.light, // 2
+              ),
+            ),
             debugShowCheckedModeBanner: false,
             home: Scaffold(
                 appBar: myAppBar(
