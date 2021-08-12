@@ -161,7 +161,7 @@ class _PageCercaState extends State<PageCerca> {
                                                           new PageProfiloUtente(listaGiocatori.listaGiocatori[i].idUser)));
                                             },
                                             child: Text(
-                                              listaGiocatori.listaGiocatori[i].email != null ? listaGiocatori.listaGiocatori[i].email : "",
+                                              "",
                                               style: TextStyle(fontSize: 3.0.w),
                                             ),
                                           )
