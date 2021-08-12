@@ -39,7 +39,7 @@ class _TendinaSportState extends State<TendinaSport> {
               ),
               Container(
                   padding: EdgeInsets.only(left: 2.0.w),
-                  width: 18.0.w,
+                  width: 20.0.w,
                   child: Text(
                     "Calcio",
                     style: TextStyle(
