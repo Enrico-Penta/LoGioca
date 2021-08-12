@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logioca/common.dart';
 import 'package:logioca/models/utente.dart';
-import 'package:logioca/pageContainer.dart';
-import 'package:logioca/pageProfilo.dart';
 import 'package:sizer/sizer_util.dart';
 import 'login.dart';
 
