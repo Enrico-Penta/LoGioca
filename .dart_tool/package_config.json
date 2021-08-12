@@ -80,6 +80,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_countdown_timer",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_countdown_timer-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_keyboard_visibility",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_keyboard_visibility-5.0.2",
       "packageUri": "lib/",
@@ -374,7 +380,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-08-03T15:13:16.097008Z",
+  "generated": "2021-08-04T12:58:28.580870Z",
   "generator": "pub",
-  "generatorVersion": "2.13.1"
+  "generatorVersion": "2.13.3"
 }
