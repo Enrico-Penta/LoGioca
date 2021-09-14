@@ -109,8 +109,9 @@ class _CardEventState extends State<CardEvent> {
                           context, new MaterialPageRoute(builder: (BuildContext context) => new PageCreaSquadre(widget.evento, context)))
                       : Navigator.push(
                           context, new MaterialPageRoute(builder: (BuildContext context) => new PageStatistiche(widget.evento)))
-                  : Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageDettagli(widget.evento)));
-              print("ciao");
+                  : DateTime.now().isBefore(widget.evento.data)
+                      ? Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new PageDettagli(widget.evento)))
+                      : null;
             },
             child: Stack(children: [
               Container(

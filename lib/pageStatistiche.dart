@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logioca/models/evento.dart';
@@ -270,7 +272,19 @@ class _PageStatisticheState extends State<PageStatistiche> {
                             padding: EdgeInsets.all(1.0.h),
                             backgroundColor: Color(0xFF2F267A),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0))),
-                        onPressed: () {},
+                        onPressed: () {
+                          setGol(utente.id, widget.evento.id, idGiocatore, int.parse(nGol)).then((value) {
+                            if (jsonDecode(jsonDecode(value)['data'])["Output"]["Messaggi"] == null) {
+                              setState(() {
+                                print("ok");
+                                Navigator.pop(context);
+                              });
+                            } else {
+                              Navigator.pop(context);
+                              popupGol(context, idGiocatore, nomeGiocatore, errore: true);
+                            }
+                          });
+                        },
                         child: Text(
                           "Salva",
                           style: TextStyle(color: Colors.white, fontSize: 5.0.w, fontWeight: FontWeight.w400),

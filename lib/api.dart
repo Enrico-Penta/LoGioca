@@ -318,6 +318,31 @@ Future<String> setVoto(int idUser, int idEvento, int idGiocatore, String voto) a
   }
 }
 
+Future<String> setGol(int idUser, int idEvento, int idGiocatore, int gol) async {
+  final response = await http.post(
+    Uri.parse('https://logiocarest.azurewebsites.net/evento/Goal'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'IdUser': idUser.toString(),
+      'IdEvento': idEvento.toString(),
+      'IdGiocatore': idGiocatore.toString(),
+      'Goal': gol.toString()
+    }),
+  );
+
+  if (response.statusCode == 200 || response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    return response.body;
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    return "";
+  }
+}
+
 Future<ListaGiocatori> getClassifica(int idSport) async {
   final response = await http.post(
     Uri.parse('https://logiocarest.azurewebsites.net/campionato/classifica'),
